@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Relatórios
+{% endblock %}
+
+{% block main %}
+    <section>
+        <h1>Relatórios</h1>
+        <nav>
+            <a href="/cadastro">Cadastro</a> |
+            <a href="/consulta">Consulta</a> |
+            <a href="/emprestimos">Empréstimos</a> |
+            <a href="/novo_emprestimo">Registrar Novo Empréstimo</a> |
+        </nav>
+    </section>
+
+    <section>
+        <p>Total de livros: {{ total_livros }}</p>
+        <p>Total de bibliotecários: {{ total_bibliotecarios }}</p>
+        <p>Total de estudantes: {{ total_estudantes }}</p>
+        <p>Total de livros emprestados: {{ total_emprestados }}</p>
+        <p>Total de livros disponíveis: {{ total_disponiveis }}</p>
+
+        <h3>Livros Mais Emprestados</h3>
+        <ul>
+            {% for livro in livros_mais_emprestados %}
+                <li>{{ livro[0] }} - {{ livro[1] }} vezes</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <h2>Relatório de Devoluções</h2>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título do Livro</th>
+                <th>Estudante</th>
+                <th>Bibliotecário</th>
+                <th>Data de Empréstimo</th>
+                <th>Data de Devolução</th>
+                <th>Data de Retorno</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emprestimo in emprestimos_concluidos %}
+                <tr>
+                    <td>{{ emprestimo['titulo'] }}</td> <!-- Título do livro -->
+                    <td>{{ emprestimo['nome_estudante'] }}</td> <!-- Nome do estudante -->
+                    <td>{{ emprestimo['nome_bibliotecario'] }}</td> <!-- Nome do bibliotecário -->
+                    <td>{{ emprestimo['data_emprestimo'] }}</td> <!-- Data de empréstimo -->
+                    <td>{{ emprestimo['data_devolucao'] }}</td> <!-- Data de devolução -->
+                    <td>{{ emprestimo['data_retorno'] }}</td> <!-- Data de retorno -->
+                    <td>{{ emprestimo['status'] }}</td> <!-- Status -->
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Nenhum registro encontrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Registrar Estudante
+{% endblock %}
+
+{% block main %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.nome.label }}<br>
+            {{ form.nome(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.email.label }}<br>
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.senha.label }}<br>
+            {{ form.senha(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.confirm_senha.label }}<br>
+            {{ form.confirm_senha(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.matricula.label }}<br>
+            {{ form.matricula(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.turma.label }}<br>
+            {{ form.turma(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.turno.label }}<br>
+            {{ form.turno(class="form-select") }}
+        </div>
+        <div class="mb-3">
+            {{ form.telefone.label }}<br>
+            {{ form.telefone(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+{% endblock %}

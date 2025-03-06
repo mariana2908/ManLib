@@ -1,0 +1,179 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Consultar
+{% endblock %}
+
+{% block main %}
+    <section>
+        <h1>Consulta</h1>
+        <nav>
+            <a href="/cadastro">Cadastro</a> |
+            <a href="/relatorios">Relatórios</a> |
+            <a href="/emprestimos">Empréstimos</a> |
+            <a href="/novo_emprestimo">Registrar Novo Empréstimo</a> |
+        </nav>
+    </section>
+
+    <form id="consulta-form" method="GET" action="/consulta">
+        <label for="tipo">Tipo de pesquisa:</label>
+        <select name="tipo" id="tipo">
+            <option value="livros" {% if tipo == "livros" %}selected{% endif %}>Livros</option>
+            <option value="usuarios" {% if tipo == "usuarios" %}selected{% endif %}>Usuários</option>
+            <option value="status" {% if tipo == "status" %}selected{% endif %}>Status</option>
+        </select>
+
+        {% if tipo == 'livros' %}
+        <!-- Mostrar as opções somente se o tipo de pesquisa for 'livros' -->
+        <label for="pesquisa">Pesquisar:</label>
+        <input type="text" name="pesquisa" id="pesquisa" value="{{ pesquisa }}">
+
+        <div>
+            <button id="scan-btn" type="button">Escanear Código</button>
+            <div id="scanner-container" class="scanner"></div>></div>
+        </div>
+        {% endif %}
+
+        {% if tipo == 'usuarios' %}
+        <!-- Mostrar as opções somente se o tipo de pesquisa for 'usuarios' -->
+         <label for="pesquisa">Pesquisar</label>
+        <input type="text" name="pesquisa" id="pesquisa" value="{{ pesquisa }}">
+        {% endif %}
+
+        {% if tipo == 'status' %}
+        <!-- Campo de pesquisa limitado para 'disponível' ou 'indisponível' -->
+        <div>
+            <label for="status">Selecione o status:</label>
+            <select name="pesquisa" id="pesquisa">
+                <option value="disponível" {% if pesquisa == 'disponível' %}selected{% endif %}>Disponível</option>
+                <option value="indisponível" {% if pesquisa == 'indisponível' %}selected{% endif %}>Indisponível</option>
+            </select>
+        </div>
+        {% endif %}
+        <button type="submit">Pesquisar</button>
+
+        <div id="results-container"></div>        
+    </form>
+
+    {% if tipo == 'livros' %}
+        <h2>Resultados de Livros</h2>
+        {% if livros %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Gênero</th>
+                        <th>Ano de Publicação</th>
+                        <th>ISBN</th>
+                        <th>Status</th>
+                        <th>Quantidade Total</th>
+                        <th>Disponível</th>
+                        <th>Indisponível</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="livros-tbody">
+                    {% for livro in livros %}
+                        <tr>
+                            <form method="POST" action="/editar_livro/{{ livro['livro_id'] }}">
+                                <td><input type="text" name="titulo" value="{{ livro['titulo'] }}" required></td>
+                                <td><input type="text" name="autor" value="{{ livro['autor'] }}" required></td>
+                                <td><input type="text" name="genero" value="{{ livro['genero'] }}" required></td>
+                                <td><input type="text" name="ano_de_publicacao" value="{{ livro['ano_de_publicacao'] }}" required></td>
+                                <td><input type="text" name="isbn" value="{{ livro['isbn'] }}" required></td>
+                                <td><input type="text" name="status" value="{{ livro['status'] }}" required></td>
+                                <td><input type="number" name="quantidade_total" value="{{ livro['quantidade_total'] }}" required></td>
+                                <td><input type="number" name="quantidade_disponivel" value="{{ livro['quantidade_disponivel'] }}" required></td>
+                                <td><input type="number" name="quantidade_indisponivel" value="{{ livro['quantidade_indisponivel'] }}" required></td>
+                                <td>
+                                    <button type="submit">Atualizar</button>
+                                </td>
+                            </form>
+                            <td>
+                                <form method="POST" action="/apagar_livro/{{ livro['livro_id'] }}" style="display: inline;">
+                                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este livro?');">Apagar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nenhum livro encontrado para a pesquisa "{{ pesquisa }}".</p>
+        {% endif %}
+        {% elif tipo == 'usuarios' %}
+        <h2>Resultados de Usuários</h2>
+        {% if usuarios %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                        <tr>
+                            <td>{{ usuario['nome'] }}</td>
+                            <td>{{ usuario['email'] }}</td>
+                            <td>{{ usuario['tipo'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nenhum usuário encontrado para a pesquisa "{{ pesquisa }}".</p>
+        {% endif %}    
+    {% elif tipo == 'status' %}
+        <h2>Resultados de Status</h2>
+        {% if livros %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Gênero</th>
+                        <th>Ano de Publicação</th>
+                        <th>ISBN</th>
+                        <th>Status</th>
+                        <th>Quantidade Total</th>
+                        <th>Disponível</th>
+                        <th>Indisponível</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="livros-tbody">
+                    {% for livro in livros %}
+                        <tr>
+                            <form method="POST" action="/editar_livro/{{ livro['livro_id'] }}">
+                                <td><input type="text" name="titulo" value="{{ livro['titulo'] }}" required></td>
+                                <td><input type="text" name="autor" value="{{ livro['autor'] }}" required></td>
+                                <td><input type="text" name="genero" value="{{ livro['genero'] }}" required></td>
+                                <td><input type="text" name="ano_de_publicacao" value="{{ livro['ano_de_publicacao'] }}" required></td>
+                                <td><input type="text" name="isbn" value="{{ livro['isbn'] }}" required></td>
+                                <td><input type="text" name="status" value="{{ livro['status'] }}" required></td>
+                                <td><input type="number" name="quantidade_total" value="{{ livro['quantidade_total'] }}" required></td>
+                                <td><input type="number" name="quantidade_disponivel" value="{{ livro['quantidade_disponivel'] }}" required></td>
+                                <td><input type="number" name="quantidade_indisponivel" value="{{ livro['quantidade_indisponivel'] }}" required></td>
+                                <td>
+                                    <button type="submit">Atualizar</button>
+                                </td>
+                            </form>
+                            <td>
+                                <form method="POST" action="/apagar_livro/{{ livro['livro_id'] }}" style="display: inline;">
+                                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este livro?');">Apagar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nenhum status encontrado para a pesquisa "{{ pesquisa }}".</p>
+        {% endif %}
+    {% else %}
+        <p>Selecione um tipo de pesquisa.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,199 @@
+/* Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cores e fontes globais */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 0;
+    padding-top: 70px; /* Ajuste conforme a altura da barra de navegação */
+}
+
+/* Barra de navegação */
+header {
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; /* Faz o alinhamento do logo e links */
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header h1 {
+    color: black;
+    font-size: 24px;
+    margin-right: auto; /* Garante que o logo fique à esquerda */
+}
+
+/* Estilo da nav-bar */
+nav {
+    display: flex; /* Flexbox para a navegação */
+    justify-content: flex-end; /* Alinha os links à direita */
+}
+  
+nav ul {
+    list-style-type: none;
+    display: inline-flex; /* Ajusta os links na horizontal */
+    margin: 0;
+    padding: 0;
+}
+  
+nav ul li {
+    margin-left: 20px;
+}
+  
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Botões da nav-bar */
+nav .navbar-toggler {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 20px; /* Espaçamento entre o botão e os links */
+    transition: all 0.3s ease; /* Transição suave para hover */
+}
+
+nav .navbar-toggler:hover {
+    background-color: #f2f2f2; /* Cinza claro */
+    border-color: #0050AF;    /* Borda azul */
+}
+  
+/* Conteúdo principal */
+main {
+    margin-top: 80px; /* Evita que o conteúdo seja coberto pela barra de navegação */
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #BF0A30; /* Vermelho da bandeira da Bahia para títulos */
+    text-align: center;  
+    margin-bottom: 40px; /* Adiciona um espaço de 20px abaixo do título */
+}
+
+p {
+    margin-top: 30px; /* Adiciona um espaço de 10px acima do parágrafo */
+    text-align: center;
+}
+
+a {
+    color: #000050; /* Azul Escuro para links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para botões */
+button {
+    background-color: #002776; /* Azul da bandeira da Bahia */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #002067; /* Azul da bandeira da Bahia, só que mais escuro */
+}
+
+/* Estilos para tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+  /* Estilos para formulários */
+form {
+    margin: 20px 0;
+  }
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#scanner-container {
+    position: relative;
+    width: 300px; /* Largura máxima desejada */
+    height: 200px; /* Altura máxima desejada */
+    margin: 0 auto; /* Centraliza o scanner */
+    border: 1px solid #ccc; /* Opcional: borda para destacar o scanner */
+    overflow: hidden; /* Garante que elementos maiores não ultrapassem os limites */
+}
+
+#scanner-container video {
+    width: 100%; /* Faz o vídeo ocupar toda a largura do contêiner */
+    height: auto; /* Mantém a proporção do vídeo */
+}
+
+#scan-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #002067;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px; /* Adiciona espaço entre o botão e o scanner */
+}
+
+#scan-btn:hover {
+    background-color: #002067;
+}
+
+.alert {
+    margin-top: 70px; /* Ajuste conforme a altura da barra de navegação */
+    z-index: 1000;
+    position: fixed;
+}

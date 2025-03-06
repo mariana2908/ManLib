@@ -1,0 +1,845 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [28/Dec/2024 15:51:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Dec/2024 15:51:16] "GET /static/js/scanner.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Dec/2024 15:51:16] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Dec/2024 15:51:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ERROR:app:Exception on /login [GET]
+Traceback (most recent call last):
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 730, in _connect
+    raise err
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 718, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1299, in __inner
+    self.limiter._check_request_limit(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        in_middleware=False, callable_name=name
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1176, in _check_request_limit
+    raise e
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1157, in _check_request_limit
+    self.__evaluate_limits(endpoint, all_limits)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1094, in __evaluate_limits
+    if not method(lim.limit, *args, **kwargs):
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\strategies.py", line 140, in hit
+    self.storage.incr(
+    ~~~~~~~~~~~~~~~~~^
+        item.key_for(*identifiers),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        amount=cost,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\storage\base.py", line 27, in inner
+    return fn(*args, **kwargs)
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\storage\redis.py", line 209, in incr
+    return int(self.lua_incr_expire([key], [expiry, amount]))
+               ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5501, in __call__
+    return client.evalsha(self.sha, len(keys), *args)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5710, in evalsha
+    return self._evalsha("EVALSHA", sha, numkeys, *keys_and_args)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5694, in _evalsha
+    return self.execute_command(command, sha, numkeys, *keys_and_args)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 1422, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+INFO:werkzeug:127.0.0.1 - - [28/Dec/2024 15:51:23] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /login [GET]
+Traceback (most recent call last):
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 730, in _connect
+    raise err
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 718, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1299, in __inner
+    self.limiter._check_request_limit(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        in_middleware=False, callable_name=name
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1176, in _check_request_limit
+    raise e
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1157, in _check_request_limit
+    self.__evaluate_limits(endpoint, all_limits)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1094, in __evaluate_limits
+    if not method(lim.limit, *args, **kwargs):
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\strategies.py", line 140, in hit
+    self.storage.incr(
+    ~~~~~~~~~~~~~~~~~^
+        item.key_for(*identifiers),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        amount=cost,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\storage\base.py", line 27, in inner
+    return fn(*args, **kwargs)
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\storage\redis.py", line 209, in incr
+    return int(self.lua_incr_expire([key], [expiry, amount]))
+               ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5501, in __call__
+    return client.evalsha(self.sha, len(keys), *args)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5710, in evalsha
+    return self._evalsha("EVALSHA", sha, numkeys, *keys_and_args)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5694, in _evalsha
+    return self.execute_command(command, sha, numkeys, *keys_and_args)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 1422, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+INFO:werkzeug:127.0.0.1 - - [28/Dec/2024 15:51:26] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /login [GET]
+Traceback (most recent call last):
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 730, in _connect
+    raise err
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 718, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1299, in __inner
+    self.limiter._check_request_limit(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        in_middleware=False, callable_name=name
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1176, in _check_request_limit
+    raise e
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1157, in _check_request_limit
+    self.__evaluate_limits(endpoint, all_limits)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1094, in __evaluate_limits
+    if not method(lim.limit, *args, **kwargs):
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\strategies.py", line 140, in hit
+    self.storage.incr(
+    ~~~~~~~~~~~~~~~~~^
+        item.key_for(*identifiers),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        amount=cost,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\storage\base.py", line 27, in inner
+    return fn(*args, **kwargs)
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\storage\redis.py", line 209, in incr
+    return int(self.lua_incr_expire([key], [expiry, amount]))
+               ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5501, in __call__
+    return client.evalsha(self.sha, len(keys), *args)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5710, in evalsha
+    return self._evalsha("EVALSHA", sha, numkeys, *keys_and_args)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5694, in _evalsha
+    return self.execute_command(command, sha, numkeys, *keys_and_args)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 1422, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+INFO:werkzeug:127.0.0.1 - - [28/Dec/2024 15:51:26] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /login [GET]
+Traceback (most recent call last):
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 730, in _connect
+    raise err
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 718, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1299, in __inner
+    self.limiter._check_request_limit(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        in_middleware=False, callable_name=name
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1176, in _check_request_limit
+    raise e
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1157, in _check_request_limit
+    self.__evaluate_limits(endpoint, all_limits)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1094, in __evaluate_limits
+    if not method(lim.limit, *args, **kwargs):
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\strategies.py", line 140, in hit
+    self.storage.incr(
+    ~~~~~~~~~~~~~~~~~^
+        item.key_for(*identifiers),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        amount=cost,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\storage\base.py", line 27, in inner
+    return fn(*args, **kwargs)
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\storage\redis.py", line 209, in incr
+    return int(self.lua_incr_expire([key], [expiry, amount]))
+               ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5501, in __call__
+    return client.evalsha(self.sha, len(keys), *args)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5710, in evalsha
+    return self._evalsha("EVALSHA", sha, numkeys, *keys_and_args)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5694, in _evalsha
+    return self.execute_command(command, sha, numkeys, *keys_and_args)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 1422, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+INFO:werkzeug:127.0.0.1 - - [28/Dec/2024 15:51:27] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on https://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /login [GET]
+Traceback (most recent call last):
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 730, in _connect
+    raise err
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 718, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1299, in __inner
+    self.limiter._check_request_limit(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        in_middleware=False, callable_name=name
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1176, in _check_request_limit
+    raise e
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1157, in _check_request_limit
+    self.__evaluate_limits(endpoint, all_limits)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1094, in __evaluate_limits
+    if not method(lim.limit, *args, **kwargs):
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\strategies.py", line 140, in hit
+    self.storage.incr(
+    ~~~~~~~~~~~~~~~~~^
+        item.key_for(*identifiers),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        amount=cost,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\storage\base.py", line 27, in inner
+    return fn(*args, **kwargs)
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\limits\storage\redis.py", line 209, in incr
+    return int(self.lua_incr_expire([key], [expiry, amount]))
+               ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5501, in __call__
+    return client.evalsha(self.sha, len(keys), *args)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5710, in evalsha
+    return self._evalsha("EVALSHA", sha, numkeys, *keys_and_args)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\commands\core.py", line 5694, in _evalsha
+    return self.execute_command(command, sha, numkeys, *keys_and_args)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 1422, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\walas pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:43:20] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:43:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 946-064-899
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:53] code 400, message Bad request version ('\x06E~\x0f!Êh\x83\x0fçÆj\x01þ\x9fÈuóå\x871')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:53] "[31m[1m\x16\x03\x01\x07Á\x01\x00\x07½\x03\x03^Þ§/ÈîV\x9cX)G©©ËªÀ&\x08¹Æ;é¸ppuQ\x91 \x00\x16ê \x06E~\x0f!Êh\x83\x0fçÆj\x01þ\x9fÈuóå\x871[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:54] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x08\x01\x01\x00\x07ý\x03\x03Éåh¸\x9c\x05W½+\x97?Ý\x86ÓGÇÈdï]oy\x17Ø\x8c·')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:54] "[31m[1m\x16\x03\x01\x08\x01\x01\x00\x07ý\x03\x03Éåh¸\x9c\x05W½+\x97?Ý\x86ÓGÇÈdï]oy\x17Ø\x8c·\x85\x08iÊz[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:54] code 400, message Bad request version ('ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06¥úú\x00\x00\x00')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:54] "[31m[1m\x16\x03\x01\x07\x12\x01\x00\x07\x0e\x03\x03Ê\x04½\x8a\x82í\x8a\x0bí&\x0d²Ì\x9dC\x1d81L¬­\x9d<íª\x89\x83\x9a\x89LÑ: ]\x8elJ\x0e\x93ø\x98¿$ñv0\x98ÔiY¾.mõîeK\x8b\x80ò\x1e&\x1a¤\x0b\x00 ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06¥úú\x00\x00\x00[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:54] code 400, message Bad request version ('zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06EZZ\x00\x00\x00\x1b\x00\x03\x02\x00\x02ÿ\x01\x00\x01\x00\x00')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:54] "[31m[1m\x16\x03\x01\x06²\x01\x00\x06®\x03\x03G\x9d\x85)IÑÚS\x8a\x92VñM=ú*\x08ö\x0fýî\x9d\x08q\x81Ä\x89PÎ\x9dÜs ÞRÛð>\x80\x01f\x1dK*\x9e2Îz\x91AñiÙ\x11¿P\x97Øð¤Þmâ\x7f\x18\x00 zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06EZZ\x00\x00\x00\x1b\x00\x03\x02\x00\x02ÿ\x01\x00\x01\x00\x00[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:57] code 400, message Bad request version ('Â°ð5\x1b\x83^Ïð±\x0f£\x11@\x81x\x02·Oq~\x98¬\x8az.LÿËÁ£O¥ÞçÖ\x07³F÷\x08R¿')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:57] "[31m[1m\x16\x03\x01\x06²\x01\x00\x06®\x03\x03¾ä\x17\x04\x121\x80"·Ðôß\x94<;GÉ#ÉF\x9e\x92Ä\x8al"4/væ+\x94 »ñ[ï\x02:Ê#\x14\x84¤\x87-Ä'¤Õ%å\x90v½*µ¯\x0dÖÆ!éif\x00 \x1a\x1a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06E**\x00\x00\x00+\x00\x07\x06\x9a\x9a\x03\x04\x03\x03\x00\x00\x00\x0e\x00\x0c\x00\x00\x09localhostDi\x00\x05\x00\x03\x02h2þ\x0d\x00º\x00\x00\x01\x00\x01Ú\x00 ð]ÏÍú³ÞL§½D\x19aì(/¶2\x1ey\x82\x84Utåuðá#\x9d"+\x00\x90UË0S\x99\x85lç2X½\x8bS3À\x03Å\x0dY\x97\x87[O¶\\\x89\x96ÛÎÖ-\x83\x0eHAìCr\x81Æ'\x90\x0e\x11ñ\x9bg\x10)â\x90À\x95G\x12î"Kí§\\j\x15É@{t* \x864\x09Ä\x0dQ­ºã\x8aD\\\x18\x97&*ö\x0bÂ°ð5\x1b\x83^Ïð±\x0f£\x11@\x81x\x02·Oq~\x98¬\x8az.LÿËÁ£O¥ÞçÖ\x07³F÷\x08R¿[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:58] code 400, message Bad request syntax ('\x16\x03\x01\x06Ò\x01\x00\x06Î\x03\x03')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:58] "[31m[1m\x16\x03\x01\x06Ò\x01\x00\x06Î\x03\x03[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:58] code 400, message Bad request version ('\x12£ÿi\x84\x17q-Òé')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:58] "[31m[1m\x16\x03\x01\x06²\x01\x00\x06®\x03\x03Oåk\x0f\x1eHZÇ8÷\x80/¸«\x86\x11@§C×µz\x9b·sÜKíò:¬º JÍ-ÐuÖ\x12È-{:ì1\x7f\x82\x09ÂQÁOWìô%\x16=[\x03Õdx\x82\x00 ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Eêê\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x1b\x00\x03\x02\x00\x02\x00\x17\x00\x00þ\x0d\x00º\x00\x00\x01\x00\x010\x00 kè4~ö\x84ùECñ\x0b\x1c&°*HäÞÆºû3_q8XqÙ\x06²b4\x00\x90zý¹´£Þ²Pô_\x8dð[-\x19\x82î(\x92§\x86*p\x86æX \x12£ÿi\x84\x17q-Òé[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:58] code 400, message Bad request version ('[°É¨S÷_\x8d\x7f')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:58] "[31m[1m\x16\x03\x01\x06²\x01\x00\x06®\x03\x03tëc¯àá\x0fls¹Á\x0fú\x12Ú\x18¨«Â\x1aa\x0d®\x99$\x02úÒÑë1Â Ñ7\x8ax$ýÎ©¿\x1bÙ\x0cÕO\x05ÁX;\x9fF)¨þ\x8a\x86 \x12\x82DÁÃ\x82\x00 JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06EZZ\x00\x00\x00\x12\x00\x00þ\x0d\x00º\x00\x00\x01\x00\x01(\x00 üæ\x84IÝm­E3³±ûüÝÖÞ÷æ\x8dÏÇ\x08\x86\x09a\x06é\x0dtÏ\x85\x7f\x00\x90\x0e\x08\x02 [°É¨S÷_\x8d\x7f[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:59] code 400, message Bad request version ('Àµ\x97Ð\x9a')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:59] "[31m[1m\x16\x03\x01\x06ò\x01\x00\x06î\x03\x03¿I\x1e°Àß(þíÂ\x94þÈt\x03\x1c\x9e\x0eËGå\x9dÊ\\Îdj+D\x9e\x02$ Àµ\x97Ð\x9a[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:59] code 400, message Bad request version ('\x1a\x1a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:59] "[31m[1m\x16\x03\x01\x06ò\x01\x00\x06î\x03\x03·">dóùVI@c¶Ê²©Û}0\x93t^Ì\x9d\x87Ö¯\x9e_ Õ\x02çÆ Ú\x8b1g\x1e\x02¦w@f¨Önù\\ÕãÏ\x1b?\x88\x07I]æñþ\x8cíâ5a\x00 \x1a\x1a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x85[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:59] code 400, message Bad request version ('|\x92x5AÃL*\x878#)')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:44:59] "[31m[1m\x16\x03\x01\x07\x12\x01\x00\x07\x0e\x03\x03\x07Lw"rÃ¥Vè\x09¸KÓlÜ\x0f·Tu&µÑÁß|[¼©ò¼\x01Â ©\x13\x9bFÛÁûÂqèÛm\x0b×zT.u¬]þ±\x1dùsâÜ\x1c\x83ï'Ê\x00 \x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06¥êê\x00\x00\x00#\x00\x00\x00\x12\x00\x00Di\x00\x05\x00\x03\x02h2\x00\x0b\x00\x02\x01\x00\x003\x04ï\x04í\x1a\x1a\x00\x01\x00\x11ì\x04À`\x9b8\x16Ã\x94ãrnäkq;wC\x81`¸7VÍþxc\x19Z\x97\x18a$Ì:h6Å\x7f\x9b[²\x0d\x18®>Z\x1f\x15Ëq\x0dA\x1d\x9aàq\x01B.\x88S³½iAc9&kñ«ê9GV°K¹h O °«\x89\x18n\x88-ßv¿x\x13P\x89Ö=\x93l A¥7ÌTv!T\x1fÚãJzX\x19vU\x82\x9a¥Åb\x90^g\x8bc{C\\\x1c|\x92x5AÃL*\x878#)\x09[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] code 400, message Bad request version ('Á\x93¿yéß\x0e£\x86ôÇÈð\x84³Ýe')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] "[31m[1m\x16\x03\x01\x06Ò\x01\x00\x06Î\x03\x03Dæ"TÕó[Ð¨\x971e¨i\x16K¯uâuèAÎ\x84Ø\x9bä\x07ÔÜ\x80ï ùeòªÑ6ÛÖ\x10`4À\x09ü&\x83\x1a\x02»>W#¿Wú¾ýëk\x1f½Æ\x00 ::\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06e\x9a\x9a\x00\x00\x00+\x00\x07\x06ÚÚ\x03\x04\x03\x03ÿ\x01\x00\x01\x00þ\x0d\x00Ú\x00\x00\x01\x00\x01´\x00 Á\x93¿yéß\x0e£\x86ôÇÈð\x84³Ýe[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] code 400, message Bad request version ('\x10Û\x1béÜ\x0e®')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] "[31m[1m\x16\x03\x01\x06Ò\x01\x00\x06Î\x03\x03¾±½ÙKì±98Ñ|<ø EÓs\x9a>ò÷,S\x9e\x06\x12óõ;\x99\x94í Æað³6\x8c¥\x88g(Æ\x0bh*ô\x84#\x8cÒ.ÏkÞ\x05ã\x19\x8aLøÑÉ\x92\x00 ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06eÚÚ\x00\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00\x00\x00\x0e\x00\x0c\x00\x00\x09localhostDi\x00\x05\x00\x03\x02h2\x00\x05\x00\x05\x01\x00\x00\x00\x00þ\x0d\x00Ú\x00\x00\x01\x00\x011\x00 \x18n¸\x88\x18\x9c¾Ö\x15\x8f\x12OG\x8b\x1a\x16§\x0fµÒ~¿\x90\x80\x06ìjÞv¸¦w\x00°á\x92\x88ø\x9b\x16\x83\x93Ü³2HÝ'\x86Ø\x148\x04] !\x8f1>­Z§iÐÊ\x9dG\x1a\x8e\x13½\x1b<®Ì^4\x00gÀ\x81qe·\x92dø\x18\x8cb\x10J1oãËÅì\x8a?àÞ_¼__ú¼A@ÚW|¶Q\x99Åzò\x8fØ2\x1co\x02\x04\x02\x03\x1f\x10Û\x1béÜ\x0e®[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] code 400, message Bad request version ('S')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] "[31m[1m\x16\x03\x01\x07\x12\x01\x00\x07\x0e\x03\x03±vRqk{\x12q@O>î.\x94u\x87IÃ\x0b\x03ñË[·\x9a \x1e,ýÇ%\x9b \x1câzÊ\x05e5Ç¦g·ÜX\x1f\x0b³"Oøî\x91­\x0fÝ\x06õä\x19m8{ò\x00 ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06¥\x9a\x9a\x00\x00\x003\x04ï\x04íÊÊ\x00\x01\x00\x11ì\x04Àø6­¼Ås·:bM¼Ãô\x92\x1f\x8fuRÁCË\x87lrÇ"S\x08\x9b¨¦É\x87üV\x8c=ñ+OêuwËÎ\x1dÕ¶\\<Yr\x94\x8ch\x92°\x09¨\x17\x19 ÍàlMç©\x8cSu\x02»l\x9c\x8c#79\x040\x9dÁfÄY\x05Ô7m\x12\x8b\x80y¤°ñÔ¿7ë_x\x11/\x10»¶\x17<u ÕcÆ»\x05N\x15\x1c\x94 ~\x83±\x12riUB\x19»~\x9c2+\x16Í=\x8c\x96æð¬Ó¨%£s\x09\x81ÓT s,ª´Á\x06\x14v\x10eNèV\x1b}\x84NòWµ\x10*\x98úE\x91uÖ\x8dùú\x14\x82S?\x19£\x08\x0ep>_Heù\x8aÄÍ\x0c8Q t\x09Õ\x10 S[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] code 400, message Bad request version ('²\x9cÈ;5z\\°J\x122')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] "[31m[1m\x16\x03\x01\x07\x12\x01\x00\x07\x0e\x03\x03ÔÍ3ÔO\x1bÏº\x9bë\x08\x83±\x07+àÇ\x1eæ´Ð\x19*i¢\x98¶å1ßï\x15 Ô*ÄÕlé~\x7fùRkPm_\x11ù\x04:\x90\x014\x84\x1c\x99\x9e»ÓÙØ!4`\x00 êê\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06¥jj\x00\x00\x00\x1b\x00\x03\x02\x00\x02\x00\x00\x00\x0e\x00\x0c\x00\x00\x09localhost\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x003\x04ï\x04íÚÚ\x00\x01\x00\x11ì\x04ÀÛ!{\x0c¶Növ\x88¯:J8\x9c\x9f\x0fkÀ\x9e,\\zºy\x9ftT­ÌNÌ\x99-\x05W+Ç\x01»6¡vñ\x12§0ºfs\\*g\x90\x1aûµeï»\x8dèIA\x89\x15bÊp\x02ÿ\x82¯¦0\x11§ÊÎk·\x096tk°\x97'\x15uÉ­\x10cE\x8b­£úÄK\\\x84\x86û\x1eHê\x85=\x0bP Ú8\x81Êd\x03¸Î¦Q\x108tÈþ,#F·n¼G\x97 \x08ª0l¯wø&ëÀwSE1;w\x83Ýf¼ÚØF'\x8aµÙ:\x01y¶f9\x09y\x98:µ×ª\x9e{»Î\x1c\x04Möyq\x9f\x03¿Î{\x9eÙ\x84X\x9e\x01\x83Ö²b\x0e`\x04»#I\x89\x86\x98Ë\x93¨£%f\x99K!\x80jN¼%De\x84ÂY5o±:m\x9f³:_Y1\x8a\x9b\x1eó8%)*\x16\x84\x941µj\x07ï"4¾»8~´¯\x9f%\x98\x8bçb\x83\x92\x9f6Ñ\x0e\x88)§ÃX+]\x8c\x03òê\x82\x05ô=Ù\x0cxó¥\x1cU³kË \x98\x02ø¦ÞÄ\x17ÒÂº\x9cLj\x83{À¥\x97VBæ\x9c´\x92oíC®\x9b¬J/\x057©*\x92k\x06Í\x9fwCËù\x18O\x18½pÑ_±%°;û3'rTÃ\x16\x7f\x1c·\x96h´CÜ3M}Å\x8f\x97{w|p·H)o½ôc£QPì(>ã1Q\x84\x8c\x8eMX\x93é\x89C`LÍKé¨É{\\\x04L)¶,kÕ\x9a{\x94¡´B\x16´Æj\x9ap\x02\x87d¶\x87\x97\x1a°å{sQBZ£;Í^fp\x1bÊµ\x81üHÉ\x1a\x0f\x06swN\x86Q\x8a²GSâcÎ¦\x0f$INÓZ\x7fË*\x02f·X\x89+<>\x13\x11j!{ï\x86º¶\x84yÄ\x01¸ÝJ\x0es&}eÂEWÜµèa\x0dQ \x12z¤V\x0d\x91\x10`Ðt]$iû\x1a^×$§¾ªÎ¦\x0bt\x0fSBö¼\x07yek\x0d¶¢u\x06\x1c²\x9cÈ;5z\\°J\x122[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] code 400, message Bad request syntax ('\x16\x03\x01\x06²\x01\x00\x06®\x03\x03ì\x8b}à@\x9d1-')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] "[31m[1m\x16\x03\x01\x06²\x01\x00\x06®\x03\x03ì\x8b}à@\x9d1-[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:00] "[31m[1m\x16\x03\x01\x06²\x01\x00\x06®\x03\x031k \x8dås¾n\x98]]hmþs¨Ý\x17"ý\x19î]øx\x81,\x92¤äÇú \x01\x8c\x98!D\x8eôoÉ5_þû\x8eñK(\x0f\x16«\x9dñ¥ÿ­x'\x81,:;w\x00 úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06E::\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:01] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06Ò\x01\x00\x06Î\x03\x03³Îiõ¨')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:01] "[31m[1m\x16\x03\x01\x06Ò\x01\x00\x06Î\x03\x03³Îiõ¨\x1c\x01[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:05] code 400, message Bad request version ('%\x1b0')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:05] "[31m[1m\x16\x03\x01\x06ò\x01\x00\x06î\x03\x03Å{´C\x84ã¨r\x02£\x8a¤½S\x19Ékâ=¾\x09Å)jÞb¸¼½e\x19( \x1bO\x8a9M5=Éoµ§ëÆ]\x86TVê5¸p\x91è=83º 3¹õ\x8c\x00 ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x85ªª\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x003\x04ï\x04í\x8a\x8a\x00\x01\x00\x11ì\x04À/\x07\x11P ³Êx\x15\x8fc_Õ40\x06¤¦\x02«}R\x03Ä\x9fÖ.>\x1b6\x07\x1bÈç\x14\x00\x83WU&»Júú>Þè :8\x9a\x0d\x91m\x1cû\x84i\x11À\x86c\x95~£\x09Rª_\x0b%\x1b0[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:05] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x17\x00\x00\x00')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:05] "[31m[1m\x16\x03\x01\x06²\x01\x00\x06®\x03\x03V¿Â\x1aP\x9bÆ/tá\x1b\x9at¸uçËfÂÖE´\x95\x9a2>¯kBäÃ{ \x13}¥3Ê´wëÂ`4nã\x1d\x06è¨9&\x98px\x17\x80ø\x9d£1°êó¤\x00 ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Eªª\x00\x00þ\x0d\x00º\x00\x00\x01\x00\x01\x00\x00 Á?PÉúþ\x09\x103ç±9!\x8fÐó\x87\x7f´ë\\\x18\x9dÂÌ5|´·ô\x1a~\x00\x90\x99)¢û£\x8ca\x84ô×ä\x1a ¥%ýa\x87\x16|ô$\x85[\x03C\x96a£Üx\x9c7\x19\x84¦Ò\x8c0Î\x03,wxø\x97ùP\x9cdH}LÊÍÅOD\x19¢\x17¢'!\x03]½|\x94¾\x0fônïS\x1b\x9e¹þL¹öwÝq\x8a\x7fo­±AÖ\x7f©º7\x8e¯\x1bb\x09 \x96jîüÎ\x97.Aßà\x83ÿ!ÆÎ\x99g$\x90\x01\x9d\x1eR=D[\x0c¥Ëx¹ý¤bþbÿû\x18\x81\x03\x87Di\x00\x05\x00\x03\x02h2\x00-\x00\x02\x01\x01ÿ\x01\x00\x01\x00\x00\x00\x00\x0e\x00\x0c\x00\x00\x09localhost\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x17\x00\x00\x00[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:05] code 400, message Bad request version ('localhostÿ\x01\x00\x01\x00Di\x00\x05\x00\x03\x02h2\x00+\x00\x07\x06êê\x03\x04\x03\x03\x00\x17\x00\x00\x00')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:05] "[31m[1m\x16\x03\x01\x07\x12\x01\x00\x07\x0e\x03\x03Z;¬éûlÌ§E\x05älDnGû×\x85\x95Ü\x00­É\x94\x13z«yó7TÏ ¿µ"\x1a«¬³i`ûîí²\x9c\x11\x1a\x1b\x03p¦\x06án\x83"ó\x8f²é\x00D©\x00 \x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06¥ªª\x00\x00\x00\x00\x00\x0e\x00\x0c\x00\x00\x09localhostÿ\x01\x00\x01\x00Di\x00\x05\x00\x03\x02h2\x00+\x00\x07\x06êê\x03\x04\x03\x03\x00\x17\x00\x00\x00[0m" 400 -
+ERROR:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:05] code 400, message Bad request version ('\x9f\x8b\x90ÒBFc\x8dX¹\x00')
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:05] "[31m[1m\x16\x03\x01\x07\x12\x01\x00\x07\x0e\x03\x03iGë|L,?¬\x0f\x13­æ\x87} \x9c)"<\x9e\x90Vf9\\ÌôvZ!w{ LE~\x98VE¢¡\x91ÕI=\x150Çè\x82_`e\x89\x1f\x9f\x8b\x90ÒBFc\x8dX¹\x00 [0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:07] "GET /static/js/scanner.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:07] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:10] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:16] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:20] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:21] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:21] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:21] "GET /registrar_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:21] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:21] "GET /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:21] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:22] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:23] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:28] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:31] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:32] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:32] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=OFrJLUvK8iJiSVnrnx67 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:45:32] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\walas pc\\.vscode\\project\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 946-064-899
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:50] "GET /registrar_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:51] "GET /registrar_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:52] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:54] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:54] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:56] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:56] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:55:56] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:56:06] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:56:07] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:56:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:56:07] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 946-064-899
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:57:14] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:57:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:57:14] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:37] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:37] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:37] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:44] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:44] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:44] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:44] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:46] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:46] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:47] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:55] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:58:55] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:03] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:03] "GET /home_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:03] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:07] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:flask-limiter:ratelimit 5 per 1 minute (127.0.0.1) exceeded at endpoint: login
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:07] "[31m[1mGET /login HTTP/1.1[0m" 429 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:13] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:flask-limiter:ratelimit 5 per 1 minute (127.0.0.1) exceeded at endpoint: login
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:13] "[31m[1mGET /login HTTP/1.1[0m" 429 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:16] "[32mGET /livros HTTP/1.1[0m" 302 -
+INFO:flask-limiter:ratelimit 5 per 1 minute (127.0.0.1) exceeded at endpoint: login
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:16] "[31m[1mGET /login HTTP/1.1[0m" 429 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:21] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:flask-limiter:ratelimit 5 per 1 minute (127.0.0.1) exceeded at endpoint: login
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 12:59:21] "[31m[1mGET /login HTTP/1.1[0m" 429 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\walas pc\\.vscode\\project\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 946-064-899
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 13:00:35] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 13:00:35] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 13:00:35] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:29:46] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:29:46] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:29:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:30:51] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:30:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:30:51] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:08] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:08] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:31] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:31] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:44] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:44] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:44] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:58] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:58] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:31:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:11] "GET /home_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:11] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:20] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:20] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:20] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:33] "GET /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:33] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:41] "GET /registrar_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:41] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:32:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:35:32] "POST /registrar_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:35:32] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:35:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:35:43] "GET /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:35:44] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:35:44] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:36:03] "POST /registrar_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:36:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:36:03] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:36:31] "[32mPOST /registrar_estudante HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:36:31] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:36:31] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:36:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:38:51] "POST /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:38:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:38:51] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:39:08] "POST /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:39:08] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:39:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:39:19] "POST /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:39:19] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:39:19] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:39:25] "GET /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:39:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:39:25] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:41:03] "POST /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:41:03] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:41:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:08] "[32mGET /livros HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:08] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:08] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:20] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:20] "GET /home_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:21] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:22] "GET /livros HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:42:22] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:08] "[32mGET /consulta HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:09] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:09] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:11] "GET /livros HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:11] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:17] "GET /home_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:17] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:18] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:18] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:18] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:30] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:30] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:30] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:33] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:33] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:flask_wtf.csrf:The CSRF token is missing.
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:43:53] "[31m[1mPOST /editar_livro/15 HTTP/1.1[0m" 400 -
+INFO:flask_wtf.csrf:The CSRF token is missing.
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:44:03] "[31m[1mPOST /editar_livro/10 HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:44:07] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:44:07] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:44:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:44:09] "GET /consulta?tipo=livros&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:44:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:44:09] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:flask_wtf.csrf:The CSRF token is missing.
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:44:16] "[31m[1mPOST /editar_livro/10 HTTP/1.1[0m" 400 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\walas pc\\.vscode\\project\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 946-064-899
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:46:43] "[32mPOST /editar_livro/10 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:46:45] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:46:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:46:45] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:46:48] "GET /consulta?tipo=livros&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:46:48] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:46:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:46:59] "[32mPOST /editar_livro/15 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:00] "GET /consulta?tipo=livros HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:00] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:20] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:20] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:20] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:30] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:30] "GET /home_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:30] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:32] "GET /livros HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:32] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:47:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:18] "GET /livros?pesquisa=disponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:18] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:24] "GET /livros?pesquisa=2017 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:24] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:31] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:31] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:31] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:40] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:40] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:40] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:43] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:43] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:49] "GET /cadastro HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:49] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:49:49] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:52:48] "[32mPOST /cadastro HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:52:48] "GET /cadastro HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:52:48] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:52:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:52:52] "GET /cadastro HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:52:52] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:52:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:52:53] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:52:53] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:52:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:08] "[32mPOST /editar_livro/18 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:08] "GET /consulta?tipo=livros HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:08] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:20] "GET /consulta?tipo=livros&pesquisa=A+Ilha+das+Sombras HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:20] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:31] "GET /consulta?tipo=livros&pesquisa=Beatriz HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:32] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:38] "GET /consulta?tipo=livros&pesquisa=Teologia HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:38] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:38] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:45] "GET /consulta?tipo=livros&pesquisa=2019 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:45] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:58] "GET /consulta?tipo=livros&pesquisa=978-1-2345-6789-0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:58] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:53:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:54:25] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:54:25] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:54:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:56:49] "[35m[1mGET /consulta?tipo=usuarios&pesquisa= HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:56:56] "[36mGET /consulta?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:56:56] "[36mGET /consulta?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:56:56] "GET /consulta?__debugger__=yes&cmd=resource&f=console.png&s=cuEbWge0PzmWv077vzOV HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:56:57] "[36mGET /consulta?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:19] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:20] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:25] "GET /consulta?tipo=usuarios&pesquisa=Mariana HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:25] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:35] "GET /consulta?tipo=usuarios&pesquisa=estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:35] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:35] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:49] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:49] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:49] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:52] "GET /consulta?tipo=status&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:53] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:55] "GET /consulta?tipo=status&pesquisa=disponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:57:55] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:58:00] "GET /consulta?tipo=status&pesquisa=indisponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:58:00] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:58:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:58:09] "GET /relatorios HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:58:09] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:58:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:58:30] "GET /novo_emprestimo HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:58:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:58:30] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:09] "[32mPOST /novo_emprestimo HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:09] "GET /emprestimos HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:09] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:18] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:18] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:20] "GET /consulta?tipo=livros&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:20] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:26] "GET /consulta?tipo=status&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:26] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:28] "GET /consulta?tipo=status&pesquisa=indisponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:28] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:45] "GET /emprestimos HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:45] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:52] "POST /emprestimos HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:52] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:54] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:55] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:56] "GET /consulta?tipo=livros&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 14:59:56] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 15:00:06] "GET /consulta?tipo=status&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 15:00:06] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 15:00:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 15:00:10] "GET /consulta?tipo=status&pesquisa=indisponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 15:00:11] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 15:00:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 15:00:13] "GET /consulta?tipo=status&pesquisa=disponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 15:00:13] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 15:00:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 946-064-899
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 11:34:14] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 11:34:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 11:34:17] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 11:34:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
