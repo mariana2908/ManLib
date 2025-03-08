@@ -4,31 +4,17 @@ import threading
 import re
 import logging
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from flask_wtf.csrf import CSRFProtect
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import LoginForm, BibliotecarioRegistroForm, EstudanteRegistroForm
 from consulta import update_livro, get_livro_by_id
 from emprestimos import atualizar_status_emprestimo, registrar_emprestimo, obter_emprestimos, obter_dados_atuais, excluir_emprestimo, registrar_devolucao
 import emailauto
-from redis import Redis
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'uma_chave_secreta'
 app.config['WTF_CSRF_ENABLED'] = True
 
 logging.basicConfig(filename='app.log', level=logging.INFO)
-
-# Configure Redis for Flask-Limiter
-redis_client = Redis(host='localhost', port=6379)
-
-# Configure Flask-Limiter with Redis storage
-limiter = Limiter(
-    key_func=get_remote_address,
-    storage_uri="redis://localhost:6379/0"
-)
-limiter.init_app(app)
 
 app.permanent_session_lifetime = timedelta(minutes=15)  # Sessão expira em 15 minutos
 
@@ -100,7 +86,6 @@ def home_bibliotecario():
 
 # Verificar login
 @app.route('/login', methods=['GET', 'POST'])
-@limiter.limit("10 per minute")  # Limita a 5 tentativas por minuto
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -602,5 +587,5 @@ def novo_emprestimo():
     return redirect(url_for('login'))
 
 if __name__ == "__main__":
+    app.run(debug=True, host='127.0.0.1')
     start_email_scheduler()  # Inicia o agendador ao rodar o app
-    app.run(debug=True)

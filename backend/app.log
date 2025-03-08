@@ -843,3 +843,129 @@ INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 11:34:14] "GET /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 11:34:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 11:34:17] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 11:34:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:20:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:20:15] "GET /static/js/scanner.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:20:16] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:20:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:20:21] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:20:22] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:20:22] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:20:22] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=Oc8PfBXmnOdtSoi3of4H HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:20:23] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:16] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:16] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:16] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:17] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=3EyX5Ilc6SuuoTLOFhWG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:18] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:19] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:19] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:19] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:44] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:44] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:44] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:22:44] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=OmWPrhs2I5GOIkUUx0yB HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+ERROR:werkzeug:127.0.0.1 - - [06/Mar/2025 14:23:02] code 400, message Bad request syntax ('*4')
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:23:02] "[31m[1m*4[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:23:02] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:23:02] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:23:02] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:23:02] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=09dYtGJjQrLw7mUDyOFj HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:23:02] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 508-793-138
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 508-793-138
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 508-793-138
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 508-793-138
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-712-333
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:05] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:05] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:14] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:15] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:33] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:33] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:34] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:34] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=kQHDrNZV3xMXdpbTNNfn HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:30:34] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:25] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:25] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:25] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:31] "GET /emprestimos HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:31] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:35] "GET /relatorios HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:35] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:35] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:39] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:40] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:40] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 14:31:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
