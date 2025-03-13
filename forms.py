@@ -3,9 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 # Rota de login e outras rotas do seu código
-class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Senha', validators=[DataRequired(), Length(min=6)])
+
 
 class BibliotecarioRegistroForm(FlaskForm):
     nome = StringField('Nome Completo', validators=[DataRequired(), Length(min=4, max=50)])

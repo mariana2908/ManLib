@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block main %}
-<form method="POST" action="/login" name="loginForm" onsubmit="return validarFormulario()">
+<form method="POST" action="/login" name="loginForm">
     {{ form.hidden_tag() }}  <!-- Gera o token CSRF -->
     <input type="email" name="email" required placeholder="Digite seu email" />
     <input type="password" name="password" required placeholder="Digite sua senha" />
