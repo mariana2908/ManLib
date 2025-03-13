@@ -58,6 +58,10 @@ def validar_email(email):
 
     return False
 
+@app.route('/favicon.ico')
+def favicon():
+    return '', 204
+
 @app.before_request
 def check_session():
     if 'user_agent' not in session:
