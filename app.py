@@ -593,6 +593,8 @@ def novo_emprestimo():
         )
     return redirect(url_for('login'))
 
+# Rodar o app
+
 if __name__ == "__main__":
     app.run(debug=True, host='127.0.0.1')
     start_email_scheduler()  # Inicia o agendador ao rodar o app
