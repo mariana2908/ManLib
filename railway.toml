@@ -10,6 +10,7 @@ nixpacksPlan = { providers = ["...", "python"] }
 command = "gunicorn app:app --bind 0.0.0.0:5000"
 runtime = "V2"
 numReplicas = 1
+startCommand = "gunicorn app:app --bind 0.0.0.0:5000"
 sleepApplication = false
 
 # Corrigindo a tabela multiRegionConfig
