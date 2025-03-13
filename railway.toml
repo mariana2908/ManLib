@@ -1,32 +1,13 @@
-[project]
-name = "manlib"
-description = "Gerenciador de Biblioteca Escolar com Flask"
-owner = "mariana-paris" # opcional, substitua se quiser
-tags = ["flask", "sqlite", "biblioteca"]
-
 [build]
-# Comando para instalar as dependências
+builder = "NIXPACKS"
 buildCommand = "pip install -r requirements.txt"
+nixpacksPlan = {"providers":["...","python"]}
 
 [deploy]
-# Comando que será executado para rodar o app
-startCommand = "python app.py"
-
-[env]
-# Variáveis de ambiente
-FLASK_ENV = "production"
-FLASK_APP = "app.py"
-SECRET_KEY = "uma_chave_secreta" # aqui é melhor colocar uma variável secreta no Railway
-
-[services.web]
-# A porta padrão para apps web no Railway é 5000
-startCommand = "gunicorn app:app --bind 0.0.0.0:$PORT"
-healthcheckPath = "/"
-healthcheckTimeout = 300
+runtime = "V2"
 numReplicas = 1
-autoDeploy = true
-
-[files]
-# Banco de dados SQLite se for necessário subir junto
-# Mas cuidado com persistência!
-manlib.db = "./manlib.db"
+startCommand = "flask run"
+sleepApplication = false
+multiRegionConfig = {"us-west2":{"numReplicas":1}}
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
