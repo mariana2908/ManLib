@@ -16,8 +16,6 @@ app.config['WTF_CSRF_ENABLED'] = True
 
 logging.basicConfig(filename='app.log', level=logging.INFO)
 
-app.permanent_session_lifetime = timedelta(minutes=15)  # Sessão expira em 15 minutos
-
 # Função para conexão com o banco de dados
 def get_db_connection():
     conn = sqlite3.connect('manlib.db')
@@ -58,14 +56,7 @@ def validar_email(email):
 
     return False
 
-@app.route('/favicon.ico')
-def favicon():
-    return '', 204
-
 @app.before_request
-#def redirect_to_www():
-#    if not request.url.startswith("https://www"):
-#        return redirect("https://www." + request.host + request.full_path, code=301)
 def check_session():
     if 'user_agent' not in session:
         session['user_agent'] = request.user_agent.string
