@@ -1,5 +1,6 @@
 from datetime import timedelta
-import sqlite3
+import psycopg2
+import psycopg2.extras
 import threading
 import re
 import logging
@@ -16,10 +17,15 @@ app.config['WTF_CSRF_ENABLED'] = True
 
 logging.basicConfig(filename='app.log', level=logging.INFO)
 
-# Função para conexão com o banco de dados
 def get_db_connection():
-    conn = sqlite3.connect('manlib.db')
-    conn.row_factory = sqlite3.Row
+    conn = psycopg2.connect(
+        host='mainline.proxy.rlwy.net',
+        dbname='railway',
+        user='postgres',
+        password='rlKlGNPioeYeFaMeBKdSmrCCUMqOeLOX',
+        port='33222'
+    )
+    conn.autocommit = True  # Opcional: ativa autocommit
     return conn
 
 # Função para iniciar o agendador em segundo plano
@@ -94,7 +100,7 @@ def login():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        cursor.execute("SELECT estudante_id FROM estudantes WHERE email = ?", (email,))
+        cursor.execute("SELECT estudante_id FROM estudantes WHERE email = %s", (email,))
         estudante_id = cursor.fetchone()
 
         if estudante_id:
@@ -182,9 +188,9 @@ def registrar_bibliotecario():
             flash("Registro de bibliotecário realizado com sucesso!", "success")
             return redirect("/login")
 
-        except sqlite3.Error as e:
-            print(f"Erro no SQLite: {e}")
-            flash(f"Erro ao registrar bibliotecário: {e}", "danger")
+        except psycopg2.DatabaseError as e:
+            logging.error(f"Erro de conexão com o banco de dados: {e}")
+            raise
         finally:
             conn.close()
 
@@ -217,7 +223,7 @@ def registrar_estudante():
             conn.close()
             flash("Registro de estudante realizado com sucesso!", "success")
             return redirect("/login")
-        except sqlite3.Error as e:
+        except psycopg2.DatabaseError as e:
             if "UNIQUE constraint failed: estudantes.email" in str(e):
                 flash("Já existe um estudante cadastrado com este email. Por favor, utilize outro.", "error")
             elif "UNIQUE constraint failed: estudantes.matricula" in str(e):
@@ -325,7 +331,7 @@ def cadastro():
                 flash('Cadastro realizado com sucesso!', 'success')
                 return redirect(url_for('cadastro'))
 
-            except sqlite3.Error as e:
+            except psycopg2.DatabaseError as e:
                 flash(f'Erro ao cadastrar: {e}', 'danger')
                 conn.close()
                 return redirect(url_for('cadastro'))
@@ -456,7 +462,7 @@ def relatorios():
             ''')
             livros_mais_emprestados = cursor.fetchall()
             
-        except sqlite3.Error as e:
+        except psycopg2.DatabaseError as e:
             flash(f'Erro ao gerar relatório: {e}', 'danger')
             total_livros = total_bibliotecarios = total_estudantes = 0
             total_emprestados = total_disponiveis = 0
@@ -489,7 +495,7 @@ def relatorios():
             emprestimos_concluidos = cursor.fetchall()
             emprestimos_concluidos = [dict(row) for row in emprestimos_concluidos]  # Converter para lista de dicionários
             print(emprestimos_concluidos)
-        except sqlite3.Error as e:
+        except psycopg2.DatabaseError as e:
             flash(f'Erro ao gerar relatório: {e}', 'danger')
             emprestimos_concluidos = []
 
