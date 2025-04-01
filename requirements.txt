@@ -5,3 +5,4 @@ redis
 schedule
 email_validator
 gunicorn
+psycopg2
