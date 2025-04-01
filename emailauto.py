@@ -47,7 +47,7 @@ def get_upcoming_returns():
         cursor = conn.cursor()
 
         # Busque empréstimos com data de devolução dentro de 2 dias
-        query = """
+        query = '''
         SELECT 
             e.email AS estudante_email,
             l.titulo AS livro_titulo,
@@ -59,7 +59,7 @@ def get_upcoming_returns():
             (em.data_devolucao BETWEEN DATE('now') AND DATE('now', '+2 days')
             OR em.data_devolucao < DATE('now'))
             AND em.status = 'ativo' OR em.status = 'atrasado'
-        """
+        '''
         cursor.execute(query)
         results = cursor.fetchall()
         conn.close()

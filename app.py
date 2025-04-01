@@ -100,16 +100,20 @@ def login():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        cursor.execute("SELECT estudante_id FROM estudantes WHERE email = %s", (email,))
+        cursor.execute('SELECT estudante_id FROM estudantes WHERE email = %s', (email,))
         estudante_id = cursor.fetchone()
+        if not estudante_id:
+            flash("Email ou senha incorretos.")
+            return render_template('login.html', form=form)
+        estudante_id_value = estudante_id[0]
 
         if estudante_id:
             # Verificar se o email é de um bibliotecário ou estudante
-            estudante_id_value = estudante_id['estudante_id']  # Extract the actual value
-            cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = ?', (estudante_id_value,))
+            estudante_id_value = estudante_id[0] if estudante_id else None  # Extract the actual value
+            cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = %s', (estudante_id_value,))
             bibliotecario = cursor.fetchone()
 
-            cursor.execute("SELECT * FROM estudantes WHERE estudante_id = ?", (estudante_id_value,))
+            cursor.execute('SELECT * FROM estudantes WHERE estudante_id = %s', (estudante_id_value,))
             estudante = cursor.fetchone()
 
             conn.close()
@@ -159,7 +163,7 @@ def registrar_bibliotecario():
         try:
             # Verificar se o estudante existe
             print(f"Verificando estudante com matrícula: {matricula}")
-            cursor.execute("SELECT estudante_id FROM estudantes WHERE matricula = ?", (matricula,))
+            cursor.execute('SELECT estudante_id FROM estudantes WHERE matricula = %s', (matricula,))
             estudante = cursor.fetchone()
             print(f"Resultado da consulta ao estudante: {estudante}")
 
@@ -171,7 +175,7 @@ def registrar_bibliotecario():
             estudante_id = estudante[0]
             print(f"ID do estudante encontrado: {estudante_id}")
 
-            cursor.execute("SELECT * FROM bibliotecarios WHERE estudante_id = ?", (estudante_id,))
+            cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = %s', (estudante_id,))
             bibliotecario = cursor.fetchone()
             if bibliotecario:
                 flash("Este estudante já está registrado como bibliotecário.", "error")
@@ -180,10 +184,11 @@ def registrar_bibliotecario():
             
             # Inserir o estudante como bibliotecário
             cursor.execute(
-                "INSERT INTO bibliotecarios (estudante_id, status_bibliotecario) VALUES (?, ?)",
+                'INSERT INTO bibliotecarios (estudante_id, status_bibliotecario) VALUES (%s, %s)',
                 (estudante_id, 'ativo')
             )
             conn.commit()
+            conn.close()
             print("Bibliotecário registrado com sucesso!")
             flash("Registro de bibliotecário realizado com sucesso!", "success")
             return redirect("/login")
@@ -217,7 +222,7 @@ def registrar_estudante():
         cursor = conn.cursor()
         try:
             cursor.execute('''INSERT INTO estudantes (nome, email, senha_hash, matricula, turma, turno, telefone, status)
-                              VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
+                              VALUES (%s, %s, %s, %s, %s, %s, %s, %s)''',
                            (nome, email, generate_password_hash(senha), matricula, turma, turno, telefone, 'ativo'))
             conn.commit()
             conn.close()
@@ -253,25 +258,25 @@ def consultar_livros():
             # Verifica se a pesquisa é numérica (ISBN ou ano de publicação)
             if pesquisa.isdigit():
                 cursor.execute(
-                    """
+                    '''
                     SELECT * FROM livros 
-                    WHERE ano_de_publicacao = ? 
-                    OR isbn LIKE ?
-                    """,
+                    WHERE ano_de_publicacao = %s 
+                    OR isbn LIKE %s
+                    ''',
                     (pesquisa, f"%{pesquisa}%")
                 )
             # Caso contrário, realiza a pesquisa nos campos de texto
             elif pesquisa.lower() in ["disponível", "indisponível"]:  # Verifica se é uma pesquisa de status
-                cursor.execute("SELECT * FROM livros WHERE status = ?", (pesquisa,))
+                cursor.execute("SELECT * FROM livros WHERE status = %s", (pesquisa,))
             # Passando parâmetros de pesquisa corretamente dentro de uma tupla
             else:
                 cursor.execute(
-                """
+                '''
                 SELECT * FROM livros 
-                WHERE titulo LIKE ? 
-                OR autor LIKE ? 
-                OR genero LIKE ?
-                """,
+                WHERE titulo LIKE %s 
+                OR autor LIKE %s 
+                OR genero LIKE %s
+                ''',
                 (f"%{pesquisa}%", f"%{pesquisa}%", f"%{pesquisa}%")
             )
         else:
@@ -298,7 +303,7 @@ def cadastro():
             try:
                 if tipo == 'livro':
                     isbn = data.get('isbn', '').strip()
-                    cursor.execute('SELECT COUNT(*) FROM livros WHERE isbn = ?', (isbn,))
+                    cursor.execute('SELECT COUNT(*) FROM livros WHERE isbn = %s', (isbn,))
                     exists = cursor.fetchone()[0]
 
                     if exists:
@@ -313,7 +318,7 @@ def cadastro():
                     quantidade_disponivel = int(data.get('quantidade_total', 0))
 
                     cursor.execute('''INSERT INTO livros (titulo, autor, genero, ano_de_publicacao, isbn, status, quantidade_total, quantidade_disponivel)
-                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
+                                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)''',
                                 (data['titulo'], data['autor'], data.get('genero', ''), 
                                  data['ano_de_publicacao'], data.get('isbn'), data['status'], quantidade_total, quantidade_disponivel))
                     conn.commit()
@@ -355,11 +360,11 @@ def consulta():
                 # Tratamento específico para números (ano de publicação ou ISBN)
                 pesquisa_ano = pesquisa if pesquisa.isdigit() else None
 
-                cursor.execute(""" 
+                cursor.execute('''
                     SELECT * FROM livros 
-                    WHERE (titulo LIKE ? OR autor LIKE ? OR genero LIKE ? 
-                           OR ano_de_publicacao = ? OR isbn LIKE ? OR REPLACE(isbn, '-', '') = ?);
-                """, 
+                    WHERE (titulo LIKE %s OR autor LIKE %s OR genero LIKE %s
+                           OR ano_de_publicacao = %s OR isbn LIKE %s OR REPLACE(isbn, '-', '') = %s);
+                ''', 
                 (
                     '%' + pesquisa + '%',  # Pesquisa por título
                     '%' + pesquisa + '%',  # Pesquisa por autor
@@ -372,25 +377,25 @@ def consulta():
                 return render_template("consulta.html", tipo=tipo, livros=livros, pesquisa=pesquisa)
 
             elif tipo == 'usuarios':
-                cursor.execute(""" 
+                cursor.execute('''
                     SELECT nome, email, 'bibliotecario' AS tipo 
                     FROM bibliotecarios 
                     JOIN estudantes ON bibliotecarios.estudante_id = estudantes.estudante_id 
-                    WHERE nome LIKE ? OR email LIKE ? 
+                    WHERE nome LIKE %s OR email LIKE %s
                     UNION 
                     SELECT nome, email, 'estudante' AS tipo 
                     FROM estudantes 
-                    WHERE nome LIKE ? OR email LIKE ? 
-                """, ('%' + pesquisa + '%', '%' + pesquisa + '%', '%' + pesquisa + '%', '%' + pesquisa + '%'))
+                    WHERE nome LIKE %s OR email LIKE %s
+                ''', ('%' + pesquisa + '%', '%' + pesquisa + '%', '%' + pesquisa + '%', '%' + pesquisa + '%'))
                 usuarios = cursor.fetchall()
                 return render_template("consulta.html", tipo=tipo, usuarios=usuarios, pesquisa=pesquisa)
 
             elif tipo == 'status':  # Pesquisa por status (disponível ou indisponível)
                 if pesquisa.lower() in ["disponível", "indisponível"]:
-                    cursor.execute("""
+                    cursor.execute('''
                         SELECT * FROM livros
-                        WHERE status = ?
-                    """, (pesquisa,))
+                        WHERE status = %s
+                    ''', (pesquisa,))
                     livros = cursor.fetchall()
                     return render_template("consulta.html", tipo=tipo, livros=livros, pesquisa=pesquisa)
 
@@ -405,8 +410,9 @@ def apagar_livro(livro_id):
     if 'logged_in' in session and session['user_type'] == 'bibliotecario':
         with get_db_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute("DELETE FROM livros WHERE livro_id = ?", (livro_id,))
+            cursor.execute("DELETE FROM livros WHERE livro_id = %s", (livro_id,))
             conn.commit()
+            conn.close()
             print(f"Livro com ID {livro_id} apagado com sucesso.")
         flash("Livro apagado com sucesso!", "success")
         return redirect(url_for('consulta', tipo='livros'))
@@ -470,7 +476,7 @@ def relatorios():
         
         # Exibir empréstimos concluídos (livros devolvidos)
         try:
-            cursor.execute("""
+            cursor.execute('''
                 SELECT 
                     l.titulo, 
                     es.nome AS nome_estudante, 
@@ -491,7 +497,7 @@ def relatorios():
                     estudantes eb ON eb.estudante_id = b.estudante_id  -- Relacionando o bibliotecário com o estudante
                 WHERE 
                     e.status = 'concluído';
-            """)
+            ''')
             emprestimos_concluidos = cursor.fetchall()
             emprestimos_concluidos = [dict(row) for row in emprestimos_concluidos]  # Converter para lista de dicionários
             print(emprestimos_concluidos)

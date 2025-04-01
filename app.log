@@ -983,3 +983,37 @@ INFO:werkzeug:127.0.0.1 - - [12/Mar/2025 19:56:50] "[32mPOST /login HTTP/1.1[0
 INFO:werkzeug:127.0.0.1 - - [12/Mar/2025 19:56:50] "GET /home_bibliotecario HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [12/Mar/2025 19:56:50] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [12/Mar/2025 19:56:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 106-426-494
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 05:56:47] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 05:56:47] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 05:56:47] "GET /static/js/scanner.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 05:56:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 106-426-494
+INFO:werkzeug: * Detected change in '/workspaces/ManLib/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 106-426-494
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:23] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:23] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:27] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:28] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:36] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:36] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -

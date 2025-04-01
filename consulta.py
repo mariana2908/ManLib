@@ -12,16 +12,16 @@ def update_livro(livro_id, data):
     cursor = conn.cursor()
     cursor.execute('''
         UPDATE livros SET
-            titulo = ?,
-            autor = ?,
-            genero = ?,
-            ano_de_publicacao = ?,
-            isbn = ?,
-            status = ?,
-            quantidade_total = ?,
-            quantidade_disponivel = ?,
-            quantidade_indisponivel = ?
-        WHERE livro_id = ?
+            titulo = %s,
+            autor = %s,
+            genero = %s,
+            ano_de_publicacao = %s,
+            isbn = %s,
+            status = %s,
+            quantidade_total = %s,
+            quantidade_disponivel = %s,
+            quantidade_indisponivel = %s
+        WHERE livro_id = %s
     ''', (
         data['titulo'],
         data['autor'],
@@ -41,7 +41,7 @@ def update_livro(livro_id, data):
 def get_livro_by_id(livro_id):
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM livros WHERE livro_id = ?', (livro_id,))
+    cursor.execute('SELECT * FROM livros WHERE livro_id = %s', (livro_id,))
     livro = cursor.fetchone()  # Pega o primeiro resultado
     conn.close()
     return livro
