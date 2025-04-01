@@ -7,6 +7,8 @@ WORKDIR /app
 # Copia os arquivos locais para dentro do container
 COPY . .
 
+RUN apt-get update && apt-get install -y libpq-dev gcc
+
 RUN pip install --upgrade pip
 
 RUN apt-get update && apt-get install -y libpq-dev
