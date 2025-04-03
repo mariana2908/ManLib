@@ -1017,3 +1017,18 @@ INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:28] "[36mGET /static/js/scanner.
 INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:36] "POST /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:36] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [01/Apr/2025 06:35:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:10] "GET /static/js/scanner.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:10] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:13] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:16] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:17] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:29] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:29] "GET /home_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:29] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Apr/2025 14:03:29] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -

@@ -96,47 +96,44 @@ def login():
         email = form.email.data
         password = form.password.data
 
-        # Conectar ao banco de dados para verificar as credenciais
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        cursor.execute('SELECT estudante_id FROM estudantes WHERE email = %s', (email,))
-        estudante_id = cursor.fetchone()
-        if not estudante_id:
+        cursor.execute('SELECT estudante_id, senha_hash FROM estudantes WHERE email = %s', (email,))
+        estudante_data = cursor.fetchone()
+
+        if not estudante_data:
             flash("Email ou senha incorretos.")
-            return render_template('login.html', form=form)
-        estudante_id_value = estudante_id[0]
-
-        if estudante_id:
-            # Verificar se o email é de um bibliotecário ou estudante
-            estudante_id_value = estudante_id[0] if estudante_id else None  # Extract the actual value
-            cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = %s', (estudante_id_value,))
-            bibliotecario = cursor.fetchone()
-
-            cursor.execute('SELECT * FROM estudantes WHERE estudante_id = %s', (estudante_id_value,))
-            estudante = cursor.fetchone()
-
             conn.close()
+            return render_template('login.html', form=form)
 
-            # Se o email for de um bibliotecário
-            if bibliotecario and check_password_hash(estudante['senha_hash'], password):
-                session['user_email'] = email
-                session['logged_in'] = True
-                session['user_id'] = estudante['estudante_id']
-                session['user_type'] = 'bibliotecario'  # Identificar como bibliotecário
+        estudante_id_value, senha_hash = estudante_data  # Obtém ID e senha hash
+
+        cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = %s', (estudante_id_value,))
+        bibliotecario = cursor.fetchone()
+
+        cursor.execute('SELECT * FROM estudantes WHERE estudante_id = %s', (estudante_id_value,))
+        estudante = cursor.fetchone()
+
+        # Agora que todas as consultas terminaram, podemos fechar a conexão
+        conn.close()
+
+        # Verifica se a senha é correta antes de acessar os dados
+        if check_password_hash(senha_hash, password):
+            session['user_email'] = email
+            session['logged_in'] = True
+            session['user_id'] = estudante_id_value
+
+            if bibliotecario:
+                session['user_type'] = 'bibliotecario'
                 return redirect(url_for('home_bibliotecario'))
-
-            # Se o email for de um estudante
-            elif estudante and check_password_hash(estudante['senha_hash'], password):
-                session['user_email'] = email
-                session['logged_in'] = True
-                session['user_id'] = estudante['estudante_id']
-                session['user_type'] = 'estudante'  # Identificar como estudante
+            else:
+                session['user_type'] = 'estudante'
                 return redirect(url_for('home_estudante'))
 
         flash("Email ou senha incorretos.")
         return render_template('login.html', form=form)
-    
+
     return render_template('login.html', form=form)
 
 @app.route('/logout')
