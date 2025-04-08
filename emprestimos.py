@@ -1,10 +1,17 @@
 from datetime import datetime
-import sqlite3
+import psycopg2
+import psycopg2.extras
 
 # Função para conexão com o banco de dados
 def get_db_connection():
-    conn = sqlite3.connect('manlib.db')
-    conn.row_factory = sqlite3.Row
+    conn = psycopg2.connect(
+        host='mainline.proxy.rlwy.net',
+        dbname='railway',
+        user='postgres',
+        password='rlKlGNPioeYeFaMeBKdSmrCCUMqOeLOX',
+        port='33222'
+    )
+    conn.autocommit = True  # Opcional: ativa autocommit
     return conn
 
 def atualizar_status_emprestimo():
@@ -37,27 +44,23 @@ def atualizar_status_emprestimo():
     conn.commit()
     conn.close()
 
-    # Função para obter todos os empréstimos
+# Função para obter todos os empréstimos
 def obter_emprestimos(cursor):
     cursor.execute("""
         SELECT 
-        emprestimos.emprestimo_id,
-        livros.titulo AS livro_titulo,
-        estudantes.nome AS estudante_nome,
-        b.nome AS bibliotecario_nome,
-        emprestimos.data_emprestimo,
-        emprestimos.data_devolucao,
-        emprestimos.status
-    FROM 
-        emprestimos
-    JOIN 
-        livros ON emprestimos.livro_id = livros.livro_id
-    JOIN 
-        estudantes ON emprestimos.estudante_id = estudantes.estudante_id
-    LEFT JOIN 
-        estudantes b ON emprestimos.bibliotecario_id = b.estudante_id  -- LEFT JOIN permite valores nulos no bibliotecário
-    WHERE
-        emprestimos.status != 'concluído';
+            e.emprestimo_id,
+            l.titulo AS livro_titulo,
+            est.nome AS estudante_nome,
+            bib.nome AS bibliotecario_nome,
+            e.data_emprestimo,
+            e.data_devolucao,
+            e.status
+        FROM emprestimos e
+        JOIN livros l ON e.livro_id = l.livro_id
+        JOIN estudantes est ON e.estudante_id = est.estudante_id
+        LEFT JOIN bibliotecarios b ON e.bibliotecario_id = b.estudante_id
+        LEFT JOIN estudantes bib ON b.estudante_id = bib.estudante_id
+        WHERE e.status != 'concluído'
     """)
     return cursor.fetchall()
 

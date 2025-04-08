@@ -155,6 +155,7 @@ def registrar_bibliotecario():
 
         # Conexão com o banco de dados
         conn = get_db_connection()
+        conn.autocommit = True  # Adiciona esta linha antes do `cursor = conn.cursor()`
         cursor = conn.cursor()
 
         try:
@@ -314,10 +315,10 @@ def cadastro():
                     quantidade_total = int(data.get('quantidade_total', 0))  # Insira quantidade total primeiro
                     quantidade_disponivel = int(data.get('quantidade_total', 0))
 
-                    cursor.execute('''INSERT INTO livros (titulo, autor, genero, ano_de_publicacao, isbn, status, quantidade_total, quantidade_disponivel)
-                                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)''',
+                    cursor.execute('''INSERT INTO livros (titulo, autor, genero, ano_de_publicacao, isbn, status, quantidade_total, quantidade_disponivel, quantidade_indisponivel)
+                                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)''',
                                 (data['titulo'], data['autor'], data.get('genero', ''), 
-                                 data['ano_de_publicacao'], data.get('isbn'), data['status'], quantidade_total, quantidade_disponivel))
+                                 data['ano_de_publicacao'], data.get('isbn'), data['status'], quantidade_total, quantidade_disponivel, 0))
                     conn.commit()
 
                     if not data.get('isbn'):
@@ -345,32 +346,28 @@ def cadastro():
 def consulta():
     if 'logged_in' in session and session['user_type'] == 'bibliotecario':
         tipo = request.args.get("tipo", "livros")  # Padrão 'livros'
-        pesquisa = request.args.get('pesquisa') or ""  # Garante que pesquisa não seja None ou vazio
+        pesquisa = request.args.get("pesquisa", "").strip()
+        param_like = f"%{pesquisa}%"
+        param_isbn = pesquisa.replace("-", "")
 
-        # Remove traços do ISBN para facilitar a busca
-        pesquisa_isbn = pesquisa.replace("-", "") if pesquisa else None
+        try:
+            ano = int(pesquisa)
+        except ValueError:
+            ano = None
 
         with get_db_connection() as conn:
             cursor = conn.cursor()
 
             if tipo == 'livros':
-                # Tratamento específico para números (ano de publicação ou ISBN)
-                pesquisa_ano = pesquisa if pesquisa.isdigit() else None
-
-                cursor.execute('''
+                cursor.execute("""
                     SELECT * FROM livros 
-                    WHERE (titulo LIKE %s OR autor LIKE %s OR genero LIKE %s
-                           OR ano_de_publicacao = %s OR isbn LIKE %s OR REPLACE(isbn, '-', '') = %s);
-                ''', 
-                (
-                    '%' + pesquisa + '%',  # Pesquisa por título
-                    '%' + pesquisa + '%',  # Pesquisa por autor
-                    '%' + pesquisa + '%',  # Pesquisa por gênero
-                    pesquisa_ano,          # Ano de publicação (se numérico)
-                    '%' + pesquisa + '%',  # ISBN com traço
-                    pesquisa_isbn          # ISBN sem traço
-                ))
-                livros = cursor.fetchall()
+                    WHERE (titulo ILIKE %s OR autor ILIKE %s OR genero ILIKE %s
+                        OR ano_de_publicacao = %s
+                        OR isbn ILIKE %s OR REPLACE(isbn, '-', '') = %s)
+                """, (param_like, param_like, param_like, ano, param_like, param_isbn))
+
+                columns = [desc[0] for desc in cursor.description]
+                livros = [dict(zip(columns, row)) for row in cursor.fetchall()]
                 return render_template("consulta.html", tipo=tipo, livros=livros, pesquisa=pesquisa)
 
             elif tipo == 'usuarios':
@@ -387,21 +384,22 @@ def consulta():
                 usuarios = cursor.fetchall()
                 return render_template("consulta.html", tipo=tipo, usuarios=usuarios, pesquisa=pesquisa)
 
-            elif tipo == 'status':  # Pesquisa por status (disponível ou indisponível)
+            elif tipo == 'status':
                 if pesquisa.lower() in ["disponível", "indisponível"]:
                     cursor.execute('''
                         SELECT * FROM livros
                         WHERE status = %s
                     ''', (pesquisa,))
-                    livros = cursor.fetchall()
+                    columns = [desc[0] for desc in cursor.description]
+                    livros = [dict(zip(columns, row)) for row in cursor.fetchall()]
                     return render_template("consulta.html", tipo=tipo, livros=livros, pesquisa=pesquisa)
 
-        # Caso não haja resultados ou tipo não corresponda
+        # Se nenhum dos casos acima for tratado
         return render_template("consulta.html", tipo=tipo, pesquisa=pesquisa)
 
-    return redirect(url_for('login'))  
+    return redirect(url_for('login'))
 
-@app.route('/apagar_livro/<int:livro_id>', methods=['POST'])
+@app.route('/apagar_livro/<int:livro_id>', methods=['GET', 'POST'])
 def apagar_livro(livro_id):
     print(f"Tentando apagar o livro com ID: {livro_id}")
     if 'logged_in' in session and session['user_type'] == 'bibliotecario':
@@ -416,21 +414,48 @@ def apagar_livro(livro_id):
     print("Usuário não autorizado ou não logado.")
     return redirect(url_for('login'))
 
-@app.route('/editar_livro/<int:livro_id>', methods=['GET', 'POST'])
-def editar_livro(livro_id):    
-    livro = get_livro_by_id(livro_id)  # Função que obtém o livro pelo ID
-
-    if livro is None:
-        flash('Livro não encontrado.', 'error')
-        return redirect(url_for('consulta'))
-
-    if request.method == 'POST':
-        data = request.form
-        update_livro(livro_id, data)
-        flash('Livro atualizado com sucesso!', 'success')
-        return redirect(url_for('consulta', tipo='livros'))
+@app.route("/editar_livro/<int:livro_id>", methods=["GET", "POST"])
+def editar_livro(livro_id):
+    print(f"Tentando editar o livro com ID: {livro_id}")
     
-    return render_template('editar_livro.html', livro=livro)
+    if 'logged_in' in session and session['user_type'] == 'bibliotecario':
+        try:
+            titulo = request.form.get("titulo")
+            autor = request.form.get("autor")
+            genero = request.form.get("genero")
+            ano = request.form.get("ano_de_publicacao")
+            isbn = request.form.get("isbn")
+            status = request.form.get("status")
+            quantidade_total = request.form.get("quantidade_total")
+            quantidade_disponivel = request.form.get("quantidade_disponivel")
+            quantidade_indisponivel = request.form.get("quantidade_indisponivel")
+
+            print("Dados recebidos para atualização:", titulo, autor, genero, ano, isbn, status,
+                  quantidade_total, quantidade_disponivel, quantidade_indisponivel)
+
+            with get_db_connection() as conn:
+                cursor = conn.cursor()
+                cursor.execute('''
+                    UPDATE livros SET titulo=%s, autor=%s, genero=%s, ano_de_publicacao=%s, isbn=%s, status=%s,
+                    quantidade_total=%s, quantidade_disponivel=%s, quantidade_indisponivel=%s
+                    WHERE livro_id=%s
+                ''', (titulo, autor, genero, ano, isbn, status,
+                      quantidade_total, quantidade_disponivel, quantidade_indisponivel, livro_id))
+                conn.commit()
+                print(f"Livro com ID {livro_id} atualizado com sucesso.")
+
+            flash("Livro atualizado com sucesso!", "success")
+            return redirect(url_for('consulta', tipo='livros'))
+
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            print("Erro ao editar livro:", e)
+            flash("Erro ao editar o livro.", "danger")
+            return redirect(url_for('consulta', tipo='livros'))
+    else:
+        print("Usuário não autorizado ou não logado.")
+        return redirect(url_for('login'))
 
 @app.route('/relatorios', methods=['GET'])
 def relatorios():
@@ -450,7 +475,9 @@ def relatorios():
             total_estudantes = cursor.fetchone()[0]
             
             # Total de livros emprestados e disponíveis
-            cursor.execute('SELECT COUNT(*) FROM livros WHERE status = "indisponível"')
+            cursor.execute('''
+                           SELECT COUNT(*) FROM livros WHERE status = 'indisponível'
+                           ''')
             total_emprestados = cursor.fetchone()[0]
             total_disponiveis = total_livros - total_emprestados
 
@@ -522,26 +549,24 @@ def emprestimos():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        # Registra a Devolução
         if request.method == 'POST':
-            
             acao = request.form.get('acao')
             emprestimo_id = request.form.get('emprestimo_id')
             data_retorno = request.form.get('data_retorno')
 
+            # Registrar devolução
             if acao == 'registrar' and emprestimo_id and data_retorno:
                 print(f"Registrando devolução: {emprestimo_id}, Data de retorno: {data_retorno}")
-                # Processar devolução
                 sucesso, mensagem = registrar_devolucao(cursor, conn, emprestimo_id, data_retorno)
 
                 if sucesso:
                     flash(mensagem, 'success')
                 else:
                     flash(mensagem, 'danger')
-                    print(f"Erro: {mensagem}")  # Adicione isso para capturar a mensagem de erro.
-            
-             # Excluir empréstimo
-            if acao == 'excluir' and emprestimo_id:
+                    print(f"Erro: {mensagem}")
+
+            # Excluir empréstimo
+            elif acao == 'excluir' and emprestimo_id:
                 sucesso, mensagem = excluir_emprestimo(cursor, conn, emprestimo_id)
 
                 if sucesso:
@@ -549,14 +574,12 @@ def emprestimos():
                 else:
                     flash(mensagem, 'danger')
 
-        # Consultar os empréstimos para exibir na página
+        # Consultar todos os empréstimos ativos
         emprestimos = obter_emprestimos(cursor)
-
         conn.close()
-        return render_template(
-            'emprestimos.html', 
-            emprestimos=emprestimos,
-        )
+
+        return render_template('emprestimos.html', emprestimos=emprestimos)
+
     return redirect(url_for('login'))
 
 @app.route('/novo_emprestimo', methods=['GET', 'POST'])

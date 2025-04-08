@@ -85,7 +85,7 @@
                                 <td><input type="text" name="status" value="{{ livro['status'] }}" required></td>
                                 <td><input type="number" name="quantidade_total" value="{{ livro['quantidade_total'] }}" required></td>
                                 <td><input type="number" name="quantidade_disponivel" value="{{ livro['quantidade_disponivel'] }}" required></td>
-                                <td><input type="number" name="quantidade_indisponivel" value="{{ livro['quantidade_indisponivel'] }}" required></td>
+                                <td><input type="number" name="quantidade_indisponivel" value="{{ livro.get('quantidade_indisponivel', 0) }}" required></td>
                                 <td>
                                     <button type="submit">Atualizar</button>
                                 </td>

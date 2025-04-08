@@ -40,34 +40,32 @@
                 </tr>
             </thead>
             <tbody>
-                <ul>
-                    {% for emprestimo in emprestimos %}
-                    <tr>
-                        <td>{{ emprestimo['livro_titulo'] }}</td> <!-- livro_titulo -->
-                        <td>{{ emprestimo['estudante_nome'] }}</td> <!-- estudante_id -->
-                        <td>{{ emprestimo['bibliotecario_nome'] if emprestimo['bibliotecario_nome'] else 'Não atribuído' }}</td> <!-- bibliotecario_id -->
-                        <td>{{ emprestimo['data_emprestimo'] }}</td> <!-- data_emprestimo -->
-                        <td>{{ emprestimo['data_devolucao'] }}</td> <!-- data_devolucao -->
-                        <td>{{ emprestimo['status'] }}</td> <!-- status -->
-                        <td>
-                            <!-- Formulário para registrar a devolução -->
-                            <form action="/emprestimos" method="POST">
-                                <input type="hidden" name="emprestimo_id" value="{{ emprestimo['emprestimo_id'] }}"> <!-- ID do empréstimo -->
-                                <input type="hidden" name="acao" value="registrar"> <!-- Define a ação -->
-                                <label for="data_retorno">Data de Retorno:</label>
-                                <input type="date" id="data_retorno" name="data_retorno" required>
-                                <button type="submit">Registrar Devolução</button>
-                            </form>                        
-                            <!-- Formulário para excluir o empréstimo -->
-                            <form action="/emprestimos" method="POST" style="display:inline;">
-                                <input type="hidden" name="acao" value="excluir">
-                                <input type="hidden" name="emprestimo_id" value="{{ emprestimo[0] }}"> <!-- Assume que o emprestimo_id é o primeiro campo -->
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este empréstimo?')">Excluir</button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </ul>
+                {% for emprestimo in emprestimos %}
+                <tr>
+                    <td>{{ emprestimo['livro_titulo'] }}</td>
+                    <td>{{ emprestimo['estudante_nome'] }}</td>
+                    <td>{{ emprestimo['bibliotecario_nome'] if emprestimo['bibliotecario_nome'] else 'Não atribuído' }}</td>
+                    <td>{{ emprestimo['data_emprestimo'] }}</td>
+                    <td>{{ emprestimo['data_devolucao'] }}</td>
+                    <td>{{ emprestimo['status'] }}</td>
+                    <td>
+                        <!-- Formulário para registrar a devolução -->
+                        <form action="/emprestimos" method="POST">
+                            <input type="hidden" name="emprestimo_id" value="{{ emprestimo['emprestimo_id'] }}">
+                            <input type="hidden" name="acao" value="registrar">
+                            <label for="data_retorno">Data de Retorno:</label>
+                            <input type="date" id="data_retorno" name="data_retorno" required>
+                            <button type="submit">Registrar Devolução</button>
+                        </form>                        
+                        <!-- Formulário para excluir o empréstimo -->
+                        <form action="/emprestimos" method="POST" style="display:inline;">
+                            <input type="hidden" name="acao" value="excluir">
+                            <input type="hidden" name="emprestimo_id" value="{{ emprestimo['emprestimo_id'] }}">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este empréstimo?')">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>        
     </section>   
