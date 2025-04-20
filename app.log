@@ -1947,3 +1947,381 @@ INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug:127.0.0.1 - - [08/Apr/2025 01:20:57] "GET /emprestimos HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [08/Apr/2025 01:20:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [08/Apr/2025 01:20:57] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:32:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:32:36] "GET /static/js/scanner.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:32:36] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:32:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:02] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:11] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:11] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:15] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:15] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+ERROR:app:Exception on /consulta [GET]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 374, in consulta
+    cursor.execute('''
+psycopg2.errors.UndefinedColumn: column "nome" does not exist
+LINE 2:                     SELECT nome, email, 'bibliotecario' AS t...
+                                   ^
+
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:22] "[35m[1mGET /consulta?tipo=usuarios&pesquisa= HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /consulta [GET]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 374, in consulta
+    cursor.execute('''
+psycopg2.errors.UndefinedColumn: column "nome" does not exist
+LINE 2:                     SELECT nome, email, 'bibliotecario' AS t...
+                                   ^
+
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:33:29] "[35m[1mGET /consulta?tipo=usuarios&pesquisa= HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:41:07] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:41:07] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:41:08] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:41:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:41:13] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:41:13] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:41:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+ERROR:app:Exception on /consulta [GET]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 374, in consulta
+    cursor.execute('''
+psycopg2.errors.UndefinedColumn: column b.email does not exist
+LINE 2:                     SELECT e.nome, b.email, 'bibliotecario' ...
+                                           ^
+HINT:  Perhaps you meant to reference the column "e.email".
+
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:41:17] "[35m[1mGET /consulta?tipo=usuarios&pesquisa= HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:42:25] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:42:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:42:26] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+ERROR:app:Exception on /consulta [GET]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 374, in consulta
+    cursor.execute('''
+psycopg2.errors.UndefinedColumn: column b.email does not exist
+LINE 5:                     WHERE e.nome LIKE '%%' OR b.email LIKE '...
+                                                      ^
+HINT:  Perhaps you meant to reference the column "e.email".
+
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:42:31] "[35m[1mGET /consulta?tipo=usuarios&pesquisa= HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:43:02] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:43:07] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:43:07] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:43:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:43:10] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:43:10] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:43:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:43:14] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:43:15] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:43:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:50:46] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:50:47] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:50:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:50:52] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:50:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:50:53] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:15] "GET /consulta?tipo=status&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:15] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:17] "GET /consulta?tipo=status&pesquisa=disponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:18] "GET /static/js/scanner.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:18] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:23] "GET /consulta?tipo=livros&pesquisa=disponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:23] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:23] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:26] "GET /consulta?tipo=livros&pesquisa=disponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:26] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:31] "GET /consulta?tipo=livros&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:31] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:36] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:51:36] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:53:54] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:53:55] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:53:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:53:59] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:54:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:54:00] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:54:07] "GET /consulta?tipo=usuarios&tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:54:08] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:54:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:56:02] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:56:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:56:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+ERROR:app:Exception on /consulta [GET]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 358, in consulta
+    with get_db_connection() as conn:
+psycopg2.InterfaceError: connection already closed
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:56:07] "[35m[1mGET /consulta?tipo=usuarios&pesquisa= HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 19:59:58] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:00:03] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:00:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:00:04] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:00:08] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:00:08] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:00:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:00:12] "GET /consulta?tipo=livros&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:00:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:00:12] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /consulta [GET]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 375, in consulta
+    return render_template("consulta.html", tipo=tipo, livros=livros, pesquisa=pesquisa)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 1084, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 1013, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 972, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspaces/ManLib/templates/consulta.html", line 131, in template
+    {% elif tipo == 'status' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'elif'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:02:19] "[35m[1mGET /consulta?tipo=livros&pesquisa= HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /consulta [GET]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 375, in consulta
+    return render_template("consulta.html", tipo=tipo, livros=livros, pesquisa=pesquisa)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 1084, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 1013, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 972, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspaces/ManLib/templates/consulta.html", line 131, in template
+    {% elif tipo == 'status' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'elif'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:02:23] "[35m[1mGET /consulta?tipo=livros&pesquisa= HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /consulta [GET]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 392, in consulta
+    return render_template("consulta.html", tipo=tipo, usuarios=usuarios, pesquisa=pesquisa)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 1084, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 1013, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 972, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/codespace/.local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspaces/ManLib/templates/consulta.html", line 183, in template
+    {% endblock %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endblock'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:06:45] "[35m[1mGET /consulta?tipo=usuarios&pesquisa= HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:38] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:39] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:43] "GET /consulta?tipo=usuarios&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:44] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:44] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:49] "GET /consulta?tipo=livros&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:49] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:58] "GET /consulta?tipo=status&pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:58] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:11:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:01] "GET /consulta?tipo=status&pesquisa=disponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:05] "GET /consulta?tipo=status&pesquisa=indisponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:06] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:19] "GET /consulta?tipo=status&pesquisa=indisponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:19] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:19] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:23] "GET /consulta?tipo=livros&pesquisa=indisponível HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:23] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:23] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:37] "GET /relatorios HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:37] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:38] "GET /cadastro HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:38] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:38] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:42] "GET /relatorios HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:42] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:51] "GET /novo_emprestimo HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:51] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:54] "GET /emprestimos HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:54] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2025 20:12:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -

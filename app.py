@@ -345,7 +345,7 @@ def cadastro():
 @app.route('/consulta', methods=['GET'])
 def consulta():
     if 'logged_in' in session and session['user_type'] == 'bibliotecario':
-        tipo = request.args.get("tipo", "livros")  # Padrão 'livros'
+        tipo = request.args.get("tipo", "livros")  # Padrão: 'livros'
         pesquisa = request.args.get("pesquisa", "").strip()
         param_like = f"%{pesquisa}%"
         param_isbn = pesquisa.replace("-", "")
@@ -358,45 +358,54 @@ def consulta():
         with get_db_connection() as conn:
             cursor = conn.cursor()
 
+            # 🔍 Consulta de livros
             if tipo == 'livros':
                 cursor.execute("""
                     SELECT * FROM livros 
-                    WHERE (titulo ILIKE %s OR autor ILIKE %s OR genero ILIKE %s
+                    WHERE (titulo ILIKE %s 
+                        OR autor ILIKE %s 
+                        OR genero ILIKE %s
                         OR ano_de_publicacao = %s
-                        OR isbn ILIKE %s OR REPLACE(isbn, '-', '') = %s)
+                        OR isbn ILIKE %s 
+                        OR REPLACE(isbn, '-', '') = %s)
                 """, (param_like, param_like, param_like, ano, param_like, param_isbn))
 
                 columns = [desc[0] for desc in cursor.description]
                 livros = [dict(zip(columns, row)) for row in cursor.fetchall()]
                 return render_template("consulta.html", tipo=tipo, livros=livros, pesquisa=pesquisa)
 
+            # 🔍 Consulta de usuários
             elif tipo == 'usuarios':
-                cursor.execute('''
-                    SELECT nome, email, 'bibliotecario' AS tipo 
-                    FROM bibliotecarios 
-                    JOIN estudantes ON bibliotecarios.estudante_id = estudantes.estudante_id 
-                    WHERE nome LIKE %s OR email LIKE %s
+                cursor.execute("""
+                    SELECT e.nome, e.email, 'bibliotecario' AS tipo 
+                    FROM bibliotecarios b
+                    JOIN estudantes e ON b.estudante_id = e.estudante_id 
+                    WHERE e.nome ILIKE %s OR e.email ILIKE %s
                     UNION 
                     SELECT nome, email, 'estudante' AS tipo 
                     FROM estudantes 
-                    WHERE nome LIKE %s OR email LIKE %s
-                ''', ('%' + pesquisa + '%', '%' + pesquisa + '%', '%' + pesquisa + '%', '%' + pesquisa + '%'))
-                usuarios = cursor.fetchall()
+                    WHERE nome ILIKE %s OR email ILIKE %s
+                """, (param_like, param_like, param_like, param_like))
+
+                columns = [desc[0] for desc in cursor.description]
+                usuarios = [dict(zip(columns, row)) for row in cursor.fetchall()]
                 return render_template("consulta.html", tipo=tipo, usuarios=usuarios, pesquisa=pesquisa)
 
+            # 🔍 Consulta por status
             elif tipo == 'status':
                 if pesquisa.lower() in ["disponível", "indisponível"]:
-                    cursor.execute('''
+                    cursor.execute("""
                         SELECT * FROM livros
                         WHERE status = %s
-                    ''', (pesquisa,))
+                    """, (pesquisa,))
                     columns = [desc[0] for desc in cursor.description]
                     livros = [dict(zip(columns, row)) for row in cursor.fetchall()]
                     return render_template("consulta.html", tipo=tipo, livros=livros, pesquisa=pesquisa)
 
-        # Se nenhum dos casos acima for tratado
+        # Caso o tipo seja inválido ou nenhuma correspondência
         return render_template("consulta.html", tipo=tipo, pesquisa=pesquisa)
 
+    # Redireciona para login se não autenticado como bibliotecário
     return redirect(url_for('login'))
 
 @app.route('/apagar_livro/<int:livro_id>', methods=['GET', 'POST'])
