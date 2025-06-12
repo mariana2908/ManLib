@@ -11,7 +11,7 @@ command = "gunicorn app:app --bind 0.0.0.0:5000"
 runtime = "V2"
 numReplicas = 1
 startCommand = "gunicorn app:app --bind 0.0.0.0:5000"
-sleepApplication = false
+sleepApplication = true
 
 # Corrigindo a tabela multiRegionConfig
 multiRegionConfig = { us-west2 = { numReplicas = 1 } }
