@@ -50,19 +50,21 @@ def obter_emprestimos(cursor):
         SELECT 
             e.emprestimo_id,
             l.titulo AS livro_titulo,
-            est.nome AS estudante_nome,
-            bib.nome AS bibliotecario_nome,
+            es.nome AS estudante_nome,
+            eb.nome AS bibliotecario_nome,
             e.data_emprestimo,
             e.data_devolucao,
             e.status
         FROM emprestimos e
         JOIN livros l ON e.livro_id = l.livro_id
-        JOIN estudantes est ON e.estudante_id = est.estudante_id
+        JOIN estudantes es ON e.estudante_id = es.estudante_id
         LEFT JOIN bibliotecarios b ON e.bibliotecario_id = b.estudante_id
-        LEFT JOIN estudantes bib ON b.estudante_id = bib.estudante_id
+        LEFT JOIN estudantes eb ON b.estudante_id = eb.estudante_id
         WHERE e.status != 'concluído'
+        ORDER BY e.data_emprestimo DESC
     """)
-    return cursor.fetchall()
+    colunas = [desc[0] for desc in cursor.description]
+    return [dict(zip(colunas, row)) for row in cursor.fetchall()]
 
 # Função para registrar devolução
 def registrar_devolucao(cursor, conn, emprestimo_id, data_retorno):
