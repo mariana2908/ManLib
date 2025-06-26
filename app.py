@@ -258,7 +258,7 @@ def consultar_livros():
                 cursor.execute(
                     '''
                     SELECT * FROM livros 
-                    WHERE ano_de_publicacao = %s 
+                    WHERE CAST(ano_de_publicacao AS TEXT) = %s 
                     OR isbn LIKE %s
                     ''',
                     (pesquisa, f"%{pesquisa}%")

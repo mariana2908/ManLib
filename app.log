@@ -2734,3 +2734,22 @@ INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:01:00] "[36mGET /static/styles.css 
 INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:01:02] "GET /livros HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:01:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:01:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:23] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:23] "GET /home_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:24] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:28] "GET /livros HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:28] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:32] "GET /livros?pesquisa=2017 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:33] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:36] "GET /livros?pesquisa= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:36] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:41] "GET /livros?pesquisa=9788578600655%09 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 13:09:41] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
