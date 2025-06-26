@@ -2709,3 +2709,28 @@ INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 10:45:06] "[36mGET /static/js/scanner.
 INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 10:45:12] "GET /emprestimos HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 10:45:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 10:45:12] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 10:52:32] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 10:52:33] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 10:52:34] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 10:52:34] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:44] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:45] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:46] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:50] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:50] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:50] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:59] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:59] "GET /home_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:00:59] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:01:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:01:02] "GET /livros HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:01:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2025 11:01:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -

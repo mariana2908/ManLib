@@ -249,7 +249,7 @@ def consultar_livros():
         pesquisa = request.args.get('pesquisa', '').strip()
 
         conn = get_db_connection()
-        cursor = conn.cursor()
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)  # <-- Use RealDictCursor
         
         # Se houver pesquisa, filtramos os livros
         if pesquisa:
