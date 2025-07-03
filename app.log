@@ -2858,3 +2858,550 @@ INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 11:20:07] "[36mGET /static/styles.css 
 INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 11:20:10] "GET /relatorios HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 11:20:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 11:20:11] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:32] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:33] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:34] "[33mGET /static/favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:36] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:37] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:49] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:50] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:51] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:51:51] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:52:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:52:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:52:14] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:52:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:52:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:52:17] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:53:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:53:47] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:53:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:53:51] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:53:51] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:53:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:53:57] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:53:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:53:57] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:54:03] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:54:03] "GET /static/favicon.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:54:03] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:54:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:54:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:56:52] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:56:52] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:56:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:56:53] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:57:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:57:53] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:57:54] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:57:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:10] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:11] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:15] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:15] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:17] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:58:18] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:59:44] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:59:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:59:45] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 12:59:45] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:00:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:00:18] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:00:19] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:00:19] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:13] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:13] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:13] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:20] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:20] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:26] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:27] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:27] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:28] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:28] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:02:28] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:02] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:02] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:03] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:06] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:06] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:14] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:14] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:46] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:46] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:03:46] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:04:26] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:04:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:04:26] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:04:26] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:14:49] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:14:49] "GET /static/favicon.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:14:49] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:14:50] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:16:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:16:06] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:16:06] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:16:07] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:16:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:16:41] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:16:41] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:16:42] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:18:21] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:18:22] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:18:22] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:18:22] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:19:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:19:17] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:19:17] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:19:17] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:19:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:19:30] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:19:30] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:19:30] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:22:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:22:17] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:22:17] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:22:17] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:23:02] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:23:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:23:02] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:23:02] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:23:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:23:13] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:23:13] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:23:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:25:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:25:47] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:25:47] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:25:47] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:26:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:26:53] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:26:53] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:26:53] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:27:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:27:10] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:27:11] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:27:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:27:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:27:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:27:31] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:27:31] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:40:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:40:01] "GET /static/favicon.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:40:02] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:40:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:40:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:40:34] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:40:34] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:40:34] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:40:34] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:42:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:42:43] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:42:43] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:42:43] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:43:28] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:43:29] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:43:29] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:43:29] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:45:36] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:45:37] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:45:37] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:45:37] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:47:47] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:47:47] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:47:47] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:47:47] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:48:44] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:48:44] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:48:44] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:48:44] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:48:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:48:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:48:47] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:48:47] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:49:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:49:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:49:22] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:49:22] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:49:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:49:24] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:49:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:49:24] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:03] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:04] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:04] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:06] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:06] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:13] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:13] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:13] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:39] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:39] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:50:39] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:11] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:12] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:12] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:12] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:40] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:40] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:41] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:52] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:52] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:52] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:54:52] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:16] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:16] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:16] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:23] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:23] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:23] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:40] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:55:40] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:50] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:50] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:50] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:54] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:55] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:55] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:55] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:55] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:56] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:56] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:56] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:56:57] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:58:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:58:02] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:58:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 13:58:02] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:00:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:00:02] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:00:02] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:00:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:00:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:00:40] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:00:41] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:00:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:01:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:01:40] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:01:40] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:01:40] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:01:56] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:01:56] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:01:56] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:01:57] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:00] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:00] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:04] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:04] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:04] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:17] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:17] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:02:17] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:20] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:21] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:26] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:26] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:26] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:33] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:03:33] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:04:19] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:04:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:04:20] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:04:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:04:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:04:22] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:04:28] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:04:28] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:04:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:04:28] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:05:38] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:05:39] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:05:39] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:05:39] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:05:52] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:05:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:05:52] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:05:53] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:32] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:32] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:32] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:44] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:44] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:44] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:51] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:51] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:07:51] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:08:21] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:08:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:08:21] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:08:21] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:04] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:04] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:04] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:14] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:14] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:56] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:56] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:09:56] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:23] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:24] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:24] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:33] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:33] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:33] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:33] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:54] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:54] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:54] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:10:54] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:11:02] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:11:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:11:02] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:11:02] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:22] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:22] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:22] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:27] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:28] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:28] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:30] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:31] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:42] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:43] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:43] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:13:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:14:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:14:04] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:14:04] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:14:04] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:14:27] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:14:27] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:14:27] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:14:27] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:15:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:15:12] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:15:12] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:15:12] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:15:54] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:15:54] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:15:54] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:15:54] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:10] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:10] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:10] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:13] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:14] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:14] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:38] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:38] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:16:38] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:08] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:08] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:08] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:08] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:13] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:13] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:13] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:36] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:37] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:37] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:17:37] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:18:32] "GET /registrar_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:18:32] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:18:32] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:18:32] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:18:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:20:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:20:07] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:20:07] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:20:07] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:20:32] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:20:33] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:20:33] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:20:33] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:00] "GET /registrar_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:00] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:01] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:02] "GET /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:03] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:03] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:05] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:05] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:05] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+ERROR:app:Exception on /login [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 99, in login
+    conn = get_db_connection()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 21, in get_db_connection
+    conn = psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:16] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:27] "GET /home_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:27] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:27] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:30] "GET /cadastro HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:31] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:31] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:34] "GET /consulta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:34] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:34] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:34] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:37] "GET /relatorios HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:37] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:37] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:40] "GET /emprestimos HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:40] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:40] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:43] "GET /novo_emprestimo HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:44] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:44] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:44] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:46] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:46] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:46] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:46] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -

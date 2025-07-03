@@ -60,15 +60,10 @@ nav ul li a {
     font-size: 18px;
 }
 
-nav .navbar-brand
-{
-    font-size: xx-large;
-}
-
 /* Botões da nav-bar */
 nav .navbar-toggler {
-    background-color: white;
-    border: 1px solid #ccc;
+    background-color: #8f5b42;
+    border: 1px solid #70442c;
     padding: 10px 15px;
     cursor: pointer;
     border-radius: 5px;
@@ -77,8 +72,8 @@ nav .navbar-toggler {
 }
 
 nav .navbar-toggler:hover {
-    background-color: #f2f2f2; /* Cinza claro */
-    border-color: #0050AF;    /* Borda azul */
+    background-color: #502d1c;
+    border-color: #ccc;    /* Borda azul */
 }
   
 /* Conteúdo principal */
@@ -105,6 +100,28 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Estilo da barra de navegação */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #543424; /* Cor da bandeira da Bahia */
+}
+
+.navbar-brand img {
+    background-color: #543424;
+    max-width: 150px !important;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar,
+.navbar * {
+    color: #fff !important;
 }
 
 /* Layout */
