@@ -471,7 +471,7 @@ def relatorios():
     if 'logged_in' in session and session['user_type'] == 'bibliotecario':
         # Exemplo de lógica de relatório (contar itens em cada tabela)
         conn = get_db_connection()
-        cursor = conn.cursor()
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)  # <-- ALTERAÇÃO AQUI
         try:
             # Total de livros
             cursor.execute('SELECT COUNT(*) FROM livros')
@@ -532,7 +532,7 @@ def relatorios():
                     e.status = 'concluído';
             ''')
             emprestimos_concluidos = cursor.fetchall()
-            emprestimos_concluidos = [dict(row) for row in emprestimos_concluidos]  # Converter para lista de dicionários
+            # Não precisa converter para dict, pois já vem como dicionário
             print(emprestimos_concluidos)
         except psycopg2.DatabaseError as e:
             flash(f'Erro ao gerar relatório: {e}', 'danger')
