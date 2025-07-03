@@ -25,7 +25,9 @@
         <h3>Livros Mais Emprestados</h3>
         <ul>
             {% for livro in livros_mais_emprestados %}
-                <li>{{ livro[0] }} - {{ livro[1] }} vezes</li>
+                <li>{{ livro['titulo'] }} - {{ livro['quantidade_emprestimos'] }} empréstimos</li>
+            {% else %}
+                <li>Nenhum livro encontrado.</li>
             {% endfor %}
         </ul>
     </section>

@@ -475,31 +475,32 @@ def relatorios():
         try:
             # Total de livros
             cursor.execute('SELECT COUNT(*) FROM livros')
-            total_livros = cursor.fetchone()[0]
+            total_livros = cursor.fetchone()['count']
             
             # Total de bibliotecarios e estudantes
             cursor.execute('SELECT COUNT(*) FROM bibliotecarios')
-            total_bibliotecarios = cursor.fetchone()[0]
+            total_bibliotecarios = cursor.fetchone()['count']
             cursor.execute('SELECT COUNT(*) FROM estudantes')
-            total_estudantes = cursor.fetchone()[0]
+            total_estudantes = cursor.fetchone()['count']
             
             # Total de livros emprestados e disponíveis
             cursor.execute('''
                            SELECT COUNT(*) FROM livros WHERE status = 'indisponível'
                            ''')
-            total_emprestados = cursor.fetchone()[0]
+            total_emprestados = cursor.fetchone()['count']
             total_disponiveis = total_livros - total_emprestados
 
             # Livros mais emprestados
             cursor.execute('''
-                SELECT livros.titulo, COUNT(emprestimos.livro_id) AS quantidade_emprestada
-                FROM emprestimos
-                JOIN livros ON emprestimos.livro_id = livros.livro_id
-                WHERE emprestimos.status = 'concluído'
-                GROUP BY livros.livro_id
-                ORDER BY quantidade_emprestada DESC
+                SELECT l.titulo, COUNT(e.emprestimo_id) AS quantidade_emprestimos
+                FROM emprestimos e
+                JOIN livros l ON e.livro_id = l.livro_id
+                GROUP BY l.titulo
+                ORDER BY quantidade_emprestimos DESC
+                LIMIT 10
             ''')
             livros_mais_emprestados = cursor.fetchall()
+            print(livros_mais_emprestados)
             
         except psycopg2.DatabaseError as e:
             flash(f'Erro ao gerar relatório: {e}', 'danger')
