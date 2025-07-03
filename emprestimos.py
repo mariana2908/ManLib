@@ -74,7 +74,7 @@ def registrar_devolucao(cursor, conn, emprestimo_id, data_retorno):
 
         # Obter o livro_id relacionado ao empréstimo
         cursor.execute("""
-            SELECT livro_id FROM emprestimos WHERE emprestimo_id = ?
+            SELECT livro_id FROM emprestimos WHERE emprestimo_id = %s
         """, (emprestimo_id,))
         livro_id = cursor.fetchone()
 
