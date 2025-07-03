@@ -13,6 +13,13 @@ body {
     line-height: 1.6;
     padding: 0;
     padding-top: 70px; /* Ajuste conforme a altura da barra de navegação */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    height: 100%;
 }
 
 /* Barra de navegação */
@@ -80,6 +87,7 @@ nav .navbar-toggler:hover {
 main {
     margin-top: 80px; /* Evita que o conteúdo seja coberto pela barra de navegação */
     padding: 20px;
+    flex: 1 0 auto;
 }
 
 h1, h2, h3 {
@@ -213,4 +221,16 @@ form input, form select, form textarea {
     margin-top: 70px; /* Ajuste conforme a altura da barra de navegação */
     z-index: 1000;
     position: fixed;
+}
+
+footer {
+    background-color: #543424;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-shrink: 0;
 }

@@ -3405,3 +3405,42 @@ INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:46] "GET /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:46] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:21:46] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:31:07] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:31:08] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:31:08] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:31:08] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:19] "GET /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:20] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:20] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:33] "GET /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:33] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:34] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:34] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:39] "GET /registrar_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:39] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:39] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:40] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:32:40] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:28] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:29] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:29] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:29] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:33] "GET /registrar_estudante HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:34] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:34] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:34] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:39] "GET /registrar_bibliotecario HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:39] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:39] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:34:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:35:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:35:02] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:35:02] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Jul/2025 14:35:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
