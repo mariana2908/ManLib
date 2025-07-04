@@ -3,11 +3,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arimo;
 }
 
 /* Cores e fontes globais */
 body {
-    font-family: 'Open Sans', sans-serif;
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
@@ -23,27 +23,6 @@ html, body {
 }
 
 /* Barra de navegação */
-header {
-    width: 100%;
-    background-color: #333;
-    padding: 10px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between; /* Faz o alinhamento do logo e links */
-    align-items: center;
-    padding: 10px 20px;
-}
-
-header h1 {
-    color: black;
-    font-size: 24px;
-    margin-right: auto; /* Garante que o logo fique à esquerda */
-}
-
 /* Estilo da nav-bar */
 nav {
     display: flex; /* Flexbox para a navegação */
@@ -82,23 +61,49 @@ nav .navbar-toggler:hover {
     background-color: #502d1c;
     border-color: #ccc;    /* Borda azul */
 }
+
+header {
+    width: 100%;
+    background-color: #f9f9f9; /* Cor de fundo do cabeçalho */
+    padding: 10px 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header h1 {
+    color: #BF0A30;
+    font-size: 26px;
+}
+
+header p {
+    color: #333;
+    font-size: 18px;
+}
   
 /* Conteúdo principal */
 main {
-    margin-top: 80px; /* Evita que o conteúdo seja coberto pela barra de navegação */
-    padding: 20px;
+    margin-top: 30px; /* Evita que o conteúdo seja coberto pela barra de navegação */
+    padding: 25px;
     flex: 1 0 auto;
 }
 
 h1, h2, h3 {
     color: #BF0A30; /* Vermelho da bandeira da Bahia para títulos */
     text-align: center;  
+    font-weight: bold;
     margin-bottom: 40px; /* Adiciona um espaço de 20px abaixo do título */
 }
 
 p {
     margin-top: 30px; /* Adiciona um espaço de 10px acima do parágrafo */
     text-align: center;
+    font-size: 18px;
 }
 
 a {
@@ -134,9 +139,16 @@ a:hover {
 
 /* Layout */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 1100px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.container p {
+    text-align: justify;
 }
 
 /* Estilos para botões */
@@ -151,6 +163,85 @@ button {
 
 button:hover {
     background-color: #002067; /* Azul da bandeira da Bahia, só que mais escuro */
+}
+
+.buttons {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.buttons a {
+    display: inline-block;
+    background: #3f51b5;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.buttons a:hover {
+    background: #303f9f;
+}
+
+.section {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+}
+
+.section h2 {
+    margin-bottom: 3rem;
+    color: #3f51b5;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;      /* Remove o recuo padrão */
+    margin-left: 0;       /* Remove margem à esquerda */
+    text-align: centers;
+}
+
+.container ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    padding-left: 0;
+}
+
+.container ul li {
+    background: #f5f7fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(63,81,181,0.08);
+    padding: 1.2rem 1.8rem;
+    margin: 0;
+    min-width: 220px;
+    max-width: 320px;
+    flex: 1 1 220px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    text-align: left;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.container ul li:hover {
+    box-shadow: 0 4px 16px rgba(63,81,181,0.18);
+    transform: translateY(-4px) scale(1.03);
+    background: #e8eaf6;
+}
+
+.container ul li::before {
+    margin-right: 0.7rem;
+    padding-left: 0;
+}
+
+.container section ul li {
+    display: block; /* Exibe os itens da lista em blocos */
+    margin-bottom: 0.5rem; /* Espaçamento entre os itens da lista */
 }
 
 /* Estilos para tabelas */
@@ -225,12 +316,23 @@ form input, form select, form textarea {
 
 footer {
     background-color: #543424;
-    color: white;
-    text-align: center;
+    color: #b19c92;
     padding: 10px 0;
     width: 100%;
     bottom: 0;
     left: 0;
     right: 0;
     flex-shrink: 0;
+}
+
+footer p {
+    text-align: center;
+    font-size: 14px;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        max-width: 95vw;
+        padding: 20px 10px;
+    }
 }

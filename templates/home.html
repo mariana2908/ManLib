@@ -5,8 +5,10 @@
 {% endblock %}
 
 {% block main %}
-    <h1>Bem-vindo ao ManLib</h1>
-    <p>Seu gerenciador de biblioteca escolar!</p>
+    <header>
+        <h1>Bem-vindo ao ManLib</h1>
+        <p>Seu Gerenciador para Biblioteca Escolar</p>
+    </header>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
@@ -16,4 +18,37 @@
             </ul>
         {% endif %}
     {% endwith %}
+    <div class="container">
+        <section class="section">
+        <h2>📚 Sobre o nosso sistema</h2>
+        <p>O ManLib é um sistema web criado para facilitar o dia a dia de bibliotecas escolares. Estudantes podem consultar livros e acompanhar empréstimos, enquanto bibliotecários gerenciam cadastros, devoluções e relatórios com agilidade e segurança.</p>
+        </section>
+
+        <div class="buttons">
+        <a href="/login">Entrar</a>
+        <a href="/registrar_estudante">Criar conta de estudante</a>
+        <a href="/registrar_bibliotecario">Criar conta de bibliotecário</a>
+        </div>
+
+        <section class="section">
+        <h2>✨ Funcionalidades</h2>
+        <ul>
+            <li>Consulta e pesquisa de livros disponíveis</li>
+            <li>Empréstimos e devoluções com controle de datas</li>
+            <li>Cadastro de livros pela equipe da biblioteca</li>
+            <li>Envio automático de lembretes por e-mail</li>
+            <li>Relatórios de empréstimos e status dos livros</li>
+        </ul>
+        </section>
+
+        <section class="section">
+        <h2>🚀 Benefícios</h2>
+        <ul>
+            <li>Fácil de usar e acessível online</li>
+            <li>Segurança com senhas criptografadas</li>
+            <li>Organização total da biblioteca escolar</li>
+            <li>Desenvolvido com tecnologias modernas</li>
+        </ul>
+        </section>
+    </div>
 {% endblock %}
