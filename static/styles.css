@@ -248,6 +248,55 @@ ul {
     margin-bottom: 0.5rem; /* Espaçamento entre os itens da lista */
 }
 
+.login-container {
+    max-width: 350px;
+    margin: 60px auto;
+    padding: 32px 24px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.login-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+.login-container button {
+    padding: 10px;
+    background: #3f51b5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+.login-container button:hover {
+    background: #303f9f;
+}
+.login-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #3f51b5;
+    font-weight: bold;
+}
+
+.login-footer p {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+}
+
 /* Estilos para tabelas */
 table {
     width: 100%;
