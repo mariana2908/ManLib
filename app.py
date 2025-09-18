@@ -82,11 +82,13 @@ def home():
 
 @app.route('/home_estudante')
 def home_estudante():
-    return render_template('home_estudante.html')  # Página inicial para estudantes
+    nome = session.get('user_nome', 'Usuário')
+    return render_template('home_estudante.html', nome=nome)  # Página inicial para estudantes
 
 @app.route('/home_bibliotecario')
 def home_bibliotecario():
-    return render_template('home_bibliotecario.html')  # Página inicial para bibliotecários
+    nome = session.get('user_nome', 'Usuário')
+    return render_template('home_bibliotecario.html', nome=nome)
 
 # Verificar login
 @app.route('/login', methods=['GET', 'POST'])
@@ -123,6 +125,20 @@ def login():
             session['user_email'] = email
             session['logged_in'] = True
             session['user_id'] = estudante_id_value
+
+            # Buscar o nome do estudante e salvar na sessão
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute('SELECT nome FROM estudantes WHERE estudante_id = %s', (estudante_id_value,))
+            resultado_nome = cursor.fetchone()
+            conn.close()
+
+            if resultado_nome:
+                session['user_nome'] = resultado_nome[0]
+                print(f"Nome do usuário encontrado: {session['user_nome']}")
+            else:
+                session['user_nome'] = 'Usuário'
+                print("Nome do usuário não encontrado, usando 'Usuário' como padrão.")
 
             if bibliotecario:
                 session['user_type'] = 'bibliotecario'

@@ -152,16 +152,18 @@ a:hover {
 
 /* Estilos para botões */
 button {
-    background-color: #002776; /* Azul da bandeira da Bahia */
+    background-color: #3f51b5; /* Azul da bandeira da Bahia */
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
 }
 
 button:hover {
-    background-color: #002067; /* Azul da bandeira da Bahia, só que mais escuro */
+    background-color: #303f9f; /* Azul da bandeira da Bahia, só que mais escuro */
 }
 
 .buttons {
@@ -265,6 +267,13 @@ ul {
     border-radius: 4px;
     font-size: 1rem;
 }
+ 
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .login-container button {
     padding: 10px;
     background: #3f51b5;
@@ -298,27 +307,105 @@ ul {
 }
 
 /* Estilos para tabelas */
+.tabela-responsiva {
+    overflow-x: auto;
+    width: 100%;
+}
+
 table {
+    min-width: 700px;
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 table th, table td {
     border: 1px solid #ddd;
+    border-bottom: 1px solid #e0e0e0;
     padding: 8px;
     text-align: left;
+    white-space: nowrap;
 }
 
 table th {
-    background-color: #f2f2f2;
-    color: #333;
+    background-color: #303f9f;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+tr:hover {
+    background: #e3f2fd;
+}
+
+td[colspan] {
+    text-align: center;
+    color: #888;
 }
 
   /* Estilos para formulários */
 form {
+    width: 100%;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
     margin: 20px 0;
-  }
+}
+
+#livro-form {
+    background: #f5f7fa;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(63,81,181,0.10);
+    padding: 2rem 2.5rem 1.5rem 2.5rem;
+    margin: 0 auto 2rem auto;
+    max-width: 100%;
+    min-width: 340px;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.consulta-flex {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}   
+
+.consulta-flex label {
+    margin-bottom: 0;
+    min-width: 80px;
+}
+
+.consulta-flex input[type="text"] {
+    width: 75%;
+    flex: 1 1 180px;
+}
+
+.consulta-flex button {
+    min-width: 140px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+    .consulta-flex {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .consulta-flex input[type="text"], 
+    .consulta-flex button {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+}
 
 form label {
     display: block;
@@ -333,6 +420,27 @@ form input, form select, form textarea {
     border-radius: 4px;
 }
 
+form input[type="text"] {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+}
+
+
 #scanner-container {
     position: relative;
     width: 300px; /* Largura máxima desejada */
@@ -340,6 +448,15 @@ form input, form select, form textarea {
     margin: 0 auto; /* Centraliza o scanner */
     border: 1px solid #ccc; /* Opcional: borda para destacar o scanner */
     overflow: hidden; /* Garante que elementos maiores não ultrapassem os limites */
+}
+
+.container-consulta {
+    max-width: 1100px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 
 #scanner-container video {
@@ -350,7 +467,7 @@ form input, form select, form textarea {
 #scan-btn {
     margin-top: 15px;
     padding: 10px 20px;
-    background-color: #002067;
+    background-color: #3f51b5;
     color: white;
     border: none;
     cursor: pointer;
@@ -358,7 +475,7 @@ form input, form select, form textarea {
 }
 
 #scan-btn:hover {
-    background-color: #002067;
+    background-color: #303f9f;
 }
 
 .alert {
