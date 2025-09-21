@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cadastrar
+{% endblock %}
+
+{% block main %}
+    <section>
+        <h1>Cadastrar Novo Livro</h1>
+        <nav>
+            <a href="/consulta">Consulta</a> |
+            <a href="/relatorios">Relatórios</a> |
+            <a href="/emprestimos">Empréstimos</a> |
+            <a href="/novo_emprestimo">Registrar Novo Empréstimo</a> |
+        </nav>
+    </section>
+
+    <form method="POST" action="/cadastro">
+        <div id="livro-form" class="form-type">
+            <input type="text" name="titulo" placeholder="Título" required>
+            <input type="text" name="autor" placeholder="Autor" required>
+            <input type="text" name="genero" placeholder="Gênero" required>
+            <input type="number" name="ano_de_publicacao" placeholder="Ano de publicação" required>
+            <button id="scan-btn">Escanear Código</button>
+            <div id="scanner-container"></div>
+            <input type="text" id="isbn" name="isbn" placeholder="Código ISBN" required>
+            <select name="status">
+                <option value="disponível">Disponível</option>
+                <option value="indisponível">Indisponível</option>
+            </select>
+            <input type="number" name="quantidade_total" id="quantidade_total" placeholder="Quantidade Total" required>
+        </div>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <div id="scanner-container"></div>
+{% endblock %}

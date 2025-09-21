@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Livros
+{% endblock %}
+
+{% block main %} 
+    <section>
+        <h2>Pesquisar Livros</h2>
+        <form method="GET" action="/livros">
+            <input type="text" name="pesquisa" placeholder="Buscar por título, autor, gênero, status..." />
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Livros Encontrados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Gênero</th>
+                    <th>Ano de Publicação</th>
+                    <th>ISBN</th>
+                    <th>Status</th>
+                    <th>Quantidade Total</th>
+                    <th>Disponível</th>
+                    <th>Indisponível</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Condição para mostrar os livros dependendo se há ou não uma pesquisa -->
+                {% if pesquisa %}
+                    <!-- Se houver pesquisa, mostra apenas os livros encontrados -->
+                    {% if livros %}
+                        {% for livro in livros %}
+                        <tr>
+                            <td>{{ livro.titulo }}</td>
+                            <td>{{ livro.autor }}</td>
+                            <td>{{ livro.genero }}</td>
+                            <td>{{ livro.ano_de_publicacao }}</td>
+                            <td>{{ livro.isbn }}</td>
+                            <td>{{ livro.status }}</td>
+                            <td>{{ livro.quantidade_total }}</td>
+                            <td>{{ livro.quantidade_disponivel }}</td>
+                            <td>{{ livro.quantidade_indisponivel }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="6">Nenhum livro encontrado para sua pesquisa.</td>
+                        </tr>
+                    {% endif %}
+                {% else %}
+                    <!-- Se não houver pesquisa, exibe todos os livros -->
+                    {% for livro in livros %}
+                    <tr>
+                        <td>{{ livro.titulo }}</td>
+                        <td>{{ livro.autor }}</td>
+                        <td>{{ livro.genero }}</td>
+                        <td>{{ livro.ano_de_publicacao }}</td>
+                        <td>{{ livro.isbn }}</td>
+                        <td>{{ livro.status }}</td>
+                        <td>{{ livro.quantidade_total }}</td>
+                        <td>{{ livro.quantidade_disponivel }}</td>
+                        <td>{{ livro.quantidade_indisponivel }}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}
