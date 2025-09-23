@@ -11,13 +11,13 @@
         - [X] Estoques
     - [X] Conectar ao banco de dados de desenvolvimento
     - [X] Migrar as tabelas para o banco de dados de desenvolvimento
-    - [ ] Modelagem das tabelas
-        - [ ] Turmas
-        - [ ] Bibliotecários
-        - [ ] Estudantes
-        - [ ] Livros
-        - [ ] Empréstimos
-        - [ ] Estoques
+    - [X] Modelagem das tabelas
+        - [X] Turmas
+        - [X] Bibliotecários
+        - [X] Estudantes
+        - [X] Livros
+        - [X] Empréstimos
+        - [X] Estoques
     - [ ] Controladores
         - [ ] Turmas
         - [ ] Bibliotecários
