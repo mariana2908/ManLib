@@ -17,13 +17,19 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      senha: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       telefone: {
         type: Sequelize.STRING,
         allowNull: true,
+        unique: true,
       },
       matricula: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       turma_id: {
         type: Sequelize.INTEGER,
