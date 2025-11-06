@@ -80,3 +80,6 @@
 ## 7. Documentação
 
 ## Criar seeds
+## Testar backends
+sudo service postgresql start
+## Atualizar seeds

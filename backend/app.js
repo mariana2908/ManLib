@@ -15,17 +15,21 @@ const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: '*',  // Em desenvolvimento, pode usar '*'
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
 app.use(requestLogger); // Logging detalhado
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', (req, res) => {
-    res.send('API está rodando');
-});
 // Rotas
+app.get('/', (req, res) => {
+    res.send({ message: 'Bem-vindo à API do ManLib' });
+});
+
+// API Routes
 app.use('/api', routes);
 
 // Configuração do Redis para cache (se disponível)
@@ -46,12 +50,6 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
         acquire: 30000,
         idle: 10000
     }
-});
-
-routes(app);
-
-app.get('/', (req, res) => {
-  res.send({ message: 'Welcome to the Wiki API' });
 });
 
 // Inicialização do servidor
