@@ -3,7 +3,7 @@ import { v7 as uuidv7 } from 'uuid';
 
 /** @type {import('sequelize-cli').Migration} */
 export async function up(queryInterface, Sequelize) {
-  await queryInterface.createTable('emprestimos', {
+  await queryInterface.createTable('Emprestimos', {
     id: {
       type: Sequelize.UUID,
       allowNull: false,
@@ -39,7 +39,24 @@ export async function up(queryInterface, Sequelize) {
       allowNull: false,
     },
   });
+
+  // Adiciona índices para consultas frequentes
+  await queryInterface.addIndex('Emprestimos', ['status'], {
+    name: 'idx_emprestimos_status'
+  });
+  await queryInterface.addIndex('Emprestimos', ['data_emprestimo'], {
+    name: 'idx_emprestimos_data_emp'
+  });
+  await queryInterface.addIndex('Emprestimos', ['data_devolucao'], {
+    name: 'idx_emprestimos_data_dev'
+  });
+  await queryInterface.addIndex('Emprestimos', ['estudante_id', 'status'], {
+    name: 'idx_emprestimos_estudante_status'
+  });
+  await queryInterface.addIndex('Emprestimos', ['livro_id', 'status'], {
+    name: 'idx_emprestimos_livro_status'
+  });
 }
 export async function down(queryInterface, Sequelize) {
-  await queryInterface.dropTable('emprestimos');
+  await queryInterface.dropTable('Emprestimos');
 }

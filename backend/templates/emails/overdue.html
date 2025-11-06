@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Devolução de livro em atraso</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { color: #d32f2f; margin-bottom: 20px; }
+        .content { margin-bottom: 20px; }
+        .footer { font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Aviso de Atraso na Devolução</h2>
+        </div>
+        <div class="content">
+            <p>Olá, ${nomeEstudante}</p>
+            
+            <p>Notamos que o livro <strong>${tituloLivro}</strong> está atrasado. A devolução estava prevista para <strong>${dataPrevista}</strong> (${diasAtraso} dias atrás).</p>
+            
+            <p>Por favor, faça a devolução o mais breve possível para evitar penalidades e permitir que outros estudantes também possam utilizar o material.</p>
+            
+            <p>Se você já realizou a devolução, por favor desconsidere este aviso.</p>
+        </div>
+        <div class="footer">
+            <p>Esta é uma mensagem automática do sistema da biblioteca. Por favor, não responda a este email.</p>
+            <p>Em caso de dúvidas, entre em contato com a biblioteca.</p>
+        </div>
+    </div>
+</body>
+</html>

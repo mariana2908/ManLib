@@ -1,8 +1,7 @@
 'use strict';
-import { Model } from 'sequelize';
 
-export default (sequelize, DataTypes) => {
-  Turmas.init({
+module.exports = (sequelize, DataTypes) => {
+  const Turmas = sequelize.define('Turmas', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -11,37 +10,33 @@ export default (sequelize, DataTypes) => {
     },
     nome: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     codigo: {
       type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
+      allowNull: false,
+      unique: true
     },
     turno: {
       type: DataTypes.ENUM('matutino', 'verpertino', 'noturno'),
-      allowNull: false,
+      allowNull: false
     },
-    serie : {
+    serie: {
       type: DataTypes.ENUM('1ª serie', '2ª serie', '3ª serie', 'Módulo 1', 'Módulo 2', 'Módulo 3', 'Módulo 4'),
-      allowNull: false,
+      allowNull: false
     },
     ano: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isFourDigits(value) {
-          if (!/^\d{4}$/.test(value)) {
-            throw new Error('O ano deve ser um número de quatro dígitos.');
-          }
-        }
-      }
-    },
+      allowNull: false
+    }
   }, {
-    sequelize,
-    modelName: 'Turmas',
     tableName: 'turmas',
-    timestamps: false,
+    timestamps: false
   });
+
+  Turmas.associate = (models) => {
+    Turmas.hasMany(models.Estudantes, { foreignKey: 'turma_id', as: 'estudantes' });
+  };
+
   return Turmas;
 };

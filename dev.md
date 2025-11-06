@@ -18,29 +18,32 @@
         - [X] Livros
         - [X] Empréstimos
         - [X] Estoques
-    - [ ] Controladores
-        - [ ] Turmas
-        - [ ] Bibliotecários
-        - [ ] Estudantes
-        - [ ] Livros
-        - [ ] Empréstimos
-        - [ ] Estoques
-    - [ ] Rotas
-        - [ ] API
-        - [ ] Turmas
-        - [ ] Bibliotecários
-        - [ ] Estudantes
-        - [ ] Livros
-        - [ ] Empréstimos
-        - [ ] Estoques
-    - [ ] Testes
-        - [ ] API
-        - [ ] Turmas
-        - [ ] Bibliotecários
-        - [ ] Estudantes
-        - [ ] Livros
-        - [ ] Empréstimos
-        - [ ] Estoques
+    - [X] Controladores
+        - [X] Turmas
+        - [X] Bibliotecários
+        - [X] Estudantes
+        - [X] Livros
+        - [X] Empréstimos
+        - [X] Estoques
+    - [X] Rotas
+        - [X] API
+        - [X] Turmas
+        - [X] Bibliotecários
+        - [X] Estudantes
+        - [X] Livros
+        - [X] Empréstimos
+        - [X] Estoques
+    - [X] Testes
+        - [X] API
+        - [X] Turmas
+        - [X] Bibliotecários
+        - [X] Estudantes
+        - [X] Livros
+        - [X] Empréstimos
+        - [X] Estoques
+
+        **Comparação com Backend antigo**
+
 - [ ] Frontend
     - [ ] Home (não autenticada)
     - [ ] Login
@@ -49,3 +52,5 @@
         - [ ] Validação do formulário de cadastro de bibliotecário
     - [ ] Home (autenticada bibliotecário)
     - [ ] ... (outros componentes)
+
+    babel?

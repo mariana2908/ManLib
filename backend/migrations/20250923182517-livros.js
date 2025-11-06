@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('livros', {
+    await queryInterface.createTable('Livros', {
       uuid: {
         type: Sequelize.UUID,
         primaryKey: true,
@@ -34,9 +34,23 @@ module.exports = {
         allowNull: false,
       },
     });
+
+    // Adiciona índices para buscas frequentes
+    await queryInterface.addIndex('Livros', ['status'], {
+      name: 'idx_livros_status'
+    });
+    await queryInterface.addIndex('Livros', ['isbn'], {
+      name: 'idx_livros_isbn'
+    });
+    await queryInterface.addIndex('Livros', ['titulo'], {
+      name: 'idx_livros_titulo'
+    });
+    await queryInterface.addIndex('Livros', ['autor'], {
+      name: 'idx_livros_autor'
+    });
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('livros');
+    await queryInterface.dropTable('Livros');
   }
 };

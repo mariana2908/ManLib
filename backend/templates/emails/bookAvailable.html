@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Livro Disponível</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { color: #9c27b0; margin-bottom: 20px; }
+        .content { margin-bottom: 20px; }
+        .book-info { background-color: #f5f5f5; padding: 15px; border-radius: 5px; }
+        .footer { font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Livro Disponível para Empréstimo</h2>
+        </div>
+        <div class="content">
+            <p>Olá, ${nomeEstudante}</p>
+            
+            <p>O livro que você demonstrou interesse já está disponível para empréstimo!</p>
+            
+            <div class="book-info">
+                <h3>Informações do Livro:</h3>
+                <p><strong>Título:</strong> ${tituloLivro}</p>
+                <p><strong>Autor:</strong> ${autorLivro}</p>
+            </div>
+            
+            <p>Visite a biblioteca para realizar o empréstimo. Lembre-se que a disponibilidade é por ordem de chegada.</p>
+        </div>
+        <div class="footer">
+            <p>Esta é uma mensagem automática do sistema da biblioteca. Por favor, não responda a este email.</p>
+            <p>Em caso de dúvidas, entre em contato com a biblioteca.</p>
+        </div>
+    </div>
+</body>
+</html>
