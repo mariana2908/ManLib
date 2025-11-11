@@ -117,14 +117,25 @@ class BibliotecarioController {
 
     async login(req, res) {
         try {
+            console.log('Iniciando processo de login do bibliotecário...');
             const { email, senha } = req.body;
+            console.log('Dados recebidos:', { email, senha: senha ? '***' : 'não fornecida' });
 
+            console.log('Buscando bibliotecário com email:', email);
             const bibliotecario = await Bibliotecarios.findOne({ where: { email } });
+            
+            console.log('Resultado da busca:', bibliotecario ? 'Bibliotecário encontrado' : 'Bibliotecário não encontrado');
             if (!bibliotecario) {
                 return res.status(401).json({ error: 'Credenciais inválidas' });
             }
 
+            console.log('Comparando senhas...');
+            console.log('Senha fornecida:', senha);
+            console.log('Hash armazenado:', bibliotecario.senha);
+            
             const senhaValida = await bcrypt.compare(senha, bibliotecario.senha);
+            console.log('Resultado da comparação:', senhaValida);
+            
             if (!senhaValida) {
                 return res.status(401).json({ error: 'Credenciais inválidas' });
             }
@@ -133,7 +144,11 @@ class BibliotecarioController {
             const { senha: _, ...bibliotecarioSemSenha } = bibliotecario.toJSON();
             return res.status(200).json(bibliotecarioSemSenha);
         } catch (error) {
-            return res.status(500).json({ error: 'Erro ao realizar login' });
+            console.error('Erro no login do bibliotecário:', error);
+            return res.status(500).json({ 
+                error: 'Erro ao realizar login',
+                details: process.env.NODE_ENV === 'development' ? error.message : undefined
+            });
         }
     }
 }

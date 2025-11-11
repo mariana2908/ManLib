@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 'bibliotecario'
     }
   }, {
-    tableName: 'bibliotecarios',
+    tableName: 'Bibliotecarios',
     timestamps: false
   });
 

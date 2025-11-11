@@ -8,7 +8,7 @@ module.exports = {
         uuid: '550e8400-e29b-41d4-a716-446655440000',
         nome: 'Admin',
         email: 'admin@example.com',
-        senha: 'alpine',
+        senha: '$2b$10$hIe/I1mU.nZaxVzTmOBbH.TXalrrZ.wiKJWZo7X6sBk5ai41IqCtG', // senha: alpine
         telefone: '123456789',
         status: 'ativo',
         role: 'admin'
@@ -17,7 +17,7 @@ module.exports = {
         uuid: '550e8400-e29b-41d4-a716-446655440001',
         nome: 'Bibliotecario1',
         email: 'bibliotecario1@example.com',
-        senha: 'mudar123',
+        senha: '$2b$10$IO/wS1p4fy.aylb2WMjLlePDCq5xYAO58Qu0e6i1rEUytyVNdqfWC', // senha: mudar123
         telefone: '987654321',
         status: 'ativo',
         role: 'bibliotecario'
