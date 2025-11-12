@@ -38,8 +38,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   }, {
-    tableName: 'emprestimos',
-    timestamps: false
+    tableName: 'Emprestimos',
+    timestamps: false,
+    freezeTableName: true
   });
 
   Emprestimos.associate = (models) => {

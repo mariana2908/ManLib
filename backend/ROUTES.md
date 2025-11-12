@@ -164,7 +164,7 @@
   - Parâmetros de URL:
     - `id`: ID da turma
 
-
+- [X]
 ### Criar uma nova turma
 - **POST** `/api/turmas`
   - Cria uma nova turma
@@ -180,17 +180,19 @@
     ```
 
 ## Livros
-
+- [X]
 ### Listar todos os livros
 - **GET** `/api/livros`
   - Retorna todos os livros cadastrados
 
+- [X]
 ### Buscar livros
 - **GET** `/api/livros/buscar?q=termo`
   - Busca livros por título, autor ou ISBN
   - Parâmetros de query:
     - `q`: Termo de busca
 
+- [X]
 ### Obter um livro específico
 - **GET** `/api/livros/:id`
   - Retorna os dados de um livro específico
@@ -199,22 +201,25 @@
 
 ### Empréstimos
 
+- [X]
 ### Listar empréstimos ativos
 - **GET** `/api/emprestimos`
   - Retorna todos os empréstimos ativos
 
+- [X]
 ### Realizar empréstimo
 - **POST** `/api/emprestimos`
   - Registra um novo empréstimo
   - Body:
     ```json
     {
-      "livro_id": 1,
+      "livro_id": "33265d86-af1c-4752-b388-7735dcdf2ab6",
       "estudante_id": "550e8400-e29b-41d4-a716-446655440003",
       "data_prevista_devolucao": "2024-12-31"
     }
     ```
 
+- [X]
 ### Devolver livro
 - **PUT** `/api/emprestimos/:id/devolver`
   - Registra a devolução de um livro

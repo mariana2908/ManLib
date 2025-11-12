@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     uuid: {
       type: DataTypes.UUID,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
+      defaultValue: DataTypes.UUIDV4
     },
     titulo: {
       type: DataTypes.STRING,
@@ -33,8 +34,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   }, {
-    tableName: 'livros',
-    timestamps: false
+    tableName: 'Livros',
+    timestamps: false,
+    freezeTableName: true
   });
 
   Livros.associate = (models) => {
