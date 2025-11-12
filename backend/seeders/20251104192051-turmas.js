@@ -5,6 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Turmas', [
       {
+        id: 1,
         nome: 'Turma A',
         codigo: 'INFVESP1',
         turno: 'matutino',
@@ -12,9 +13,10 @@ module.exports = {
         ano: 2024
       },
       {
+        id: 2,
         nome: 'Turma B',
         codigo: 'INFVESP2',
-        turno: 'verpertino',
+        turno: 'vespertino',
         serie: '2ª serie',
         ano: 2024
       }

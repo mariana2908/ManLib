@@ -42,8 +42,8 @@ class EstudanteController {
     async criarEstudante(req, res) {
         try {
             console.log('Iniciando criação de estudante...');
-            const { nome, email, senha, matricula, turmaId } = req.body;
-            console.log('Dados recebidos:', { nome, email, matricula, turmaId });
+            const { nome, email, senha, matricula, turma_id } = req.body;
+            console.log('Dados recebidos:', { nome, email, matricula, turma_id });
             
             // Verifica se já existe um estudante com este email ou matrícula
             console.log('Verificando se o estudante já existe...');
@@ -59,11 +59,11 @@ class EstudanteController {
             }
 
             // Verifica se a turma existe
-            if (turmaId) {
+            if (turma_id) {
                 console.log('Verificando se a turma existe...');
-                const turma = await Turmas.findByPk(turmaId);
+                const turma = await Turmas.findByPk(turma_id);
                 if (!turma) {
-                    console.log('Turma não encontrada:', turmaId);
+                    console.log('Turma não encontrada:', turma_id);
                     return res.status(400).json({ error: 'Turma não encontrada' });
                 }
                 console.log('Turma encontrada:', turma.nome);
@@ -79,7 +79,7 @@ class EstudanteController {
                 email,
                 senha: senhaHash,
                 matricula,
-                turma_id: turmaId  // Corrigindo para turma_id em vez de turmaId
+                turma_id: turma_id
             });
 
             console.log('Estudante criado com sucesso:', novoEstudante.uuid);
@@ -98,8 +98,11 @@ class EstudanteController {
 
     async atualizarEstudante(req, res) {
         try {
+            console.log('Iniciando atualização de estudante...');
             const { id } = req.params;
-            const { nome, email, senha, matricula, turmaId } = req.body;
+            const uuid = id;
+            console.log('ID do estudante a ser atualizado:', uuid);
+            const { nome, email, senha, matricula, turma_id } = req.body;
             
             const estudante = await Estudantes.findByPk(id);
             if (!estudante) {
@@ -108,13 +111,14 @@ class EstudanteController {
 
             // Se estiver atualizando o email ou matrícula, verifica se já existem
             if ((email && email !== estudante.email) || (matricula && matricula !== estudante.matricula)) {
+                console.log('Verificando email/matrícula para atualização...');
                 const existingEstudante = await Estudantes.findOne({
                     where: {
                         [Op.or]: [
                             { email: email || estudante.email },
                             { matricula: matricula || estudante.matricula }
                         ],
-                        id: { [Op.ne]: id }
+                        uuid: { [Op.ne]: uuid } // Exclui o próprio estudante da verificação
                     }
                 });
                 
@@ -124,8 +128,9 @@ class EstudanteController {
             }
 
             // Se estiver atualizando a turma, verifica se existe
-            if (turmaId && turmaId !== estudante.turmaId) {
-                const turma = await Turmas.findByPk(turmaId); // Corrigindo o nome do modelo
+            if (turma_id && turma_id !== estudante.turma_id) {
+                console.log('Verificando turma para atualização...');
+                const turma = await Turmas.findByPk(turma_id);
                 if (!turma) {
                     return res.status(400).json({ error: 'Turma não encontrada' });
                 }
@@ -136,19 +141,22 @@ class EstudanteController {
                 nome,
                 email,
                 matricula,
-                turmaId
+                turma_id
             };
+            console.log('Atualizando dados do estudante... ', dadosAtualizacao);
             
             if (senha) {
+                console.log('Atualizando senha...');
                 dadosAtualizacao.senha = await bcrypt.hash(senha, 10);
             }
 
-            const [updated] = await Estudantes.update(dadosAtualizacao, { where: { id } }); // Corrigindo a atualização
+            const [updated] = await Estudantes.update(dadosAtualizacao, { where: { uuid } }); // Corrigindo a atualização
             
             // Remove a senha do objeto retornado
             const { senha: _, ...estudanteAtualizado } = estudante.toJSON();
             return res.status(200).json(estudanteAtualizado);
         } catch (error) {
+            console.error('Erro ao atualizar estudante:', error);
             return res.status(500).json({ error: 'Erro ao atualizar estudante' });
         }
     }
@@ -156,13 +164,14 @@ class EstudanteController {
     async deletarEstudante(req, res) {
         try {
             const { id } = req.params;
-            const estudante = await Estudantes.findByPk(id);
+            const uuid = id;
+            const estudante = await Estudantes.findByPk(uuid);
             
             if (!estudante) {
                 return res.status(404).json({ error: 'Estudante não encontrado' });
             }
 
-            await Estudantes.destroy({ where: { id } });
+            await Estudantes.destroy({ where: { uuid } });
             return res.status(204).send();
         } catch (error) {
             return res.status(500).json({ error: 'Erro ao deletar estudante' });

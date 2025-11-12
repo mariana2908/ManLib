@@ -77,6 +77,7 @@
     }
     ```
 
+- [X]
 ### Criar um novo estudante
 - **POST** `/api/estudantes`
   - Cria um novo estudante
@@ -102,6 +103,7 @@
     }
     ```
 
+- [X]
 ### Atualizar um estudante
 - **PUT** `/api/estudantes/:id`
   - Atualiza os dados de um estudante
@@ -126,6 +128,7 @@
     }
     ```
 
+- [X]
 ### Deletar um estudante
 - **DELETE** `/api/estudantes/:id`
   - Remove um estudante do sistema
@@ -135,6 +138,7 @@
 
 ## Turmas
 
+- [X]
 ### Listar todas as turmas
 - **GET** `/api/turmas`
   - Retorna todas as turmas cadastradas
@@ -153,11 +157,13 @@
     ]
     ```
 
+- [X]
 ### Obter uma turma específica
 - **GET** `/api/turmas/:id`
   - Retorna os dados de uma turma específica
   - Parâmetros de URL:
     - `id`: ID da turma
+
 
 ### Criar uma nova turma
 - **POST** `/api/turmas`

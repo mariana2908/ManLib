@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     },
     turno: {
-      type: DataTypes.ENUM('matutino', 'verpertino', 'noturno'),
+      type: DataTypes.ENUM('matutino', 'vespertino', 'noturno'),
       allowNull: false
     },
     serie: {

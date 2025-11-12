@@ -1,5 +1,7 @@
 const { Bibliotecarios } = require('../models');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = process.env;
 
 class BibliotecarioController {
     async listarBibliotecarios(req, res) {
@@ -140,9 +142,26 @@ class BibliotecarioController {
                 return res.status(401).json({ error: 'Credenciais inválidas' });
             }
 
+            // Gera o token JWT
+            const token = jwt.sign(
+                { 
+                    id: bibliotecario.uuid, 
+                    email: bibliotecario.email, 
+                    role: bibliotecario.role,
+                    type: 'bibliotecario'
+                },
+                JWT_SECRET || 'seu_segredo_secreto',
+                { expiresIn: '1h' }
+            );
+
             // Remove a senha do objeto retornado
             const { senha: _, ...bibliotecarioSemSenha } = bibliotecario.toJSON();
-            return res.status(200).json(bibliotecarioSemSenha);
+            
+            // Retorna os dados do usuário (sem a senha) e o token
+            return res.status(200).json({
+                ...bibliotecarioSemSenha,
+                token // O cliente deve armazenar este token e enviá-lo no header Authorization
+            });
         } catch (error) {
             console.error('Erro no login do bibliotecário:', error);
             return res.status(500).json({ 

@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
       uuid: {
         type: DataTypes.UUID,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        defaultValue: DataTypes.UUIDV4
       },
       nome: {
         type: DataTypes.STRING,
@@ -38,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       status: {
         type: DataTypes.ENUM('ativo', 'inativo'),
+        defaultValue: 'ativo',
         allowNull: false
       }
     },

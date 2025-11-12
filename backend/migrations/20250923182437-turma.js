@@ -20,7 +20,7 @@ module.exports = {
          unique: true,
        },
        turno: {
-         type: Sequelize.ENUM('matutino', 'verpertino', 'noturno'),
+         type: Sequelize.ENUM('matutino', 'vespertino', 'noturno'),
          allowNull: false,
        },
        serie : {
