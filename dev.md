@@ -1,7 +1,7 @@
 # PLANO DE DESENVOLVIMENTO DO MANLIB 2.0
 
 - [X] Criação das pastas de backend e frontend
-- [ ] Backend
+- [X] Backend
     - [X] Migrations (Tabelas do banco de dados)
         - [X] Turmas
         - [X] Bibliotecários
@@ -52,5 +52,3 @@
         - [ ] Validação do formulário de cadastro de bibliotecário
     - [ ] Home (autenticada bibliotecário)
     - [ ] ... (outros componentes)
-
-    babel?
