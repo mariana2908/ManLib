@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       senha: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       telefone: {
         type: DataTypes.STRING,
@@ -39,8 +39,21 @@ module.exports = (sequelize, DataTypes) => {
       },
       status: {
         type: DataTypes.ENUM('ativo', 'inativo'),
-        defaultValue: 'ativo',
+        defaultValue: 'inativo',
         allowNull: false
+      },
+      senhaTemporaria: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      dataExpiracaoSenha: {
+        type: DataTypes.DATE,
+        allowNull: true
+      },
+      primeiroAcesso: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true,
+        defaultValue: null
       }
     },
     {

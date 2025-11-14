@@ -21,7 +21,7 @@ module.exports = {
       },
       senha: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       telefone: {
         type: Sequelize.STRING,
@@ -40,6 +40,20 @@ module.exports = {
       status: {
         type: Sequelize.ENUM('ativo', 'inativo'),
         allowNull: false,
+        defaultValue: 'inativo',
+      },
+      senhaTemporaria: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      dataExpiracaoSenha: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
+      primeiroAcesso: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+        defaultValue: null,
       },
     });
   },

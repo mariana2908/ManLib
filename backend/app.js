@@ -29,6 +29,10 @@ app.get('/', (req, res) => {
     res.send({ message: 'Bem-vindo à API do ManLib' });
 });
 
+// Rotas de autenticação de estudantes
+const estudanteAuthRoutes = require('./routes/estudanteAuthRoutes');
+app.use('/api/auth/estudantes', estudanteAuthRoutes);
+
 // API Routes
 app.use('/api', routes);
 
