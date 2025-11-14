@@ -83,5 +83,6 @@
 ## Testar backends
 sudo service postgresql start
 ## Atualizar seeds
-- [ ]
+- [X] Turmas
+- [ ] Alunos
 - [ ] Subir para o Railway
