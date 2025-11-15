@@ -145,14 +145,6 @@ module.exports = {
       },
       {
         id: 18,
-        nome: 'TÉCNICO EM INFORMÁTICA - ENSINO MÉDIO INTEGRADO - 2ª SERIE',
-        codigo: 'INFMAT2SA',
-        turno: 'matutino',
-        serie: '2ª serie',
-        ano: 2025
-      },
-      {
-        id: 19,
         nome: 'TÉCNICO EM INFORMÁTICA - ENSINO MÉDIO INTEGRADO - 1ª SERIE',
         codigo: 'INFVES1SA',
         turno: 'vespertino',
@@ -160,7 +152,7 @@ module.exports = {
         ano: 2025
       },
       {
-        id: 20,
+        id: 19,
         nome: 'TÉCNICO EM INFORMÁTICA - ENSINO MÉDIO INTEGRADO - 2ª SERIE',
         codigo: 'INFMAT2SA',
         turno: 'matutino',
@@ -168,7 +160,7 @@ module.exports = {
         ano: 2025
       },
       {
-        id: 21,       
+        id: 20,       
         nome: 'TÉCNICO EM INFORMÁTICA - ENSINO MÉDIO INTEGRADO - 2ª SERIE',
         codigo: 'INFVES2SA',
         turno: 'vespertino',
@@ -176,7 +168,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 22,       
+        id: 21,       
         nome: 'TÉCNICO EM INFORMÁTICA - ENSINO MÉDIO INTEGRADO - 3ª SERIE',
         codigo: 'INTMAT3SA',
         turno: 'matutino',
@@ -184,7 +176,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 23,       
+        id: 22,       
         nome: 'TÉCNICO EM INFORMÁTICA - ENSINO MÉDIO INTEGRADO - 3ª SERIE',
         codigo: 'INFVES3SA',
         turno: 'vespertino',
@@ -192,7 +184,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 24,       
+        id: 23,       
         nome: 'TÉCNICO EM INFORMÁTICA - SUBSEQUENTE - MÓDULO 2',
         codigo: 'INFNOTM2A',
         turno: 'noturno',
@@ -200,7 +192,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 25,       
+        id: 24,       
         nome: 'TÉCNICO EM INFORMÁTICA - SUBSEQUENTE - MÓDULO 3',
         codigo: 'INFNOTM3A',
         turno: 'noturno',
@@ -208,7 +200,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 26,       
+        id: 25,       
         nome: 'TÉCNICO EM INFORMÁTICA - SUBSEQUENTE - MÓDULO 4',
         codigo: 'INFNOTM4A',
         turno: 'noturno',
@@ -217,7 +209,7 @@ module.exports = {
       },
       // Turma de Enfermagem
       {
-        id: 27,      
+        id: 26,      
         nome: 'TÉCNICO EM ENFERMAGEM - SUBSEQUENTE - MÓDULO 3',
         codigo: 'ENFeNOTM3A2',
         turno: 'noturno',
@@ -226,7 +218,7 @@ module.exports = {
       },
       // Turmas de Análises Clínicas
       {
-        id: 28,      
+        id: 27,      
         nome: 'TÉCNICO EM ANÁLISES CLÍNICAS - ENSINO MÉDIO INTEGRADO - 1ª SERIE',
         codigo: 'ANACVESS1SA',
         turno: 'vespertino',
@@ -234,7 +226,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 29,      
+        id: 28,      
         nome: 'TÉCNICO EM ANÁLISES CLÍNICAS - ENSINO MÉDIO INTEGRADO - 3ª SERIE',
         codigo: 'ANACVES3SA',
         turno: 'vespertino',
@@ -243,7 +235,7 @@ module.exports = {
       },
       // Turmas de Química
       {
-        id: 30,      
+        id: 29,      
         nome: 'TÉCNICO EM QUÍMICA - ENSINO MÉDIO INTEGRADO - 1ª SERIE',
         codigo: 'QUIMMAT1SA',
         turno: 'matutino',
@@ -251,7 +243,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 31,      
+        id: 30,      
         nome: 'TÉCNICO EM QUÍMICA - ENSINO MÉDIO INTEGRADO - 1ª SERIE',
         codigo: 'QUIMMAT1SB',
         turno: 'matutino',
@@ -259,7 +251,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 32,      
+        id: 31,      
         nome: 'TÉCNICO EM QUÍMICA - ENSINO MÉDIO INTEGRADO - 2ª SERIE',
         codigo: 'QUIMMAT2SA',
         turno: 'matutino',
@@ -267,7 +259,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 33,      
+        id: 32,      
         nome: 'TÉCNICO EM QUÍMICA - ENSINO MÉDIO INTEGRADO - 3ª SERIE',
         codigo: 'QUIMMAT3SA',
         turno: 'matutino',
@@ -275,7 +267,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 34,      
+        id: 33,      
         nome: 'TÉCNICO EM QUÍMICA - SUBSEQUENTE - MÓDULO 2',
         codigo: 'QUIMNOTM2A2',
         turno: 'noturno',
@@ -283,7 +275,7 @@ module.exports = {
         ano: 2025 
       },
       {
-        id: 35,      
+        id: 34,      
         nome: 'TÉCNICO EM QUÍMICA - SUBSEQUENTE - MÓDULO 3',
         codigo: 'QUIMNOTM3A2',
         turno: 'noturno',

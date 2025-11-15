@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       matricula: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: true
       },
       turma_id: {
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       status: {
         type: DataTypes.ENUM('ativo', 'inativo'),
-        defaultValue: 'inativo',
+        defaultValue: 'ativo',
         allowNull: false
       },
       senhaTemporaria: {

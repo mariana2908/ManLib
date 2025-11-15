@@ -30,7 +30,7 @@ module.exports = {
       },
       matricula: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: true,
       },
       turma_id: {
@@ -40,7 +40,7 @@ module.exports = {
       status: {
         type: Sequelize.ENUM('ativo', 'inativo'),
         allowNull: false,
-        defaultValue: 'inativo',
+        defaultValue: 'ativo',
       },
       senhaTemporaria: {
         type: Sequelize.STRING,
