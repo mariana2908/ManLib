@@ -7,7 +7,7 @@
     "start": "node app.js",
     "build": "npm install",
     "dev": "nodemon app.js",
-    "db:migrate": "sequelize-cli db:migrate:undo:all && sequelize-cli db:migrate",
+    "db:migrate": "sequelize-cli db:migrate:undo:all && sequelize-cli db:migrate && sequelize-cli db:seed:undo:all && sequelize-cli db:seed:all",
     "db:seed": "sequelize-cli db:seed:undo:all && sequelize-cli db:seed:all",
     "postinstall": "sequelize-cli db:migrate:undo:all && sequelize-cli db:migrate && sequelize-cli db:seed:undo:all && sequelize-cli db:seed:all"
   },
