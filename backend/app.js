@@ -56,20 +56,24 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     }
 });
 
-// Inicialização do servidor
- const startServer = async () => {
-     try {
-         // Testa a conexão com o banco de dados
-         await sequelize.authenticate();
-         console.log('Conexão com o banco de dados estabelecida com sucesso.');
-         // Inicia os jobs agendados
-         jobService.initJobs();
-         console.log('Jobs agendados iniciados.');
+// Configuração da porta para o Railway
+const PORT = process.env.PORT || port;
 
-         // Inicia o servidor
-         app.listen(port, () => {
-             console.log(`Servidor rodando na porta ${port}`);
-             if (redisClient) {
+// Inicialização do servidor
+const startServer = async () => {
+    try {
+        // Testa a conexão com o banco de dados
+        await sequelize.authenticate();
+        console.log('✅ Conexão com o banco de dados estabelecida com sucesso.');
+        
+        // Inicia os jobs agendados
+        jobService.initJobs();
+        console.log('⏰ Jobs agendados iniciados.');
+
+        // Inicia o servidor
+        const server = app.listen(PORT, '0.0.0.0', () => {
+            console.log(`🚀 Servidor rodando na porta ${PORT}`);
+            if (redisClient) {
                  console.log('Cache Redis conectado');
              }
          });

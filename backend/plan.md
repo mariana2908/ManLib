@@ -84,5 +84,5 @@
 sudo service postgresql start
 ## Atualizar seeds
 - [X] Turmas
-- [ ] Alunos
-- [ ] Subir para o Railway
+- [1/3] Alunos
+- [-] Subir para o Railway
