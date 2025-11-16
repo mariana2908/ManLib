@@ -5,4 +5,11 @@ nixPkgs = ['nodejs-16.x', 'python3', 'gcc']
 cmds = ["cd backend && npm install"]
 
 [start]
-cmd = "cd backend && npm start"
+cmd =[phases.setup]
+nixPkgs = ['nodejs-18.x', 'python3', 'gcc']
+
+[phases.install]
+cmds = ["cd backend && npm install"]
+
+[start]
+cmd = "cd backend && npm start" "cd backend && npm start"
