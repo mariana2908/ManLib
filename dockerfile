@@ -14,16 +14,15 @@ RUN npm install
 # Copia o restante dos arquivos
 COPY backend/ .
 
-# Cria o diretório de configuração e copia o arquivo de configuração
-RUN mkdir -p config && \
-    if [ -f config/config.json ]; then \
-        cp config/config.json config/config.json; \
-    else \
-        echo '{"development":{},"test":{},"production":{}}' > config/config.json; \
-    fi
+# Cria o diretório de configuração se não existir
+RUN mkdir -p config
+
+# Remove o postinstall para evitar erros durante o build
+RUN npm remove -g sequelize-cli && \
+    npm install -g sequelize-cli
 
 # Expõe a porta 3000
 EXPOSE 3000
 
 # Comando para rodar a aplicação
-CMD ["sh", "-c", "npm run db:migrate && npm start"]
+CMD ["sh", "-c", "npx sequelize-cli db:migrate && node app.js"]
