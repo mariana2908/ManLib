@@ -2,6 +2,7 @@
   "name": "manlib-backend",
   "version": "1.0.0",
   "description": "Backend do sistema de biblioteca ManLib",
+  "type": "commonjs",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

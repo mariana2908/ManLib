@@ -1,5 +1,5 @@
-import { v7 as uuidv7 } from 'uuid';
 'use strict';
+const { v7: uuidv7 } = require('uuidv7');
 
 /** @type {import('sequelize-cli').Migration} */
 export async function up(queryInterface, Sequelize) {
