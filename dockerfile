@@ -8,18 +8,14 @@ RUN apk add --no-cache python3 make g++
 # Copia APENAS os arquivos necessários para instalar as dependências
 COPY backend/package*.json ./
 
-# Instala as dependências
+# Instala as dependências com versões específicas
+RUN npm install uuid@9.0.1
+RUN npm install sequelize@6.37.7
+RUN npm install sequelize-cli@6.6.2
 RUN npm install
 
 # Copia o restante dos arquivos
 COPY backend/ .
-
-# Cria o diretório de configuração se não existir
-RUN mkdir -p config
-
-# Remove o postinstall para evitar erros durante o build
-RUN npm remove -g sequelize-cli && \
-    npm install -g sequelize-cli
 
 # Expõe a porta 3000
 EXPOSE 3000

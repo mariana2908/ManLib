@@ -1,5 +1,8 @@
 'use strict';
-const { v7 } = require('uuid');
+let uuidv4;
+import('uuid').then(module => {
+  uuidv4 = module.v4;
+}).catch(err => console.error('Failed to import uuid:', err));
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
