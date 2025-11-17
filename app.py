@@ -18,28 +18,23 @@ app.config['WTF_CSRF_ENABLED'] = True
 
 logging.basicConfig(filename='app.log', level=logging.INFO)
 
+# Certifique-se de que 'import os' está no topo
 def get_db_connection():
-    # 1. Tenta obter a URL de conexão pública (exigida para clientes externos).
-    DB_URL = os.environ.get('DATABASE_PUBLIC_URL')
+    DB_URL = os.environ.get('DATABASE_URL') # Usar a URL interna se rodando no Railway
     
     if not DB_URL:
-        # Se a variável não for encontrada (ex: rodando localmente sem .env),
-        # você pode tentar a URL interna (se for um fallback seguro) ou levantar um erro.
-        # Aqui, vamos exigir que a URL pública esteja definida.
-        raise EnvironmentError("A variável DATABASE_PUBLIC_URL não foi encontrada. Certifique-se de que o ambiente está configurado.")
+        # Fallback para a URL pública com SSL se rodando externamente
+        DB_URL = os.environ.get('DATABASE_PUBLIC_URL')
+        if DB_URL and 'sslmode' not in DB_URL:
+            DB_URL += '?sslmode=require'
+    
+    if not DB_URL:
+        # Se você está vendo 500, esta linha provavelmente foi acionada
+        raise EnvironmentError("Variáveis de Conexão não encontradas.") 
 
-    # 2. ESSENCIAL: Garante que o modo SSL é exigido para conexões públicas.
-    if 'sslmode' not in DB_URL:
-        DB_URL += '?sslmode=require'
-
-    try:
-        # psycopg2 aceita a string de conexão completa
-        conn = psycopg2.connect(DB_URL)
-        conn.autocommit = True
-        return conn
-    except Exception as e:
-        logging.error(f"Falha na conexão DB PÚBLICA com a URL: {DB_URL}. Erro: {e}")
-        raisemit = True  # Opcional: ativa autocommit
+    # Se o banco 'manlib' não existir, esta linha causará o erro 500
+    conn = psycopg2.connect(DB_URL)
+    conn.autocommit = True
     return conn
 
 # Função para iniciar o agendador em segundo plano
