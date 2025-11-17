@@ -6,3 +6,4 @@ schedule
 email_validator
 gunicorn
 psycopg2-binary
+python-dotenv
