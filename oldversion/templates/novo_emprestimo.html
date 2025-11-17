@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Novo Empréstimo
+{% endblock %}
+
+{% block main %}
+    <section>
+        <h1>Gestão de Empréstimos</h1>
+        <nav>
+            <a href="/cadastro">Cadastro</a> |
+            <a href="/consulta">Consulta</a> |
+            <a href="/relatorios">Relatórios</a> |
+            <a href="/emprestimos">Empréstimos</a> |
+        </nav>
+    </section>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <section>
+        <h1>Registrar Novo Empréstimo</h1>
+        <form action="/novo_emprestimo" method="POST">
+            <label for="livro_id">Livro:</label>
+            <select name="livro_id" required>
+                {% for livro in livros_disponiveis %}
+                    <option value="{{ livro[0] }}">{{ livro[1] }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="estudante_id">Estudante:</label>
+            <select name="estudante_id" required>
+                {% for estudante in estudantes %}
+                    <option value="{{ estudante[0] }}">{{ estudante[1] }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="bibliotecario_id">Bibliotecário:</label>
+            <select name="bibliotecario_id" required>
+                {% for bibliotecario in bibliotecarios %}
+                    <option value="{{ bibliotecario[0] }}">{{ bibliotecario[1] }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="data_emprestimo">Data do Empréstimo:</label>
+            <input type="date" name="data_emprestimo" required><br>
+
+            <label for="data_devolucao">Data de Devolução:</label>
+            <input type="date" name="data_devolucao" required><br>
+
+            <button type="submit">Registrar Empréstimo</button>
+        </form>
+    </section>
+{% endblock %}

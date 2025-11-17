@@ -1,0 +1,50 @@
+Erro: Não foi possível enviar o e-mail para marianaparisdasilva@gmail.com. Erro: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d9443c01a7336-218a1e50299sm44261865ad.143 - gsmtp')
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'O Coração do Labirinto' com data de devolução 2024-12-18
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'O Coração do Labirinto' com data de devolução 2024-12-18
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'Os Segredos de Avalon' com data de devolução 2024-12-18
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'As Sombras de Lúmen' com data de devolução 2024-12-17
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'O Coração do Labirinto' com data de devolução 2024-12-16
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Ilha das Sombras' com data de devolução 2024-12-21
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Jornada dos Ecos' com data de devolução 2024-12-20
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'O Último Guardião do Tempo' com data de devolução 2024-12-21
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Ilha das Sombras' com data de devolução 2024-12-22
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Jornada dos Ecos' com data de devolução 2024-12-20
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'O Último Guardião do Tempo' com data de devolução 2024-12-21
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Ilha das Sombras' com data de devolução 2024-12-22
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Ilha das Sombras' com data de devolução 2024-12-22
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Aviso de Livro Atrasado'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Jornada dos Ecos' com data de devolução 2024-12-14
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Aviso de Livro Atrasado'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'O Último Guardião do Tempo' com data de devolução 2024-12-14
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Aviso de Livro Atrasado'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Jornada dos Ecos' com data de devolução 2024-12-15
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Ilha das Sombras' com data de devolução 2024-12-21
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Jornada dos Ecos' com data de devolução 2024-12-20
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'O Último Guardião do Tempo' com data de devolução 2024-12-21
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Ilha das Sombras' com data de devolução 2024-12-22
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Aviso de Livro Atrasado'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Jornada dos Ecos' com data de devolução 2024-12-19
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Ilha das Sombras' com data de devolução 2024-12-22
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Aviso de Livro Atrasado'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Jornada dos Ecos' com data de devolução 2024-12-19
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Lembrete de Devolução'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Ilha das Sombras' com data de devolução 2024-12-22
+Sucesso: E-mail enviado para marianaparisdasilva@gmail.com com assunto 'Aviso de Livro Atrasado'
+Lembrete enviado para marianaparisdasilva@gmail.com sobre o livro 'A Jornada dos Ecos' com data de devolução 2024-12-19

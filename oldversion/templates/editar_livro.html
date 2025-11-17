@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Editar Livro
+{% endblock %}
+
+{% block main %}
+    <h1>Editar Livro</h1>
+    <form method="POST">
+        <input type="text" name="titulo" value="{{ livro['titulo'] }}" required>
+        <input type="text" name="autor" value="{{ livro['autor'] }}" required>
+        <input type="text" name="genero" value="{{ livro['genero'] }}" required>
+        <input type="text" name="ano_de_publicacao" value="{{ livro['ano_de_publicacao'] }}" required>
+        <input type="text" name="isbn" value="{{ livro['isbn'] }}" required>
+        <input type="text" name="status" value="{{ livro['status'] }}" required>
+        <input type="number" name="quantidade_disponivel" value="{{ livro['quantidade_disponivel'] }}" required>
+        <button type="submit">Atualizar</button>
+    </form>      
+{% endblock %}
