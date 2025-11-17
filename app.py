@@ -18,24 +18,20 @@ app.config['WTF_CSRF_ENABLED'] = True
 
 logging.basicConfig(filename='app.log', level=logging.INFO)
 
-# Certifique-se de que 'import os' está no topo
 def get_db_connection():
-    DB_URL = os.environ.get('DATABASE_URL') # Usar a URL interna se rodando no Railway
-    
-    if not DB_URL:
-        # Fallback para a URL pública com SSL se rodando externamente
-        DB_URL = os.environ.get('DATABASE_PUBLIC_URL')
-        if DB_URL and 'sslmode' not in DB_URL:
-            DB_URL += '?sslmode=require'
-    
-    if not DB_URL:
-        # Se você está vendo 500, esta linha provavelmente foi acionada
-        raise EnvironmentError("Variáveis de Conexão não encontradas.") 
-
-    # Se o banco 'manlib' não existir, esta linha causará o erro 500
-    conn = psycopg2.connect(DB_URL)
-    conn.autocommit = True
-    return conn
+    try:
+        conn = psycopg2.connect(
+            host=os.getenv('PGHOST', 'localhost'),
+            dbname=os.getenv('PGDATABASE', 'manlib'),
+            user=os.getenv('PGUSER', 'postgres'),
+            password=os.getenv('PGPASSWORD', 'nXVJQIepHLxkcDeQrNuQvXUrsmhGKwZL'),
+            port=os.getenv('PGPORT', '5432')
+        )
+        conn.autocommit = True
+        return conn
+    except Exception as e:
+        print(f"Erro ao conectar ao banco de dados: {e}")
+        raise
 
 # Função para iniciar o agendador em segundo plano
 def start_email_scheduler():

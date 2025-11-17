@@ -8529,3 +8529,62 @@ INFO:werkzeug:127.0.0.1 - - [10/Jul/2025 10:58:07] "POST /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [10/Jul/2025 10:58:07] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [10/Jul/2025 10:58:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [10/Jul/2025 10:58:07] "[36mGET /static/images/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:32] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:34] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:34] "GET /static/images/favicon.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:34] "GET /static/js/scanner.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:34] "GET /static/images/lib.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:35] "GET /static/images/rocket.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:35] "GET /static/js/scanner.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:36] "GET /static/images/sparkle.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:40] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:40] "[36mGET /static/images/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:40] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:40] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+ERROR:app:Exception on /login [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 110, in login
+    conn = get_db_connection()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 33, in get_db_connection
+    raise EnvironmentError("Variáveis de Conexão não encontradas.")
+OSError: Variáveis de Conexão não encontradas.
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:47] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /login [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 110, in login
+    conn = get_db_connection()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 33, in get_db_connection
+    raise EnvironmentError("Variáveis de Conexão não encontradas.")
+OSError: Variáveis de Conexão não encontradas.
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:57] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
