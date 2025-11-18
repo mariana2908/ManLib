@@ -8588,3 +8588,36 @@ Traceback (most recent call last):
     raise EnvironmentError("Variáveis de Conexão não encontradas.")
 OSError: Variáveis de Conexão não encontradas.
 INFO:werkzeug:127.0.0.1 - - [17/Nov/2025 21:59:57] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:39] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:41] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:41] "[36mGET /static/images/lib.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:41] "[36mGET /static/images/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:41] "[36mGET /static/images/sparkle.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:42] "[36mGET /static/images/rocket.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:47] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:47] "[36mGET /static/js/scanner.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:47] "[36mGET /static/images/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+ERROR:app:Exception on /login [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ManLib/app.py", line 104, in login
+    cursor.execute('SELECT estudante_id, senha_hash FROM estudantes WHERE email = ?', (email,))
+sqlite3.OperationalError: no such table: estudantes
+INFO:werkzeug:127.0.0.1 - - [18/Nov/2025 01:50:54] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
