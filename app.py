@@ -521,66 +521,76 @@ def relatorios():
         if 'logged_in' not in session or not session['logged_in']:
             flash("Por favor, faça login para acessar esta página.", "error")
             return redirect(url_for('login'))
-            
+
         if 'user_type' not in session or session['user_type'] != 'bibliotecario':
             flash("Acesso negado. Apenas bibliotecários podem acessar esta página.", "error")
             return redirect(url_for('home'))
-        
-        conn = get_db_connection()
-        try:
+
+        with get_db_connection() as conn:
             cursor = conn.cursor()
-            
-            cursor.execute('''
-                SELECT e.emprestimo_id, l.titulo, es.nome as estudante, 
-                       e.data_emprestimo, e.data_devolucao
-                FROM emprestimos e
-                JOIN livros l ON e.livro_id = l.livro_id
-                JOIN estudantes es ON e.estudante_id = es.estudante_id
-                WHERE e.status = 'ativo'
-                ORDER BY e.data_devolucao ASC
-            ''')
-            emprestimos_ativos = cursor.fetchall()
-            
-            cursor.execute('''
-                SELECT e.emprestimo_id, l.titulo, es.nome as estudante, 
-                       e.data_emprestimo, e.data_devolucao
-                FROM emprestimos e
-                JOIN livros l ON e.livro_id = l.livro_id
-                JOIN estudantes es ON e.estudante_id = es.estudante_id
-                WHERE e.status = 'atrasado'
-                ORDER BY e.data_devolucao ASC
-            ''')
-            emprestimos_atrasados = cursor.fetchall()
-            
-            cursor.execute('''
-                SELECT l.livro_id, l.titulo, l.autor, COUNT(e.emprestimo_id) as total_emprestimos
+
+            # Totais
+            cursor.execute("SELECT COUNT(*) FROM livros")
+            total_livros = cursor.fetchone()[0]
+
+            cursor.execute("SELECT COUNT(*) FROM bibliotecarios")
+            total_bibliotecarios = cursor.fetchone()[0]
+
+            cursor.execute("SELECT COUNT(*) FROM estudantes")
+            total_estudantes = cursor.fetchone()[0]
+
+            cursor.execute("SELECT COUNT(*) FROM emprestimos WHERE status = 'ativo'")
+            total_emprestados = cursor.fetchone()[0]
+
+            cursor.execute("SELECT COUNT(*) FROM livros WHERE status = 'disponivel'")
+            total_disponiveis = cursor.fetchone()[0]
+
+            # Livros mais emprestados
+            cursor.execute("""
+                SELECT l.livro_id, l.titulo, l.autor, COUNT(e.emprestimo_id) AS quantidade_emprestimos
                 FROM livros l
                 LEFT JOIN emprestimos e ON l.livro_id = e.livro_id
                 GROUP BY l.livro_id
-                ORDER BY total_emprestimos DESC
+                ORDER BY quantidade_emprestimos DESC
                 LIMIT 10
-            ''')
+            """)
             livros_mais_emprestados = cursor.fetchall()
-            
+
+            # Relatório de devoluções concluídas
+            cursor.execute("""
+                SELECT e.emprestimo_id,
+                       l.titulo,
+                       es.nome AS nome_estudante,
+                       b.nome AS nome_bibliotecario,
+                       e.data_emprestimo,
+                       e.data_devolucao,
+                       e.data_retorno,
+                       e.status
+                FROM emprestimos e
+                JOIN livros l ON e.livro_id = l.livro_id
+                JOIN estudantes es ON e.estudante_id = es.estudante_id
+                JOIN bibliotecarios b ON e.bibliotecario_id = b.bibliotecario_id
+                WHERE e.status = 'concluido'
+                ORDER BY e.data_retorno DESC
+            """)
+            emprestimos_concluidos = cursor.fetchall()
+
             return render_template(
                 'relatorios.html',
-                emprestimos_ativos=emprestimos_ativos,
-                emprestimos_atrasados=emprestimos_atrasados,
-                livros_mais_emprestados=livros_mais_emprestados
+                total_livros=total_livros,
+                total_bibliotecarios=total_bibliotecarios,
+                total_estudantes=total_estudantes,
+                total_emprestados=total_emprestados,
+                total_disponiveis=total_disponiveis,
+                livros_mais_emprestados=livros_mais_emprestados,
+                emprestimos_concluidos=emprestimos_concluidos
             )
-            
-        except sqlite3.Error:
-            logging.exception("Erro ao acessar o banco de dados em relatorios")
-            flash("Erro ao acessar o banco de dados. Por favor, tente novamente.", "error")
-            return redirect(url_for('home'))
-            
-        finally:
-            conn.close()
-                
+
     except Exception:
         logging.exception("Erro inesperado na rota de relatórios")
         flash("Ocorreu um erro inesperado. Por favor, tente novamente.", "error")
         return redirect(url_for('home'))
+
 
 @app.route('/emprestimos', methods=['GET', 'POST'])
 def emprestimos():
