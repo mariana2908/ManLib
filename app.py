@@ -133,10 +133,6 @@ def home_bibliotecario():
         flash("Ocorreu um erro ao carregar a página. Por favor, tente novamente.", "error")
         return redirect(url_for('home'))
 
-@app.route('/home_bibliotecario')
-def home_bibliotecario():
-    return render_template('home_bibliotecario.html')  # Página inicial para bibliotecários
-
 # Verificar login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
