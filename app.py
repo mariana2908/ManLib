@@ -88,24 +88,24 @@ def home():
 @app.route('/home_estudante')
 def home_estudante():
     try:
-        print("Acessando rota home_estudante")  # Log 1
+        print("Acessando rota home_estudante")
         
         # Verifica se o usuário está logado
         if 'logged_in' not in session or not session['logged_in']:
-            print("Usuário não está logado. Redirecionando para login.")  # Log 2
+            print("Usuário não está logado. Redirecionando para login.")
             return redirect(url_for('login'))
             
         # Verifica se o usuário é um estudante
         if 'user_type' not in session or session['user_type'] != 'estudante':
-            print(f"Acesso negado. Tipo de usuário: {session.get('user_type')}")  # Log 3
-            flash("Acesso negado. Você não tem permissão para acessar esta página.", "error")
+            print(f"Redirecionando usuário do tipo {session.get('user_type')} para a página inicial")
             return redirect(url_for('home'))
         
-        print(f"Renderizando template para estudante: {session.get('user_email')}")  # Log 4
-        return render_template('home_estudante.html')  # Página inicial para estudantes
+        # Se chegou até aqui, é um estudante logado
+        print(f"Renderizando template para estudante: {session.get('user_email')}")
+        return render_template('home_estudante.html')
         
     except Exception as e:
-        print(f"Erro na rota home_estudante: {str(e)}")  # Log de erro
+        print(f"Erro na rota home_estudante: {str(e)}")
         flash("Ocorreu um erro ao carregar a página. Por favor, tente novamente.", "error")
         return redirect(url_for('home'))
 
