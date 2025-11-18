@@ -1,9 +1,7 @@
 flask
 flask-wtf
 werkzeug
-redis
 schedule
 email_validator
-gunicorn
-psycopg2-binary
 python-dotenv
+gunicorn

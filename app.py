@@ -1,7 +1,7 @@
 from datetime import timedelta
 import os
-import psycopg2
-import psycopg2.extras
+from dotenv import load_dotenv
+import sqlite3
 import threading
 import re
 import logging
@@ -18,16 +18,13 @@ app.config['WTF_CSRF_ENABLED'] = True
 
 logging.basicConfig(filename='app.log', level=logging.INFO)
 
+# Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
+
 def get_db_connection():
     try:
-        conn = psycopg2.connect(
-            host=os.getenv('PGHOST', 'localhost'),
-            dbname=os.getenv('PGDATABASE', 'manlib'),
-            user=os.getenv('PGUSER', 'postgres'),
-            password=os.getenv('PGPASSWORD', 'nXVJQIepHLxkcDeQrNuQvXUrsmhGKwZL'),
-            port=os.getenv('PGPORT', '5432')
-        )
-        conn.autocommit = True
+        conn = sqlite3.connect('manlib.db')
+        conn.row_factory = sqlite3.Row
         return conn
     except Exception as e:
         print(f"Erro ao conectar ao banco de dados: {e}")
@@ -87,13 +84,11 @@ def home():
 
 @app.route('/home_estudante')
 def home_estudante():
-    nome = session.get('user_nome', 'Usuário')
-    return render_template('home_estudante.html', nome=nome)  # Página inicial para estudantes
+    return render_template('home_estudante.html')  # Página inicial para estudantes
 
 @app.route('/home_bibliotecario')
 def home_bibliotecario():
-    nome = session.get('user_nome', 'Usuário')
-    return render_template('home_bibliotecario.html', nome=nome)
+    return render_template('home_bibliotecario.html')  # Página inicial para bibliotecários
 
 # Verificar login
 @app.route('/login', methods=['GET', 'POST'])
@@ -106,7 +101,7 @@ def login():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        cursor.execute('SELECT estudante_id, senha_hash FROM estudantes WHERE email = %s', (email,))
+        cursor.execute('SELECT estudante_id, senha_hash FROM estudantes WHERE email = ?', (email,))
         estudante_data = cursor.fetchone()
 
         if not estudante_data:
@@ -116,10 +111,10 @@ def login():
 
         estudante_id_value, senha_hash = estudante_data  # Obtém ID e senha hash
 
-        cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = %s', (estudante_id_value,))
+        cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = ?', (estudante_id_value,))
         bibliotecario = cursor.fetchone()
 
-        cursor.execute('SELECT * FROM estudantes WHERE estudante_id = %s', (estudante_id_value,))
+        cursor.execute('SELECT * FROM estudantes WHERE estudante_id = ?', (estudante_id_value,))
         estudante = cursor.fetchone()
 
         # Agora que todas as consultas terminaram, podemos fechar a conexão
@@ -130,20 +125,6 @@ def login():
             session['user_email'] = email
             session['logged_in'] = True
             session['user_id'] = estudante_id_value
-
-            # Buscar o nome do estudante e salvar na sessão
-            conn = get_db_connection()
-            cursor = conn.cursor()
-            cursor.execute('SELECT nome FROM estudantes WHERE estudante_id = %s', (estudante_id_value,))
-            resultado_nome = cursor.fetchone()
-            conn.close()
-
-            if resultado_nome:
-                session['user_nome'] = resultado_nome[0]
-                print(f"Nome do usuário encontrado: {session['user_nome']}")
-            else:
-                session['user_nome'] = 'Usuário'
-                print("Nome do usuário não encontrado, usando 'Usuário' como padrão.")
 
             if bibliotecario:
                 session['user_type'] = 'bibliotecario'
@@ -182,7 +163,7 @@ def registrar_bibliotecario():
         try:
             # Verificar se o estudante existe
             print(f"Verificando estudante com matrícula: {matricula}")
-            cursor.execute('SELECT estudante_id FROM estudantes WHERE matricula = %s', (matricula,))
+            cursor.execute('SELECT estudante_id FROM estudantes WHERE matricula = ?', (matricula,))
             estudante = cursor.fetchone()
             print(f"Resultado da consulta ao estudante: {estudante}")
 
@@ -194,7 +175,7 @@ def registrar_bibliotecario():
             estudante_id = estudante[0]
             print(f"ID do estudante encontrado: {estudante_id}")
 
-            cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = %s', (estudante_id,))
+            cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = ?', (estudante_id,))
             bibliotecario = cursor.fetchone()
             if bibliotecario:
                 flash("Este estudante já está registrado como bibliotecário.", "error")
@@ -203,7 +184,7 @@ def registrar_bibliotecario():
             
             # Inserir o estudante como bibliotecário
             cursor.execute(
-                'INSERT INTO bibliotecarios (estudante_id, status_bibliotecario) VALUES (%s, %s)',
+                'INSERT INTO bibliotecarios (estudante_id, status_bibliotecario) VALUES (?, ?)',
                 (estudante_id, 'ativo')
             )
             conn.commit()
@@ -241,7 +222,7 @@ def registrar_estudante():
         cursor = conn.cursor()
         try:
             cursor.execute('''INSERT INTO estudantes (nome, email, senha_hash, matricula, turma, turno, telefone, status)
-                              VALUES (%s, %s, %s, %s, %s, %s, %s, %s)''',
+                              VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
                            (nome, email, generate_password_hash(senha), matricula, turma, turno, telefone, 'ativo'))
             conn.commit()
             conn.close()
@@ -279,22 +260,22 @@ def consultar_livros():
                 cursor.execute(
                     '''
                     SELECT * FROM livros 
-                    WHERE CAST(ano_de_publicacao AS TEXT) = %s 
-                    OR isbn LIKE %s
+                    WHERE CAST(ano_de_publicacao AS TEXT) = ? 
+                    OR isbn LIKE ?
                     ''',
                     (pesquisa, f"%{pesquisa}%")
                 )
             # Caso contrário, realiza a pesquisa nos campos de texto
             elif pesquisa.lower() in ["disponível", "indisponível"]:  # Verifica se é uma pesquisa de status
-                cursor.execute("SELECT * FROM livros WHERE status = %s", (pesquisa,))
+                cursor.execute("SELECT * FROM livros WHERE status = ?", (pesquisa,))
             # Passando parâmetros de pesquisa corretamente dentro de uma tupla
             else:
                 cursor.execute(
                 '''
                 SELECT * FROM livros 
-                WHERE titulo LIKE %s 
-                OR autor LIKE %s 
-                OR genero LIKE %s
+                WHERE titulo LIKE ? 
+                OR autor LIKE ? 
+                OR genero LIKE ?
                 ''',
                 (f"%{pesquisa}%", f"%{pesquisa}%", f"%{pesquisa}%")
             )
@@ -322,7 +303,7 @@ def cadastro():
             try:
                 if tipo == 'livro':
                     isbn = data.get('isbn', '').strip()
-                    cursor.execute('SELECT COUNT(*) FROM livros WHERE isbn = %s', (isbn,))
+                    cursor.execute('SELECT COUNT(*) FROM livros WHERE isbn = ?', (isbn,))
                     exists = cursor.fetchone()[0]
 
                     if exists:
@@ -337,7 +318,7 @@ def cadastro():
                     quantidade_disponivel = int(data.get('quantidade_total', 0))
 
                     cursor.execute('''INSERT INTO livros (titulo, autor, genero, ano_de_publicacao, isbn, status, quantidade_total, quantidade_disponivel, quantidade_indisponivel)
-                                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)''',
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''',
                                 (data['titulo'], data['autor'], data.get('genero', ''), 
                                  data['ano_de_publicacao'], data.get('isbn'), data['status'], quantidade_total, quantidade_disponivel, 0))
                     conn.commit()
@@ -383,12 +364,12 @@ def consulta():
             if tipo == 'livros':
                 cursor.execute("""
                     SELECT * FROM livros 
-                    WHERE (titulo ILIKE %s 
-                        OR autor ILIKE %s 
-                        OR genero ILIKE %s
-                        OR ano_de_publicacao = %s
-                        OR isbn ILIKE %s 
-                        OR REPLACE(isbn, '-', '') = %s)
+                    WHERE (titulo LIKE ? 
+                        OR autor LIKE ? 
+                        OR genero LIKE ?
+                        OR ano_de_publicacao = ?
+                        OR isbn LIKE ? 
+                        OR REPLACE(isbn, '-', '') = ?)
                 """, (param_like, param_like, param_like, ano, param_like, param_isbn))
 
                 columns = [desc[0] for desc in cursor.description]
@@ -401,11 +382,11 @@ def consulta():
                     SELECT e.nome, e.email, 'bibliotecario' AS tipo 
                     FROM bibliotecarios b
                     JOIN estudantes e ON b.estudante_id = e.estudante_id 
-                    WHERE e.nome ILIKE %s OR e.email ILIKE %s
+                    WHERE e.nome LIKE ? OR e.email LIKE ?
                     UNION 
                     SELECT nome, email, 'estudante' AS tipo 
                     FROM estudantes 
-                    WHERE nome ILIKE %s OR email ILIKE %s
+                    WHERE nome LIKE ? OR email LIKE ?
                 """, (param_like, param_like, param_like, param_like))
 
                 columns = [desc[0] for desc in cursor.description]
@@ -417,7 +398,7 @@ def consulta():
                 if pesquisa.lower() in ["disponível", "indisponível"]:
                     cursor.execute("""
                         SELECT * FROM livros
-                        WHERE status = %s
+                        WHERE status = ?
                     """, (pesquisa,))
                     columns = [desc[0] for desc in cursor.description]
                     livros = [dict(zip(columns, row)) for row in cursor.fetchall()]
@@ -435,7 +416,7 @@ def apagar_livro(livro_id):
     if 'logged_in' in session and session['user_type'] == 'bibliotecario':
         with get_db_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute("DELETE FROM livros WHERE livro_id = %s", (livro_id,))
+            cursor.execute("DELETE FROM livros WHERE livro_id = ?", (livro_id,))
             conn.commit()
             conn.close()
             print(f"Livro com ID {livro_id} apagado com sucesso.")
@@ -466,9 +447,9 @@ def editar_livro(livro_id):
             with get_db_connection() as conn:
                 cursor = conn.cursor()
                 cursor.execute('''
-                    UPDATE livros SET titulo=%s, autor=%s, genero=%s, ano_de_publicacao=%s, isbn=%s, status=%s,
-                    quantidade_total=%s, quantidade_disponivel=%s, quantidade_indisponivel=%s
-                    WHERE livro_id=%s
+                    UPDATE livros SET titulo=?, autor=?, genero=?, ano_de_publicacao=?, isbn=?, status=?,
+                    quantidade_total=?, quantidade_disponivel=?, quantidade_indisponivel=?
+                    WHERE livro_id=?
                 ''', (titulo, autor, genero, ano, isbn, status,
                       quantidade_total, quantidade_disponivel, quantidade_indisponivel, livro_id))
                 conn.commit()
