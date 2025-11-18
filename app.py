@@ -135,72 +135,79 @@ def home_bibliotecario():
 # Verificar login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    # Se o usuário já estiver logado, redireciona para a página apropriada
+    if 'logged_in' in session and session['logged_in']:
+        if session.get('user_type') == 'estudante':
+            return redirect(url_for('consultar_livros'))
+        elif session.get('user_type') == 'bibliotecario':
+            return redirect(url_for('cadastro'))
+    
     form = LoginForm()
+    
     if form.validate_on_submit():
         try:
-            print("Iniciando processo de login...")  # Log 1
+            print("Iniciando processo de login...")
             email = form.email.data
             password = form.password.data
-            print(f"Formulário válido. Email: {email}")  # Log 2
+            print(f"Tentativa de login com email: {email}")
 
+            conn = None
             try:
                 conn = get_db_connection()
                 cursor = conn.cursor()
-                print("Conexão com o banco de dados estabelecida")  # Log 3
 
+                # Buscar estudante pelo email
                 cursor.execute('SELECT estudante_id, senha_hash FROM estudantes WHERE email = ?', (email,))
                 estudante_data = cursor.fetchone()
-                print(f"Resultado da busca por email: {estudante_data}")  # Log 4
 
                 if not estudante_data:
-                    flash("Email ou senha incorretos.")
-                    conn.close()
-                    print("Email não encontrado")  # Log 5
+                    print("Email não encontrado")
+                    flash("Email ou senha incorretos.", "error")
                     return render_template('login.html', form=form)
 
-                estudante_id_value, senha_hash = estudante_data
-                print(f"Estudante ID: {estudante_id_value}")  # Log 6
+                estudante_id, senha_hash = estudante_data
+                print(f"Estudante encontrado. ID: {estudante_id}")
 
-                cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = ?', (estudante_id_value,))
-                bibliotecario = cursor.fetchone()
-                print(f"Dados do bibliotecário: {bibliotecario}")  # Log 7
+                # Verificar se é bibliotecário
+                cursor.execute('SELECT 1 FROM bibliotecarios WHERE estudante_id = ?', (estudante_id,))
+                is_bibliotecario = cursor.fetchone() is not None
 
-                cursor.execute('SELECT * FROM estudantes WHERE estudante_id = ?', (estudante_id_value,))
-                estudante = cursor.fetchone()
-                print(f"Dados do estudante: {estudante}")  # Log 8
-
-                # Agora que todas as consultas terminaram, podemos fechar a conexão
-                conn.close()
-                print("Conexão com o banco de dados fechada")  # Log 9
-
-                # Verifica se a senha é correta antes de acessar os dados
+                # Verificar a senha
                 if check_password_hash(senha_hash, password):
+                    print("Senha correta. Configurando sessão...")
+                    session.clear()  # Limpa a sessão anterior
                     session['user_email'] = email
                     session['logged_in'] = True
-                    session['user_id'] = estudante_id_value
-
-                    if bibliotecario:
-                        session['user_type'] = 'bibliotecario'
-                        return redirect(url_for('home_bibliotecario'))
+                    session['user_id'] = estudante_id
+                    session['user_type'] = 'bibliotecario' if is_bibliotecario else 'estudante'
+                    
+                    print(f"Login bem-sucedido. Tipo de usuário: {session['user_type']}")
+                    
+                    # Redireciona com base no tipo de usuário
+                    if is_bibliotecario:
+                        return redirect(url_for('cadastro'))
                     else:
-                        session['user_type'] = 'estudante'
-                        return redirect(url_for('home_estudante'))
+                        return redirect(url_for('consultar_livros'))
                 else:
-                    flash("Email ou senha incorretos.")
+                    print("Senha incorreta")
+                    flash("Email ou senha incorretos.", "error")
                     return render_template('login.html', form=form)
 
-            except Exception as e:
-                print(f"Erro ao acessar o banco de dados: {str(e)}")
-                flash("Erro ao processar o login. Por favor, tente novamente.")
-                if 'conn' in locals() and conn:
-                    conn.close()
+            except sqlite3.Error as e:
+                print(f"Erro no banco de dados: {e}")
+                flash("Erro ao acessar o banco de dados. Por favor, tente novamente.", "error")
                 return render_template('login.html', form=form)
+                
+            finally:
+                if conn:
+                    conn.close()
 
         except Exception as e:
-            print(f"Erro inesperado: {str(e)}")
-            flash("Ocorreu um erro inesperado. Por favor, tente novamente.")
+            print(f"Erro inesperado durante o login: {str(e)}")
+            flash("Ocorreu um erro inesperado. Por favor, tente novamente.", "error")
             return render_template('login.html', form=form)
-
+    
+    # Se for GET ou se o formulário não for válido, mostra o formulário de login
     return render_template('login.html', form=form)
 
 @app.route('/logout')
