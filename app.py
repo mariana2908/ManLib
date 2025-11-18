@@ -76,11 +76,11 @@ def check_session():
 @app.route('/')
 def home():
     # Se o usuário estiver logado, redireciona para a página apropriada
-    if 'logged_in' in session and session['logged_in']:
-        if session.get('user_type') == 'estudante':
-            return redirect(url_for('home_estudante'))
-        elif session.get('user_type') == 'bibliotecario':
-            return redirect(url_for('home_bibliotecario'))
+    if 'logged_in' in session and session['logged_in'] and 'user_type' in session:
+        if session['user_type'] == 'estudante':
+            return redirect(url_for('consultar_livros'))  # Redireciona para /livros
+        elif session['user_type'] == 'bibliotecario':
+            return redirect(url_for('consultar_livros'))  # Redireciona para /livros
     
     # Se não estiver logado ou não tiver um tipo de usuário definido, mostra a página inicial
     return render_template('home.html')
@@ -97,12 +97,12 @@ def home_estudante():
             
         # Verifica se o usuário é um estudante
         if 'user_type' not in session or session['user_type'] != 'estudante':
-            print(f"Redirecionando usuário do tipo {session.get('user_type')} para a página inicial")
-            return redirect(url_for('home'))
+            print(f"Redirecionando usuário do tipo {session.get('user_type')} para a página de livros")
+            return redirect(url_for('consultar_livros'))
         
         # Se chegou até aqui, é um estudante logado
-        print(f"Renderizando template para estudante: {session.get('user_email')}")
-        return render_template('home_estudante.html')
+        print(f"Redirecionando para a página de livros para o estudante: {session.get('user_email')}")
+        return redirect(url_for('consultar_livros'))
         
     except Exception as e:
         print(f"Erro na rota home_estudante: {str(e)}")
