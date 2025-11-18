@@ -219,14 +219,14 @@ def registrar_bibliotecario():
         # Validação de e-mail
         if not validar_email(email):
             flash("E-mail inválido!", "error")
-            return render_template('registrar_estudante.html', form=form)
+            return render_template('registrar_bibliotecario.html', form=form)
 
         # Conexão com o banco de dados
-        conn = get_db_connection()
-        conn.autocommit = True  # Adiciona esta linha antes do `cursor = conn.cursor()`
-        cursor = conn.cursor()
-
+        conn = None
         try:
+            conn = get_db_connection()
+            cursor = conn.cursor()
+
             # Verificar se o estudante existe
             print(f"Verificando estudante com matrícula: {matricula}")
             cursor.execute('SELECT estudante_id FROM estudantes WHERE matricula = ?', (matricula,))
@@ -235,17 +235,25 @@ def registrar_bibliotecario():
 
             if not estudante:
                 flash("Nenhum estudante encontrado com essa matrícula. Registre-o primeiro como estudante.", "error")
-                print("Nenhum estudante encontrado com a matrícula:", matricula)  # Para depurar
+                print("Nenhum estudante encontrado com a matrícula:", matricula)
                 return render_template("registrar_bibliotecario.html", form=form)
             
             estudante_id = estudante[0]
             print(f"ID do estudante encontrado: {estudante_id}")
 
+            # Verificar se o e-mail do formulário corresponde ao e-mail do estudante
+            cursor.execute('SELECT email FROM estudantes WHERE estudante_id = ?', (estudante_id,))
+            estudante_email = cursor.fetchone()
+            
+            if estudante_email and estudante_email[0].lower() != email.lower():
+                flash("O e-mail informado não corresponde ao cadastro do estudante.", "error")
+                return render_template("registrar_bibliotecario.html", form=form)
+
             cursor.execute('SELECT * FROM bibliotecarios WHERE estudante_id = ?', (estudante_id,))
             bibliotecario = cursor.fetchone()
             if bibliotecario:
                 flash("Este estudante já está registrado como bibliotecário.", "error")
-                print("Este estudante já é bibliotecário:", estudante_id)  # Para depurar
+                print("Este estudante já é bibliotecário:", estudante_id)
                 return render_template("registrar_bibliotecario.html", form=form)
             
             # Inserir o estudante como bibliotecário
@@ -254,17 +262,16 @@ def registrar_bibliotecario():
                 (estudante_id, 'ativo')
             )
             conn.commit()
-            conn.close()
-            print("Bibliotecário registrado com sucesso!")
             flash("Registro de bibliotecário realizado com sucesso!", "success")
-            return redirect("/login")
+            return redirect(url_for('login'))
 
-        except psycopg2.DatabaseError as e:
-            logging.error(f"Erro de conexão com o banco de dados: {e}")
-            raise
+        except sqlite3.Error as e:
+            print(f"Erro no banco de dados: {e}")
+            flash("Erro ao processar o registro. Por favor, tente novamente.", "error")
+            return render_template("registrar_bibliotecario.html", form=form)
         finally:
-            conn.close()
-
+            if conn:
+                conn.close()
     return render_template("registrar_bibliotecario.html", form=form)
 
 @app.route("/registrar_estudante", methods=["GET", "POST"])
