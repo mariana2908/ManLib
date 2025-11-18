@@ -95,7 +95,7 @@ def home_estudante():
             print("Usuário não está logado. Redirecionando para login.")
             return redirect(url_for('login'))
             
-        # Se não for estudante, redireciona para a página inicial
+        # Verifica se o usuário é um estudante
         if 'user_type' not in session or session['user_type'] != 'estudante':
             print(f"Redirecionando usuário do tipo {session.get('user_type')} para a página inicial")
             return redirect(url_for('home'))
@@ -106,6 +106,30 @@ def home_estudante():
         
     except Exception as e:
         print(f"Erro na rota home_estudante: {str(e)}")
+        flash("Ocorreu um erro ao carregar a página. Por favor, tente novamente.", "error")
+        return redirect(url_for('home'))
+
+@app.route('/home_bibliotecario')
+def home_bibliotecario():
+    try:
+        print("Acessando rota home_bibliotecario")
+        
+        # Verifica se o usuário está logado
+        if 'logged_in' not in session or not session['logged_in']:
+            print("Usuário não está logado. Redirecionando para login.")
+            return redirect(url_for('login'))
+            
+        # Verifica se o usuário é um bibliotecário
+        if 'user_type' not in session or session['user_type'] != 'bibliotecario':
+            print(f"Redirecionando usuário do tipo {session.get('user_type')} para a página inicial")
+            return redirect(url_for('home'))
+        
+        # Se chegou até aqui, é um bibliotecário logado
+        print(f"Renderizando template para bibliotecário: {session.get('user_email')}")
+        return render_template('home_bibliotecario.html')
+        
+    except Exception as e:
+        print(f"Erro na rota home_bibliotecario: {str(e)}")
         flash("Ocorreu um erro ao carregar a página. Por favor, tente novamente.", "error")
         return redirect(url_for('home'))
 
