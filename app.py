@@ -529,23 +529,28 @@ def relatorios():
         with get_db_connection() as conn:
             cursor = conn.cursor()
 
-            # Totais
+            # Totais básicos
             cursor.execute("SELECT COUNT(*) FROM livros")
-            total_livros = cursor.fetchone()[0]
+            total_livros = cursor.fetchone()[0] or 0
 
             cursor.execute("SELECT COUNT(*) FROM bibliotecarios")
-            total_bibliotecarios = cursor.fetchone()[0]
+            total_bibliotecarios = cursor.fetchone()[0] or 0
 
             cursor.execute("SELECT COUNT(*) FROM estudantes")
-            total_estudantes = cursor.fetchone()[0]
+            total_estudantes = cursor.fetchone()[0] or 0
 
+            # Total emprestados (status 'ativo' — ajuste o texto se seu DB usar outro)
             cursor.execute("SELECT COUNT(*) FROM emprestimos WHERE status = 'ativo'")
-            total_emprestados = cursor.fetchone()[0]
+            total_emprestados = cursor.fetchone()[0] or 0
 
-            cursor.execute("SELECT COUNT(*) FROM livros WHERE status = 'disponivel'")
+            # Total disponíveis (ajuste 'disponível' vs 'disponivel' conforme seu DB)
+            # Verifique qual string seu DB usa; aqui eu tento as duas possibilidades
+            cursor.execute("SELECT COUNT(*) FROM livros WHERE status = 'disponível'")
             total_disponiveis = cursor.fetchone()[0]
+            if total_disponiveis is None:
+                total_disponiveis = 0
 
-            # Livros mais emprestados
+            # Livros mais emprestados (já com nome correto da coluna de contagem)
             cursor.execute("""
                 SELECT l.livro_id, l.titulo, l.autor, COUNT(e.emprestimo_id) AS quantidade_emprestimos
                 FROM livros l
@@ -556,21 +561,25 @@ def relatorios():
             """)
             livros_mais_emprestados = cursor.fetchall()
 
-            # Relatório de devoluções concluídas
+            # Relatório de empréstimos concluídos
+            # Observação: sua estrutura original usa bibliotecarios(estudante_id) -> estudantes.nome
+            # Então fazemos LEFT JOIN em bibliotecarios e depois JOIN em estudantes para pegar o nome
             cursor.execute("""
-                SELECT e.emprestimo_id,
-                       l.titulo,
-                       es.nome AS nome_estudante,
-                       b.nome AS nome_bibliotecario,
-                       e.data_emprestimo,
-                       e.data_devolucao,
-                       e.data_retorno,
-                       e.status
+                SELECT
+                    e.emprestimo_id,
+                    l.titulo,
+                    es.nome AS nome_estudante,
+                    eb.nome AS nome_bibliotecario,
+                    e.data_emprestimo,
+                    e.data_devolucao,
+                    e.data_retorno,
+                    e.status
                 FROM emprestimos e
                 JOIN livros l ON e.livro_id = l.livro_id
                 JOIN estudantes es ON e.estudante_id = es.estudante_id
-                JOIN bibliotecarios b ON e.bibliotecario_id = b.bibliotecario_id
-                WHERE e.status = 'concluido'
+                LEFT JOIN bibliotecarios b ON e.bibliotecario_id = b.estudante_id
+                LEFT JOIN estudantes eb ON b.estudante_id = eb.estudante_id
+                WHERE e.status = 'concluído' OR e.status = 'concluido'
                 ORDER BY e.data_retorno DESC
             """)
             emprestimos_concluidos = cursor.fetchall()
@@ -586,11 +595,13 @@ def relatorios():
                 emprestimos_concluidos=emprestimos_concluidos
             )
 
-    except Exception:
+    except Exception as e:
+        # Log completo do erro para você ver no arquivo de logs ou console do Railway
         logging.exception("Erro inesperado na rota de relatórios")
+        # também imprime no console para facilitar debug no deploy
+        print("ERRO /relatorios:", e)
         flash("Ocorreu um erro inesperado. Por favor, tente novamente.", "error")
         return redirect(url_for('home'))
-
 
 @app.route('/emprestimos', methods=['GET', 'POST'])
 def emprestimos():
