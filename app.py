@@ -75,12 +75,15 @@ def check_session():
 
 @app.route('/')
 def home():
-    if 'user_type' in session:
-        if session['user_type'] == 'estudante':
+    # Se o usuário estiver logado, redireciona para a página apropriada
+    if 'logged_in' in session and session['logged_in']:
+        if session.get('user_type') == 'estudante':
             return redirect(url_for('home_estudante'))
-        elif session['user_type'] == 'bibliotecario':
+        elif session.get('user_type') == 'bibliotecario':
             return redirect(url_for('home_bibliotecario'))
-    return render_template('home.html')  # Adicionando esta linha para evitar loop
+    
+    # Se não estiver logado ou não tiver um tipo de usuário definido, mostra a página inicial
+    return render_template('home.html')
 
 @app.route('/home_estudante')
 def home_estudante():
