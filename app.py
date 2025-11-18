@@ -80,7 +80,7 @@ def home():
             return redirect(url_for('home_estudante'))
         elif session['user_type'] == 'bibliotecario':
             return redirect(url_for('home_bibliotecario'))
-    return render_template('home.html')
+    return render_template('home.html')  # Adicionando esta linha para evitar loop
 
 @app.route('/home_estudante')
 def home_estudante():
@@ -96,8 +96,6 @@ def home_estudante():
         if 'user_type' not in session or session['user_type'] != 'estudante':
             print(f"Acesso negado. Tipo de usuário: {session.get('user_type')}")  # Log 3
             flash("Acesso negado. Você não tem permissão para acessar esta página.", "error")
-            if session.get('user_type') == 'bibliotecario':
-                return redirect(url_for('home_bibliotecario'))
             return redirect(url_for('home'))
         
         print(f"Renderizando template para estudante: {session.get('user_email')}")  # Log 4
