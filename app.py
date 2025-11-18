@@ -562,91 +562,79 @@ def editar_livro(livro_id):
         print("Usuário não autorizado ou não logado.")
         return redirect(url_for('login'))
 
-@app.route('/relatorios', methods=['GET'])
+@app.route('/relatorios')
 def relatorios():
-    if 'logged_in' in session and session['user_type'] == 'bibliotecario':
-        # Exemplo de lógica de relatório (contar itens em cada tabela)
+    try:
+        # Verifica se o usuário está logado
+        if 'logged_in' not in session or not session['logged_in']:
+            flash("Por favor, faça login para acessar esta página.", "error")
+            return redirect(url_for('login'))
+            
+        # Verifica se o usuário é um bibliotecário
+        if 'user_type' not in session or session['user_type'] != 'bibliotecario':
+            flash("Acesso negado. Apenas bibliotecários podem acessar esta página.", "error")
+            return redirect(url_for('home'))
+        
+        # Conexão com o banco de dados
         conn = get_db_connection()
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)  # <-- ALTERAÇÃO AQUI
         try:
-            # Total de livros
-            cursor.execute('SELECT COUNT(*) FROM livros')
-            total_livros = cursor.fetchone()['count']
+            cursor = conn.cursor()
             
-            # Total de bibliotecarios e estudantes
-            cursor.execute('SELECT COUNT(*) FROM bibliotecarios')
-            total_bibliotecarios = cursor.fetchone()['count']
-            cursor.execute('SELECT COUNT(*) FROM estudantes')
-            total_estudantes = cursor.fetchone()['count']
-            
-            # Total de livros emprestados e disponíveis
+            # Consulta para obter os empréstimos ativos
             cursor.execute('''
-                           SELECT COUNT(*) FROM livros WHERE status = 'indisponível'
-                           ''')
-            total_emprestados = cursor.fetchone()['count']
-            total_disponiveis = total_livros - total_emprestados
-
-            # Livros mais emprestados
-            cursor.execute('''
-                SELECT l.titulo, COUNT(e.emprestimo_id) AS quantidade_emprestimos
+                SELECT e.emprestimo_id, l.titulo, es.nome as estudante, 
+                       e.data_emprestimo, e.data_devolucao_prevista
                 FROM emprestimos e
                 JOIN livros l ON e.livro_id = l.livro_id
-                GROUP BY l.titulo
-                ORDER BY quantidade_emprestimos DESC
+                JOIN estudantes es ON e.estudante_id = es.estudante_id
+                WHERE e.status = 'ativo'
+                ORDER BY e.data_devolucao_prevista ASC
+            ''')
+            emprestimos_ativos = cursor.fetchall()
+            
+            # Consulta para obter os empréstimos atrasados
+            cursor.execute('''
+                SELECT e.emprestimo_id, l.titulo, es.nome as estudante, 
+                       e.data_emprestimo, e.data_devolucao_prevista
+                FROM emprestimos e
+                JOIN livros l ON e.livro_id = l.livro_id
+                JOIN estudantes es ON e.estudante_id = es.estudante_id
+                WHERE e.status = 'atrasado'
+                ORDER BY e.data_devolucao_prevista ASC
+            ''')
+            emprestimos_atrasados = cursor.fetchall()
+            
+            # Consulta para obter os livros mais emprestados
+            cursor.execute('''
+                SELECT l.livro_id, l.titulo, l.autor, COUNT(e.emprestimo_id) as total_emprestimos
+                FROM livros l
+                LEFT JOIN emprestimos e ON l.livro_id = e.livro_id
+                GROUP BY l.livro_id
+                ORDER BY total_emprestimos DESC
                 LIMIT 10
             ''')
             livros_mais_emprestados = cursor.fetchall()
-            print(livros_mais_emprestados)
             
-        except psycopg2.DatabaseError as e:
-            flash(f'Erro ao gerar relatório: {e}', 'danger')
-            total_livros = total_bibliotecarios = total_estudantes = 0
-            total_emprestados = total_disponiveis = 0
-            livros_mais_emprestados = []
-        
-        # Exibir empréstimos concluídos (livros devolvidos)
-        try:
-            cursor.execute('''
-                SELECT 
-                    l.titulo, 
-                    es.nome AS nome_estudante, 
-                    eb.nome AS nome_bibliotecario, 
-                    e.data_emprestimo, 
-                    e.data_devolucao, 
-                    e.data_retorno, 
-                    e.status
-                FROM 
-                    emprestimos e
-                JOIN 
-                    livros l ON e.livro_id = l.livro_id 
-                JOIN 
-                    estudantes es ON e.estudante_id = es.estudante_id
-                LEFT JOIN 
-                    bibliotecarios b ON e.bibliotecario_id = b.estudante_id  -- Relacionando com bibliotecários usando o estudante_id
-                LEFT JOIN 
-                    estudantes eb ON eb.estudante_id = b.estudante_id  -- Relacionando o bibliotecário com o estudante
-                WHERE 
-                    e.status = 'concluído';
-            ''')
-            emprestimos_concluidos = cursor.fetchall()
-            # Não precisa converter para dict, pois já vem como dicionário
-            print(emprestimos_concluidos)
-        except psycopg2.DatabaseError as e:
-            flash(f'Erro ao gerar relatório: {e}', 'danger')
-            emprestimos_concluidos = []
-
+            return render_template(
+                'relatorios.html',
+                emprestimos_ativos=emprestimos_ativos,
+                emprestimos_atrasados=emprestimos_atrasados,
+                livros_mais_emprestados=livros_mais_emprestados
+            )
+            
+        except sqlite3.Error as e:
+            print(f"Erro ao acessar o banco de dados: {e}")
+            flash("Erro ao acessar o banco de dados. Por favor, tente novamente.", "error")
+            return redirect(url_for('home'))
+            
         finally:
-            conn.close()
-
-        return render_template('relatorios.html', 
-                               total_livros=total_livros, 
-                               total_bibliotecarios=total_bibliotecarios, 
-                               total_estudantes=total_estudantes,
-                               total_emprestados=total_emprestados,
-                               total_disponiveis=total_disponiveis,
-                               livros_mais_emprestados=livros_mais_emprestados,
-                               emprestimos_concluidos=emprestimos_concluidos)
-    return redirect(url_for('login'))
+            if conn:
+                conn.close()
+                
+    except Exception as e:
+        print(f"Erro inesperado na rota de relatórios: {str(e)}")
+        flash("Ocorreu um erro inesperado. Por favor, tente novamente.", "error")
+        return redirect(url_for('home'))
 
 @app.route('/emprestimos', methods=['GET', 'POST'])
 def emprestimos():
