@@ -84,7 +84,27 @@ def home():
 
 @app.route('/home_estudante')
 def home_estudante():
-    return render_template('home_estudante.html')  # Página inicial para estudantes
+    try:
+        print("Acessando rota home_estudante")  # Log 1
+        
+        # Verifica se o usuário está logado
+        if 'logged_in' not in session or not session['logged_in']:
+            print("Usuário não está logado. Redirecionando para login.")  # Log 2
+            return redirect(url_for('login'))
+            
+        # Verifica se o usuário é um estudante
+        if 'user_type' not in session or session['user_type'] != 'estudante':
+            print(f"Acesso negado. Tipo de usuário: {session.get('user_type')}")  # Log 3
+            flash("Acesso negado. Você não tem permissão para acessar esta página.", "error")
+            return redirect(url_for('home'))
+        
+        print(f"Renderizando template para estudante: {session.get('user_email')}")  # Log 4
+        return render_template('home_estudante.html')  # Página inicial para estudantes
+        
+    except Exception as e:
+        print(f"Erro na rota home_estudante: {str(e)}")  # Log de erro
+        flash("Ocorreu um erro ao carregar a página. Por favor, tente novamente.", "error")
+        return redirect(url_for('home'))
 
 @app.route('/home_bibliotecario')
 def home_bibliotecario():
