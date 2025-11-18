@@ -290,47 +290,62 @@ def user_is_logged_in():
 # Rotas: Estudantes
 @app.route('/livros')
 def consultar_livros():
-    if 'logged_in' in session and session['user_type'] == 'estudante':
+    try:
+        if 'logged_in' not in session or not session['logged_in'] or session.get('user_type') != 'estudante':
+            flash("Acesso não autorizado. Por favor, faça login como estudante.", "error")
+            return redirect(url_for('login'))
+            
         pesquisa = request.args.get('pesquisa', '').strip()
-
         conn = get_db_connection()
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)  # <-- Use RealDictCursor
         
-        # Se houver pesquisa, filtramos os livros
-        if pesquisa:
-            # Verifica se a pesquisa é numérica (ISBN ou ano de publicação)
-            if pesquisa.isdigit():
-                cursor.execute(
-                    '''
-                    SELECT * FROM livros 
-                    WHERE CAST(ano_de_publicacao AS TEXT) = ? 
-                    OR isbn LIKE ?
-                    ''',
-                    (pesquisa, f"%{pesquisa}%")
-                )
-            # Caso contrário, realiza a pesquisa nos campos de texto
-            elif pesquisa.lower() in ["disponível", "indisponível"]:  # Verifica se é uma pesquisa de status
-                cursor.execute("SELECT * FROM livros WHERE status = ?", (pesquisa,))
-            # Passando parâmetros de pesquisa corretamente dentro de uma tupla
+        try:
+            # Se houver pesquisa, filtramos os livros
+            if pesquisa:
+                # Verifica se a pesquisa é numérica (ISBN ou ano de publicação)
+                if pesquisa.isdigit():
+                    cursor = conn.execute(
+                        '''
+                        SELECT * FROM livros 
+                        WHERE CAST(ano_de_publicacao AS TEXT) = ? 
+                        OR isbn LIKE ?
+                        ''',
+                        (pesquisa, f"%{pesquisa}%")
+                    )
+                # Verifica se é uma pesquisa de status
+                elif pesquisa.lower() in ["disponível", "indisponível"]:
+                    cursor = conn.execute("SELECT * FROM livros WHERE status = ?", (pesquisa,))
+                else:
+                    cursor = conn.execute(
+                        '''
+                        SELECT * FROM livros 
+                        WHERE titulo LIKE ? 
+                        OR autor LIKE ? 
+                        OR genero LIKE ?
+                        ''',
+                        (f"%{pesquisa}%", f"%{pesquisa}%", f"%{pesquisa}%")
+                    )
             else:
-                cursor.execute(
-                '''
-                SELECT * FROM livros 
-                WHERE titulo LIKE ? 
-                OR autor LIKE ? 
-                OR genero LIKE ?
-                ''',
-                (f"%{pesquisa}%", f"%{pesquisa}%", f"%{pesquisa}%")
-            )
-        else:
-            # Se não houver pesquisa, mostramos todos os livros
-            cursor.execute("SELECT * FROM livros")
-        
-        livros_encontrados = cursor.fetchall()
-        conn.close()
-
-        return render_template('livros.html', livros=livros_encontrados, pesquisa=pesquisa)
-    return redirect(url_for('login'))
+                # Se não houver pesquisa, mostramos todos os livros
+                cursor = conn.execute("SELECT * FROM livros")
+            
+            livros = cursor.fetchall()
+            # Converter para lista de dicionários
+            livros = [dict(livro) for livro in livros]
+            
+            return render_template('livros.html', livros=livros, pesquisa=pesquisa)
+            
+        except sqlite3.Error as e:
+            print(f"Erro no banco de dados: {e}")
+            flash("Erro ao acessar o banco de dados. Por favor, tente novamente.", "error")
+            return redirect(url_for('home_estudante'))
+            
+        finally:
+            conn.close()
+            
+    except Exception as e:
+        print(f"Erro inesperado: {e}")
+        flash("Ocorreu um erro inesperado. Por favor, tente novamente.", "error")
+        return redirect(url_for('home_estudante'))
 
 # Rotas: Bibliotecários
 @app.route('/cadastro', methods=['GET', 'POST'])
