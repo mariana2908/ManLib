@@ -95,7 +95,7 @@ def home_estudante():
             print("Usuário não está logado. Redirecionando para login.")
             return redirect(url_for('login'))
             
-        # Verifica se o usuário é um estudante
+        # Se não for estudante, redireciona para a página inicial
         if 'user_type' not in session or session['user_type'] != 'estudante':
             print(f"Redirecionando usuário do tipo {session.get('user_type')} para a página inicial")
             return redirect(url_for('home'))
