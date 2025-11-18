@@ -132,7 +132,7 @@ def home_bibliotecario():
         print(f"Erro na rota home_bibliotecario: {str(e)}")
         flash("Ocorreu um erro ao carregar a página. Por favor, tente novamente.", "error")
         return redirect(url_for('home'))
-
+    
 # Verificar login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
