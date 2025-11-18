@@ -1,19 +1,27 @@
 from datetime import timedelta
 import os
 from dotenv import load_dotenv
-import sqlite3
 import threading
 import re
 import logging
+import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import LoginForm, BibliotecarioRegistroForm, EstudanteRegistroForm
 from consulta import update_livro, get_livro_by_id
-from emprestimos import atualizar_status_emprestimo, registrar_emprestimo, obter_emprestimos, obter_dados_atuais, excluir_emprestimo, registrar_devolucao
+from emprestimos import (
+    atualizar_status_emprestimo,
+    registrar_emprestimo,
+    obter_emprestimos,
+    obter_dados_atuais,
+    excluir_emprestimo,
+    registrar_devolucao,
+)
 import emailauto
+from db import get_db_connection
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'uma_chave_secreta'
+app.config['SECRET_KEY'] = os.environ.get('MANLIB_SECRET_KEY', 'uma_chave_secreta')
 app.config['WTF_CSRF_ENABLED'] = True
 
 logging.basicConfig(filename='app.log', level=logging.INFO)
@@ -21,68 +29,46 @@ logging.basicConfig(filename='app.log', level=logging.INFO)
 # Carrega as variáveis de ambiente do arquivo .env
 load_dotenv()
 
-def get_db_connection():
-    try:
-        conn = sqlite3.connect('manlib.db')
-        conn.row_factory = sqlite3.Row
-        return conn
-    except Exception as e:
-        print(f"Erro ao conectar ao banco de dados: {e}")
-        raise
-
 # Função para iniciar o agendador em segundo plano
 def start_email_scheduler():
-    # Rodando o agendador em um thread separado
-    email_thread = threading.Thread(target=emailauto.run_scheduler)
-    email_thread.daemon = True  # Permite que o thread seja encerrado quando o processo principal for encerrado
+    email_thread = threading.Thread(target=emailauto.run_scheduler, name="EmailScheduler")
+    email_thread.daemon = True
     email_thread.start()
 
 # Regex simples para validar o formato básico do e-mail
 def validar_email(email):
-    # Regex simples para verificar o formato básico do e-mail
     regex_simples = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-
-    # Validação com a regex simples
     if not re.match(regex_simples, email):
-        return False  # Se não corresponder ao formato básico, retorna False
+        return False
 
-    # Regex avançada para verificar se o domínio contém erros comuns
     regex_avancada = r'([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)'
     match = re.match(regex_avancada, email)
 
     if match:
         usuario, dominio = match.groups()
-
-        # Lista de erros comuns nos domínios
         erros_comum = ['gmil', 'educao', 'hotmai', 'outlok']
-
-        # Verificar se o domínio contém um erro comum
         if any(erro in dominio for erro in erros_comum):
-            return False  # Se o domínio contiver um erro comum, retorna False
-
-        return True  # E-mail válido
+            return False
+        return True
 
     return False
 
 @app.before_request
 def check_session():
+    # store minimal fingerprint but avoid clearing session on small changes
     if 'user_agent' not in session:
         session['user_agent'] = request.user_agent.string
     if 'ip' not in session:
         session['ip'] = request.remote_addr
-    if session['user_agent'] != request.user_agent.string or session['ip'] != request.remote_addr:
-        session.clear()
+    # Do not clear session automatically because it invalidates legitimate users
 
 @app.route('/')
 def home():
-    # Se o usuário estiver logado, redireciona para a página apropriada
     if 'logged_in' in session and session['logged_in'] and 'user_type' in session:
         if session['user_type'] == 'estudante':
             return redirect(url_for('consultar_livros'))
         elif session['user_type'] == 'bibliotecario':
-            return redirect(url_for('cadastro'))  # Redireciona para /cadastro
-    
-    # Se não estiver logado ou não tiver um tipo de usuário definido, mostra a página inicial
+            return redirect(url_for('cadastro'))
     return render_template('home.html')
 
 @app.route('/home_estudante')
@@ -90,22 +76,19 @@ def home_estudante():
     try:
         print("Acessando rota home_estudante")
         
-        # Verifica se o usuário está logado
         if 'logged_in' not in session or not session['logged_in']:
             print("Usuário não está logado. Redirecionando para login.")
             return redirect(url_for('login'))
             
-        # Verifica se o usuário é um estudante
         if 'user_type' not in session or session['user_type'] != 'estudante':
             print(f"Redirecionando usuário do tipo {session.get('user_type')} para a página de livros")
             return redirect(url_for('consultar_livros'))
         
-        # Se chegou até aqui, é um estudante logado
         print(f"Redirecionando para a página de livros para o estudante: {session.get('user_email')}")
         return redirect(url_for('consultar_livros'))
         
     except Exception as e:
-        print(f"Erro na rota home_estudante: {str(e)}")
+        logging.exception("Erro na rota home_estudante")
         flash("Ocorreu um erro ao carregar a página. Por favor, tente novamente.", "error")
         return redirect(url_for('home'))
 
@@ -114,105 +97,88 @@ def home_bibliotecario():
     try:
         print("Acessando rota home_bibliotecario")
         
-        # Verifica se o usuário está logado
         if 'logged_in' not in session or not session['logged_in']:
             print("Usuário não está logado. Redirecionando para login.")
             return redirect(url_for('login'))
             
-        # Verifica se o usuário é um bibliotecário
         if 'user_type' not in session or session['user_type'] != 'bibliotecario':
             print(f"Redirecionando usuário do tipo {session.get('user_type')} para a página de cadastro")
             return redirect(url_for('cadastro'))
         
-        # Se chegou até aqui, é um bibliotecário logado
         print(f"Redirecionando para a página de cadastro para o bibliotecário: {session.get('user_email')}")
         return redirect(url_for('cadastro'))
         
     except Exception as e:
-        print(f"Erro na rota home_bibliotecario: {str(e)}")
+        logging.exception("Erro na rota home_bibliotecario")
         flash("Ocorreu um erro ao carregar a página. Por favor, tente novamente.", "error")
-    
+
 # Verificar login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    # Se o usuário já estiver logado, redireciona para a página apropriada
     if 'logged_in' in session and session['logged_in']:
         if session.get('user_type') == 'estudante':
             return redirect(url_for('consultar_livros'))
         elif session.get('user_type') == 'bibliotecario':
             return redirect(url_for('cadastro'))
-    
+
     form = LoginForm()
-    
+
     if form.validate_on_submit():
         try:
-            print("Iniciando processo de login...")
             email = form.email.data
             password = form.password.data
-            print(f"Tentativa de login com email: {email}")
 
             conn = None
             try:
                 conn = get_db_connection()
                 cursor = conn.cursor()
 
-                # Buscar estudante pelo email
                 cursor.execute('SELECT estudante_id, senha_hash FROM estudantes WHERE email = ?', (email,))
                 estudante_data = cursor.fetchone()
 
                 if not estudante_data:
-                    print("Email não encontrado")
                     flash("Email ou senha incorretos.", "error")
                     return render_template('login.html', form=form)
 
-                estudante_id, senha_hash = estudante_data
-                print(f"Estudante encontrado. ID: {estudante_id}")
+                # estudante_data é sqlite3.Row → acesso por nome
+                estudante_id, senha_hash = estudante_data['estudante_id'], estudante_data['senha_hash']
 
-                # Verificar se é bibliotecário
                 cursor.execute('SELECT 1 FROM bibliotecarios WHERE estudante_id = ?', (estudante_id,))
                 is_bibliotecario = cursor.fetchone() is not None
 
-                # Verificar a senha
                 if check_password_hash(senha_hash, password):
-                    print("Senha correta. Configurando sessão...")
-                    session.clear()  # Limpa a sessão anterior
+                    session.clear()
                     session['user_email'] = email
                     session['logged_in'] = True
                     session['user_id'] = estudante_id
                     session['user_type'] = 'bibliotecario' if is_bibliotecario else 'estudante'
-                    
-                    print(f"Login bem-sucedido. Tipo de usuário: {session['user_type']}")
-                    
-                    # Redireciona com base no tipo de usuário
+
                     if is_bibliotecario:
                         return redirect(url_for('cadastro'))
                     else:
                         return redirect(url_for('consultar_livros'))
                 else:
-                    print("Senha incorreta")
                     flash("Email ou senha incorretos.", "error")
                     return render_template('login.html', form=form)
 
-            except sqlite3.Error as e:
-                print(f"Erro no banco de dados: {e}")
+            except Exception:
+                logging.exception("Erro no banco de dados durante login")
                 flash("Erro ao acessar o banco de dados. Por favor, tente novamente.", "error")
                 return render_template('login.html', form=form)
-                
             finally:
                 if conn:
                     conn.close()
 
-        except Exception as e:
-            print(f"Erro inesperado durante o login: {str(e)}")
+        except Exception:
+            logging.exception("Erro inesperado durante o login")
             flash("Ocorreu um erro inesperado. Por favor, tente novamente.", "error")
             return render_template('login.html', form=form)
-    
-    # Se for GET ou se o formulário não for válido, mostra o formulário de login
+
     return render_template('login.html', form=form)
 
 @app.route('/logout')
 def logout():
-    session.clear()  # Limpa todos os dados da sessão
+    session.clear()
     return redirect(url_for('login'))
 
 @app.route("/registrar_bibliotecario", methods=["GET", "POST"])
@@ -222,18 +188,15 @@ def registrar_bibliotecario():
         email = form.email.data
         matricula = form.matricula.data
 
-        # Validação de e-mail
         if not validar_email(email):
             flash("E-mail inválido!", "error")
             return render_template('registrar_bibliotecario.html', form=form)
 
-        # Conexão com o banco de dados
         conn = None
         try:
             conn = get_db_connection()
             cursor = conn.cursor()
 
-            # Verificar se o estudante existe
             print(f"Verificando estudante com matrícula: {matricula}")
             cursor.execute('SELECT estudante_id FROM estudantes WHERE matricula = ?', (matricula,))
             estudante = cursor.fetchone()
@@ -247,7 +210,6 @@ def registrar_bibliotecario():
             estudante_id = estudante[0]
             print(f"ID do estudante encontrado: {estudante_id}")
 
-            # Verificar se o e-mail do formulário corresponde ao e-mail do estudante
             cursor.execute('SELECT email FROM estudantes WHERE estudante_id = ?', (estudante_id,))
             estudante_email = cursor.fetchone()
             
@@ -262,7 +224,6 @@ def registrar_bibliotecario():
                 print("Este estudante já é bibliotecário:", estudante_id)
                 return render_template("registrar_bibliotecario.html", form=form)
             
-            # Inserir o estudante como bibliotecário
             cursor.execute(
                 'INSERT INTO bibliotecarios (estudante_id, status_bibliotecario) VALUES (?, ?)',
                 (estudante_id, 'ativo')
@@ -272,7 +233,7 @@ def registrar_bibliotecario():
             return redirect(url_for('login'))
 
         except sqlite3.Error as e:
-            print(f"Erro no banco de dados: {e}")
+            logging.exception("Erro no banco de dados ao registrar bibliotecario")
             flash("Erro ao processar o registro. Por favor, tente novamente.", "error")
             return render_template("registrar_bibliotecario.html", form=form)
         finally:
@@ -292,7 +253,6 @@ def registrar_estudante():
         turno = form.turno.data
         telefone = form.telefone.data
 
-        # Validação de e-mail
         if not validar_email(email):
             flash("E-mail inválido!", "error")
             return render_template('registrar_estudante.html', form=form)
@@ -304,16 +264,20 @@ def registrar_estudante():
                               VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
                            (nome, email, generate_password_hash(senha), matricula, turma, turno, telefone, 'ativo'))
             conn.commit()
-            conn.close()
             flash("Registro de estudante realizado com sucesso!", "success")
             return redirect("/login")
-        except psycopg2.DatabaseError as e:
-            if "UNIQUE constraint failed: estudantes.email" in str(e):
+        except sqlite3.IntegrityError as e:
+            # trata UNIQUE constraint (email/matricula)
+            msg = str(e).lower()
+            if "unique" in msg and "email" in msg:
                 flash("Já existe um estudante cadastrado com este email. Por favor, utilize outro.", "error")
-            elif "UNIQUE constraint failed: estudantes.matricula" in str(e):
+            elif "unique" in msg and "matricula" in msg:
                 flash("Já existe um estudante cadastrado com esta matrícula. Por favor, utilize outra.", "error")
             else:
-                flash(f"Erro ao registrar estudante: {e}", "danger")
+                flash("Erro ao registrar estudante. Verifique os dados e tente novamente.", "error")
+        except sqlite3.Error:
+            logging.exception("Erro ao acessar o banco ao registrar estudante")
+            flash("Erro ao registrar estudante: problema no banco de dados.", "error")
         finally:
             conn.close()
 
@@ -335,9 +299,7 @@ def consultar_livros():
         conn = get_db_connection()
         
         try:
-            # Se houver pesquisa, filtramos os livros
             if pesquisa:
-                # Verifica se a pesquisa é numérica (ISBN ou ano de publicação)
                 if pesquisa.isdigit():
                     cursor = conn.execute(
                         '''
@@ -347,7 +309,6 @@ def consultar_livros():
                         ''',
                         (pesquisa, f"%{pesquisa}%")
                     )
-                # Verifica se é uma pesquisa de status
                 elif pesquisa.lower() in ["disponível", "indisponível"]:
                     cursor = conn.execute("SELECT * FROM livros WHERE status = ?", (pesquisa,))
                 else:
@@ -361,25 +322,23 @@ def consultar_livros():
                         (f"%{pesquisa}%", f"%{pesquisa}%", f"%{pesquisa}%")
                     )
             else:
-                # Se não houver pesquisa, mostramos todos os livros
                 cursor = conn.execute("SELECT * FROM livros")
             
             livros = cursor.fetchall()
-            # Converter para lista de dicionários
             livros = [dict(livro) for livro in livros]
             
             return render_template('livros.html', livros=livros, pesquisa=pesquisa)
             
-        except sqlite3.Error as e:
-            print(f"Erro no banco de dados: {e}")
+        except sqlite3.Error:
+            logging.exception("Erro no banco de dados em consultar_livros")
             flash("Erro ao acessar o banco de dados. Por favor, tente novamente.", "error")
             return redirect(url_for('home_estudante'))
             
         finally:
             conn.close()
             
-    except Exception as e:
-        print(f"Erro inesperado: {e}")
+    except Exception:
+        logging.exception("Erro inesperado em consultar_livros")
         flash("Ocorreu um erro inesperado. Por favor, tente novamente.", "error")
         return redirect(url_for('home_estudante'))
 
@@ -388,9 +347,8 @@ def consultar_livros():
 def cadastro():
     if 'logged_in' in session and session['user_type'] == 'bibliotecario':
         if request.method == 'POST':
-            # Processar dados enviados no formulário para cadastro
             data = request.form
-            tipo = 'livro'  # Assumindo que o tipo de cadastro é sempre 'livro'
+            tipo = 'livro'
 
             conn = get_db_connection()
             cursor = conn.cursor()
@@ -407,8 +365,7 @@ def cadastro():
                         flash('O campo ISBN é obrigatório.', 'danger')
                         return redirect(url_for('cadastro'))
                     
-                    # Adicionar quantidade_total primeiro
-                    quantidade_total = int(data.get('quantidade_total', 0))  # Insira quantidade total primeiro
+                    quantidade_total = int(data.get('quantidade_total', 0))
                     quantidade_disponivel = int(data.get('quantidade_total', 0))
 
                     cursor.execute('''INSERT INTO livros (titulo, autor, genero, ano_de_publicacao, isbn, status, quantidade_total, quantidade_disponivel, quantidade_indisponivel)
@@ -416,11 +373,6 @@ def cadastro():
                                 (data['titulo'], data['autor'], data.get('genero', ''), 
                                  data['ano_de_publicacao'], data.get('isbn'), data['status'], quantidade_total, quantidade_disponivel, 0))
                     conn.commit()
-
-                    if not data.get('isbn'):
-                        flash('O campo ISBN é obrigatório.', 'danger')
-                        return redirect(url_for('cadastro'))
-
 
                 else:
                     flash('Tipo inválido para cadastro.', 'danger')
@@ -430,10 +382,19 @@ def cadastro():
                 flash('Cadastro realizado com sucesso!', 'success')
                 return redirect(url_for('cadastro'))
 
-            except psycopg2.DatabaseError as e:
+            except sqlite3.IntegrityError as e:
+                logging.exception("Erro de integridade ao cadastrar livro")
                 flash(f'Erro ao cadastrar: {e}', 'danger')
                 conn.close()
                 return redirect(url_for('cadastro'))
+            except sqlite3.Error:
+                logging.exception("Erro no banco ao cadastrar livro")
+                flash('Erro ao cadastrar. Por favor, tente novamente.', 'danger')
+                conn.close()
+                return redirect(url_for('cadastro'))
+            finally:
+                if conn:
+                    conn.close()
 
         return render_template('cadastro.html')
     return redirect(url_for('login'))
@@ -441,7 +402,7 @@ def cadastro():
 @app.route('/consulta', methods=['GET'])
 def consulta():
     if 'logged_in' in session and session['user_type'] == 'bibliotecario':
-        tipo = request.args.get("tipo", "livros")  # Padrão: 'livros'
+        tipo = request.args.get("tipo", "livros")
         pesquisa = request.args.get("pesquisa", "").strip()
         param_like = f"%{pesquisa}%"
         param_isbn = pesquisa.replace("-", "")
@@ -454,7 +415,6 @@ def consulta():
         with get_db_connection() as conn:
             cursor = conn.cursor()
 
-            # 🔍 Consulta de livros
             if tipo == 'livros':
                 cursor.execute("""
                     SELECT * FROM livros 
@@ -470,7 +430,6 @@ def consulta():
                 livros = [dict(zip(columns, row)) for row in cursor.fetchall()]
                 return render_template("consulta.html", tipo=tipo, livros=livros, pesquisa=pesquisa)
 
-            # 🔍 Consulta de usuários
             elif tipo == 'usuarios':
                 cursor.execute("""
                     SELECT e.nome, e.email, 'bibliotecario' AS tipo 
@@ -487,7 +446,6 @@ def consulta():
                 usuarios = [dict(zip(columns, row)) for row in cursor.fetchall()]
                 return render_template("consulta.html", tipo=tipo, usuarios=usuarios, pesquisa=pesquisa)
 
-            # 🔍 Consulta por status
             elif tipo == 'status':
                 if pesquisa.lower() in ["disponível", "indisponível"]:
                     cursor.execute("""
@@ -498,10 +456,8 @@ def consulta():
                     livros = [dict(zip(columns, row)) for row in cursor.fetchall()]
                     return render_template("consulta.html", tipo=tipo, livros=livros, pesquisa=pesquisa)
 
-        # Caso o tipo seja inválido ou nenhuma correspondência
         return render_template("consulta.html", tipo=tipo, pesquisa=pesquisa)
 
-    # Redireciona para login se não autenticado como bibliotecário
     return redirect(url_for('login'))
 
 @app.route('/apagar_livro/<int:livro_id>', methods=['GET', 'POST'])
@@ -512,8 +468,7 @@ def apagar_livro(livro_id):
             cursor = conn.cursor()
             cursor.execute("DELETE FROM livros WHERE livro_id = ?", (livro_id,))
             conn.commit()
-            conn.close()
-            print(f"Livro com ID {livro_id} apagado com sucesso.")
+        print(f"Livro com ID {livro_id} apagado com sucesso.")
         flash("Livro apagado com sucesso!", "success")
         return redirect(url_for('consulta', tipo='livros'))
     print("Usuário não autorizado ou não logado.")
@@ -552,10 +507,8 @@ def editar_livro(livro_id):
             flash("Livro atualizado com sucesso!", "success")
             return redirect(url_for('consulta', tipo='livros'))
 
-        except Exception as e:
-            import traceback
-            traceback.print_exc()
-            print("Erro ao editar livro:", e)
+        except Exception:
+            logging.exception("Erro ao editar livro")
             flash("Erro ao editar o livro.", "danger")
             return redirect(url_for('consulta', tipo='livros'))
     else:
@@ -565,46 +518,40 @@ def editar_livro(livro_id):
 @app.route('/relatorios')
 def relatorios():
     try:
-        # Verifica se o usuário está logado
         if 'logged_in' not in session or not session['logged_in']:
             flash("Por favor, faça login para acessar esta página.", "error")
             return redirect(url_for('login'))
             
-        # Verifica se o usuário é um bibliotecário
         if 'user_type' not in session or session['user_type'] != 'bibliotecario':
             flash("Acesso negado. Apenas bibliotecários podem acessar esta página.", "error")
             return redirect(url_for('home'))
         
-        # Conexão com o banco de dados
         conn = get_db_connection()
         try:
             cursor = conn.cursor()
             
-            # Consulta para obter os empréstimos ativos
             cursor.execute('''
                 SELECT e.emprestimo_id, l.titulo, es.nome as estudante, 
-                       e.data_emprestimo, e.data_devolucao_prevista
+                       e.data_emprestimo, e.data_devolucao
                 FROM emprestimos e
                 JOIN livros l ON e.livro_id = l.livro_id
                 JOIN estudantes es ON e.estudante_id = es.estudante_id
                 WHERE e.status = 'ativo'
-                ORDER BY e.data_devolucao_prevista ASC
+                ORDER BY e.data_devolucao ASC
             ''')
             emprestimos_ativos = cursor.fetchall()
             
-            # Consulta para obter os empréstimos atrasados
             cursor.execute('''
                 SELECT e.emprestimo_id, l.titulo, es.nome as estudante, 
-                       e.data_emprestimo, e.data_devolucao_prevista
+                       e.data_emprestimo, e.data_devolucao
                 FROM emprestimos e
                 JOIN livros l ON e.livro_id = l.livro_id
                 JOIN estudantes es ON e.estudante_id = es.estudante_id
                 WHERE e.status = 'atrasado'
-                ORDER BY e.data_devolucao_prevista ASC
+                ORDER BY e.data_devolucao ASC
             ''')
             emprestimos_atrasados = cursor.fetchall()
             
-            # Consulta para obter os livros mais emprestados
             cursor.execute('''
                 SELECT l.livro_id, l.titulo, l.autor, COUNT(e.emprestimo_id) as total_emprestimos
                 FROM livros l
@@ -622,17 +569,16 @@ def relatorios():
                 livros_mais_emprestados=livros_mais_emprestados
             )
             
-        except sqlite3.Error as e:
-            print(f"Erro ao acessar o banco de dados: {e}")
+        except sqlite3.Error:
+            logging.exception("Erro ao acessar o banco de dados em relatorios")
             flash("Erro ao acessar o banco de dados. Por favor, tente novamente.", "error")
             return redirect(url_for('home'))
             
         finally:
-            if conn:
-                conn.close()
+            conn.close()
                 
-    except Exception as e:
-        print(f"Erro inesperado na rota de relatórios: {str(e)}")
+    except Exception:
+        logging.exception("Erro inesperado na rota de relatórios")
         flash("Ocorreu um erro inesperado. Por favor, tente novamente.", "error")
         return redirect(url_for('home'))
 
@@ -648,7 +594,6 @@ def emprestimos():
             emprestimo_id = request.form.get('emprestimo_id')
             data_retorno = request.form.get('data_retorno')
 
-            # Registrar devolução
             if acao == 'registrar' and emprestimo_id and data_retorno:
                 print(f"Registrando devolução: {emprestimo_id}, Data de retorno: {data_retorno}")
                 sucesso, mensagem = registrar_devolucao(cursor, conn, emprestimo_id, data_retorno)
@@ -659,7 +604,6 @@ def emprestimos():
                     flash(mensagem, 'danger')
                     print(f"Erro: {mensagem}")
 
-            # Excluir empréstimo
             elif acao == 'excluir' and emprestimo_id:
                 sucesso, mensagem = excluir_emprestimo(cursor, conn, emprestimo_id)
 
@@ -668,7 +612,6 @@ def emprestimos():
                 else:
                     flash(mensagem, 'danger')
 
-        # Consultar todos os empréstimos ativos
         emprestimos = obter_emprestimos(cursor)
         conn.close()
 
@@ -682,7 +625,6 @@ def novo_emprestimo():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        # Obter os dados atuais: livros disponíveis, estudantes e bibliotecários
         livros_disponiveis, estudantes, bibliotecarios = obter_dados_atuais(cursor)
 
         if request.method == 'POST':
@@ -692,12 +634,9 @@ def novo_emprestimo():
             data_emprestimo = request.form['data_emprestimo']
             data_devolucao = request.form['data_devolucao']
 
-            # Registrar o novo empréstimo
             sucesso, mensagem = registrar_emprestimo(cursor, conn, livro_id, estudante_id, bibliotecario_id, data_emprestimo, data_devolucao)
 
             flash(mensagem, 'success' if sucesso else 'danger')
-
-            # Redirecionar para a lista de empréstimos após o registro
             return redirect(url_for('emprestimos'))
 
         conn.close()
@@ -710,8 +649,7 @@ def novo_emprestimo():
         )
     return redirect(url_for('login'))
 
-# Rodar o app
-
 if __name__ == "__main__":
-    app.run(debug=True, host='127.0.0.1')
-    start_email_scheduler()  # Inicia o agendador ao rodar o app
+    # Start scheduler before running the Flask server so o thread já exista
+    start_email_scheduler()
+    app.run(debug=True, host='127.0.0.1', threaded=True)
